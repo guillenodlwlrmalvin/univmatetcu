@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- https://go.microsoft.com/fwlink/?LinkID=208121. -->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\User\Downloads\UnivMate\UnivMate\bin\Release\net9.0\publish\</_PublishTargetUrl>
+    <History>True|2025-05-06T00:11:31.7821082Z||;True|2025-05-06T07:09:13.2109974+08:00||;True|2025-05-06T06:34:47.6341251+08:00||;</History>
+    <LastFailureDetails />
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>workstation id=3CCS_G8.mssql.somee.com%3bpacket size=4096%3buser id=blair_SQLLogin_1%3bpwd=9m564grzjz%3bdata source=3CCS_G8.mssql.somee.com%3bpersist security info=False%3binitial catalog=3CCS_G8%3bTrustServerCertificate=True</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="UnivMate.Data.ApplicationDbContext">
+      <Value>workstation id=3CCS_G8.mssql.somee.com%3bpacket size=4096%3buser id=blair_SQLLogin_1%3bpwd=9m564grzjz%3bdata source=3CCS_G8.mssql.somee.com%3bpersist security info=False%3binitial catalog=3CCS_G8%3bTrustServerCertificate=True</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

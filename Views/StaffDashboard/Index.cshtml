@@ -1,0 +1,1180 @@
+﻿@model UnivMate.ViewModels.StaffDashboardViewModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="admin-dashboard">
+    <!-- Header Bar -->
+    <header class="admin-header">
+        <div class="header-content">
+            <h1 class="dashboard-title">
+                <i class="fas fa-tachometer-alt"></i> Admin Dashboard
+            </h1>
+            <form asp-controller="Account" asp-action="Logout" method="post" class="logout-form">
+                <button type="submit" class="btn-logout" title="Logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Sign Out</span>
+                </button>
+            </form>
+        </div>
+    </header>
+
+    <!-- Notification System -->
+    <div class="notification-container">
+        @if (TempData["StatusMessage"] != null)
+        {
+            <div class="notification success">
+                <i class="fas fa-check-circle"></i>
+                <span>@TempData["StatusMessage"]</span>
+                <button class="notification-close">&times;</button>
+            </div>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="notification error">
+                <i class="fas fa-exclamation-circle"></i>
+                <span>@TempData["ErrorMessage"]</span>
+                <button class="notification-close">&times;</button>
+            </div>
+        }
+    </div>
+
+    <!-- Key Metrics -->
+    <section class="metrics-section">
+        <h2 class="section-title">
+            <i class="fas fa-chart-line"></i> Overview
+        </h2>
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-icon user-metric">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="metric-content">
+                    <h3>Total Users</h3>
+                    <div class="metric-value total-users-count">@Model.TotalUsers</div>
+                    <div class="metric-trend">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-icon student-metric">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="metric-content">
+                    <h3>Students</h3>
+                    <div class="metric-value total-students-count">@Model.TotalStudents</div>
+                    <div class="metric-trend">
+                        <i class="fas fa-arrow-up"></i> 
+                    </div>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-icon professor-metric">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <div class="metric-content">
+                    <h3>Professors</h3>
+                    <div class="metric-value total-professors-count">@Model.TotalProfessors</div>
+                    <div class="metric-trend">
+                        <i class="fas fa-arrow-up"></i> 
+                    </div>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-icon report-metric">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="metric-content">
+                    <h3>Pending Reports</h3>
+                    <div class="metric-value pending-reports-count">@Model.PendingReports</div>
+                    <div class="metric-trend">
+                        <i class="fas fa-arrow-down"></i> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reports Management -->
+    <section class="reports-section">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-clipboard-list"></i> Reports Management
+            </h2>
+            <div class="report-filters">
+                <div class="filter-group">
+                    <label>Filter by Status:</label>
+                    <div class="filter-options">
+                        <button class="filter-btn active" data-status="all">All</button>
+                        <button class="filter-btn" data-status="pending">Pending</button>
+                        <button class="filter-btn" data-status="in progress">In Progress</button>
+                        <button class="filter-btn" data-status="completed">Completed</button>
+                        <button class="filter-btn" data-status="rejected">Rejected</button>
+                    </div>
+                </div>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search reports...">
+                </div>
+            </div>
+        </div>
+
+        <div class="reports-table-container">
+            <table class="reports-table">
+                <thead>
+                    <tr>
+                        <th>Report Title</th>
+                        <th>Submitted By</th>
+                        <th>Date Submitted</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var report in Model.Reports)
+                    {
+                        <tr data-status="@report.Status.ToLower()">
+                            <td>
+                                <div class="report-title">@report.Title</div>
+                                <div class="report-location">@report.Location</div>
+                            </td>
+                            <td>
+                                <div class="user-display">
+                                    <div class="user-avatar-sm">
+                                        @report.User?.FirstName?.Substring(0, 1)@report.User?.LastName?.Substring(0, 1)
+                                    </div>
+                                    <div>
+                                        <div class="user-name">@report.User?.FirstName @report.User?.LastName</div>
+                                        <div class="user-email">@report.User?.Email</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="date-display">
+                                    <div class="date-day">@report.SubmittedAt.ToString("MMM dd")</div>
+                                    <div class="date-time">@report.SubmittedAt.ToString("h:mm tt")</div>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="status-badge @report.Status.ToLower().Replace(" ", "-")">
+                                    <i class="status-icon @GetStatusIcon(report.Status)"></i>
+                                    @report.Status
+                                </span>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <a asp-action="ViewReport" asp-route-id="@report.Id" class="btn-action view-btn" title="View Details">
+                                        <i class="fas fa-eye"></i>
+                                        <span class="action-text">View</span>
+                                    </a>
+                                    @if (report.Status == "Pending")
+                                    {
+                                        <form asp-action="QuickAction" method="post" class="action-form">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="reportId" value="@report.Id" />
+                                            <button type="submit" name="action" value="accept" class="btn-action accept-btn" title="Accept Report">
+                                                <i class="fas fa-check"></i>
+                                                <span class="action-text">Accept</span>
+                                            </button>
+                                            <button type="submit" name="action" value="reject" class="btn-action reject-btn" title="Reject Report">
+                                                <i class="fas fa-times"></i>
+                                                <span class="action-text">Reject</span>
+                                            </button>
+                                        </form>
+                                    }
+                                    else if (report.Status == "In Progress")
+                                    {
+                                        <form asp-action="QuickAction" method="post" class="action-form">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="reportId" value="@report.Id" />
+                                            <button type="submit" name="action" value="complete" class="btn-action complete-btn" title="Mark Complete">
+                                                <i class="fas fa-check-circle"></i>
+                                                <span class="action-text">Complete</span>
+                                            </button>
+                                        </form>
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <!-- Recent Users -->
+    <section class="users-section">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-user-clock"></i> Recent User Activity
+            </h2>
+            <div class="user-search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="user-search" placeholder="Search users...">
+                </div>
+                <a href="#" class="view-all">View All Users</a>
+            </div>
+        </div>
+
+        <div class="users-grid">
+            @foreach (var user in Model.RecentUsers)
+            {
+                <div class="user-card" data-search="@($"{user.FirstName} {user.LastName} {user.Email} {user.Role}".ToLower())">
+                    <div class="user-avatar">
+                        @user.FirstName?.Substring(0, 1)@user.LastName?.Substring(0, 1)
+                    </div>
+                    <div class="user-details">
+                        <h3 class="user-name">@user.FirstName @user.LastName</h3>
+                        <div class="user-meta">
+                            <span class="user-role @user.Role.ToLower()">@user.Role</span>
+                            <span class="user-email">@user.Email</span>
+                        </div>
+                        <div class="user-joined">
+                            Joined @user.CreatedAt.ToString("MMM d, yyyy")
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+</div>
+
+@functions {
+    public string GetStatusIcon(string status)
+    {
+        switch (status.ToLower())
+        {
+            case "pending": return "fas fa-hourglass-half";
+            case "in progress": return "fas fa-spinner";
+            case "completed": return "fas fa-check-circle";
+            case "rejected": return "fas fa-times-circle";
+            default: return "fas fa-question-circle";
+        }
+    }
+}
+
+<style>
+    /* ===== Base Styles ===== */
+    :root {
+        --primary: #780000;
+        --primary-light: #a30000;
+        --primary-lightest: #f8e8e8;
+        --success: #28a745;
+        --success-light: #e6f3ea;
+        --warning: #ffc107;
+        --warning-light: #fff8e6;
+        --danger: #dc3545;
+        --danger-light: #fce8ea;
+        --info: #17a2b8;
+        --info-light: #e6f4f7;
+        --dark: #343a40;
+        --gray-dark: #495057;
+        --gray: #6c757d;
+        --gray-light: #e9ecef;
+        --gray-lightest: #f8f9fa;
+        --white: #ffffff;
+        --border-radius: 8px;
+        --border-radius-sm: 4px;
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.1);
+        --transition: all 0.2s ease;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Segoe UI', 'Roboto', sans-serif;
+        line-height: 1.6;
+        color: var(--dark);
+        background-color: #f5f7fa;
+    }
+
+    /* ===== Dashboard Layout ===== */
+    .admin-dashboard {
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 0 1.5rem 2rem;
+    }
+
+    /* ===== Header Styles ===== */
+    .admin-header {
+        background-color: var(--white);
+        box-shadow: var(--shadow-sm);
+        padding: 1rem 0;
+        margin-bottom: 1.5rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    .dashboard-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+        .dashboard-title i {
+            font-size: 1.2em;
+        }
+
+    /* ===== Logout Button ===== */
+    .logout-form {
+        display: flex;
+    }
+
+    .btn-logout {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background-color: var(--white);
+        color: var(--danger);
+        border: 1px solid var(--danger);
+        border-radius: var(--border-radius);
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition);
+    }
+
+        .btn-logout:hover {
+            background-color: var(--danger);
+            color: var(--white);
+        }
+
+        .btn-logout i {
+            font-size: 1em;
+        }
+
+    /* ===== Notification System ===== */
+    .notification-container {
+        position: fixed;
+        top: 5rem;
+        right: 2rem;
+        z-index: 1050;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        max-width: 400px;
+    }
+
+    .notification {
+        padding: 1rem 1.25rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-md);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        animation: slideIn 0.3s ease-out;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .notification::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+        }
+
+        .notification.success {
+            background-color: var(--white);
+            border-left: 4px solid var(--success);
+        }
+
+        .notification.error {
+            background-color: var(--white);
+            border-left: 4px solid var(--danger);
+        }
+
+        .notification i {
+            font-size: 1.2rem;
+        }
+
+        .notification.success i {
+            color: var(--success);
+        }
+
+        .notification.error i {
+            color: var(--danger);
+        }
+
+        .notification span {
+            flex: 1;
+        }
+
+    .notification-close {
+        background: none;
+        border: none;
+        color: var(--gray);
+        font-size: 1.25rem;
+        cursor: pointer;
+        padding: 0 0.25rem;
+        margin-left: 0.5rem;
+    }
+
+    keyframes slideIn {
+        from
+
+    {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    }
+
+    /* ===== Section Styles ===== */
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--dark);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+        .section-title i {
+            color: var(--primary);
+            font-size: 1.1em;
+        }
+
+    .view-all {
+        color: var(--primary);
+        font-weight: 500;
+        text-decoration: none;
+        transition: var(--transition);
+    }
+
+        .view-all:hover {
+            text-decoration: underline;
+        }
+
+    /* ===== Metrics Section ===== */
+    .metrics-section {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow);
+    }
+
+    .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .metric-card {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        transition: var(--transition);
+        border: 1px solid var(--gray-light);
+    }
+
+        .metric-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+    .metric-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: var(--white);
+    }
+
+    .user-metric {
+        background-color: var(--primary);
+        background-image: linear-gradient(135deg, var(--primary), var(--primary-light));
+    }
+
+    .student-metric {
+        background-color: var(--success);
+        background-image: linear-gradient(135deg, var(--success), #5cb85c);
+    }
+
+    .professor-metric {
+        background-color: var(--info);
+        background-image: linear-gradient(135deg, var(--info), #5bc0de);
+    }
+
+    .report-metric {
+        background-color: var(--warning);
+        background-image: linear-gradient(135deg, var(--warning), #f0ad4e);
+    }
+
+    .metric-content {
+        flex: 1;
+    }
+
+        .metric-content h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--gray);
+            margin-bottom: 0.25rem;
+        }
+
+    .metric-value {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 0.25rem;
+    }
+
+    .metric-trend {
+        font-size: 0.85rem;
+        color: var(--gray);
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+        .metric-trend i {
+            font-size: 0.8em;
+            color: var(--success);
+        }
+
+    /* ===== Reports Section ===== */
+    .reports-section {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow);
+    }
+
+    .report-filters {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .filter-group {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+        .filter-group label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--gray-dark);
+        }
+
+    .filter-options {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .filter-btn {
+        padding: 0.5rem 1rem;
+        background-color: var(--gray-lightest);
+        border: 1px solid var(--gray-light);
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--gray-dark);
+        cursor: pointer;
+        transition: var(--transition);
+    }
+
+        .filter-btn:hover {
+            background-color: var(--gray-light);
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            color: var(--white);
+        }
+
+    .search-box {
+        position: relative;
+        flex: 1;
+        min-width: 200px;
+        max-width: 300px;
+    }
+
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.5rem 1rem 0.5rem 2.5rem;
+            border: 1px solid var(--gray-light);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+            .search-box input:focus {
+                outline: none;
+                border-color: var(--primary);
+                box-shadow: 0 0 0 3px rgba(120, 0, 0, 0.1);
+            }
+
+
+
+    /* ===== Reports Table ===== */
+    .reports-table-container {
+        overflow-x: auto;
+        margin-top: 1.5rem;
+        border-radius: var(--border-radius);
+        border: 1px solid var(--gray-light);
+    }
+
+    .reports-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 800px;
+    }
+
+        .reports-table th {
+            text-align: left;
+            padding: 1rem;
+            background-color: var(--gray-lightest);
+            font-weight: 600;
+            color: var(--dark);
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .reports-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--gray-light);
+            vertical-align: middle;
+        }
+
+        .reports-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .reports-table tr:hover {
+            background-color: var(--primary-lightest);
+        }
+
+    .report-title {
+        font-weight: 500;
+        color: var(--dark);
+    }
+
+    .report-location {
+        font-size: 0.85rem;
+        color: var(--gray);
+        margin-top: 0.25rem;
+    }
+
+    .user-display {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .user-avatar-sm {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: var(--primary);
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
+        flex-shrink: 0;
+    }
+
+    .user-name {
+        font-weight: 500;
+    }
+
+    .user-email {
+        font-size: 0.85rem;
+        color: var(--gray);
+    }
+
+    .date-display {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .date-day {
+        font-weight: 500;
+    }
+
+    .date-time {
+        font-size: 0.85rem;
+        color: var(--gray);
+    }
+
+    /* ===== Status Badges ===== */
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+
+    .status-icon {
+        font-size: 0.9em;
+    }
+
+    .status-badge.pending {
+        background-color: var(--warning-light);
+        color: #856404;
+    }
+
+        .status-badge.pending .status-icon {
+            color: var(--warning);
+        }
+
+    .status-badge.in-progress {
+        background-color: var(--info-light);
+        color: #0c5460;
+    }
+
+        .status-badge.in-progress .status-icon {
+            color: var(--info);
+        }
+
+    .status-badge.completed {
+        background-color: var(--success-light);
+        color: #155724;
+    }
+
+        .status-badge.completed .status-icon {
+            color: var(--success);
+        }
+
+    .status-badge.rejected {
+        background-color: var(--danger-light);
+        color: #721c24;
+    }
+
+        .status-badge.rejected .status-icon {
+            color: var(--danger);
+        }
+
+    /* ===== Action Buttons ===== */
+    .action-buttons {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .action-form {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .btn-action {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 0.75rem;
+        border-radius: var(--border-radius-sm);
+        border: none;
+        cursor: pointer;
+        transition: var(--transition);
+        color: var(--white);
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+
+    .action-text {
+        display: inline-block;
+    }
+
+    .view-btn {
+        background-color: var(--gray);
+    }
+
+        .view-btn:hover {
+            background-color: var(--gray-dark);
+        }
+
+    .accept-btn {
+        background-color: var(--success);
+    }
+
+        .accept-btn:hover {
+            background-color: #218838;
+        }
+
+    .reject-btn {
+        background-color: var(--danger);
+    }
+
+        .reject-btn:hover {
+            background-color: #c82333;
+        }
+
+    .complete-btn {
+        background-color: var(--info);
+    }
+
+        .complete-btn:hover {
+            background-color: #138496;
+        }
+
+    /* ===== Users Section ===== */
+    .users-section {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+    }
+
+    .users-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .user-card {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        padding: 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        transition: var(--transition);
+        border: 1px solid var(--gray-light);
+    }
+
+        .user-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+    .user-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--primary);
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        flex-shrink: 0;
+    }
+
+    .user-details {
+        flex: 1;
+    }
+
+    .user-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+    }
+
+    .user-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .user-role {
+        padding: 0.25rem 0.5rem;
+        border-radius: var(--border-radius-sm);
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+        .user-role.student {
+            background-color: rgba(40, 167, 69, 0.1);
+            color: var(--success);
+        }
+
+        .user-role.professor {
+            background-color: rgba(23, 162, 184, 0.1);
+            color: var(--info);
+        }
+
+        .user-role.admin, .user-role.staff {
+            background-color: rgba(120, 0, 0, 0.1);
+            color: var(--primary);
+        }
+
+    .user-email {
+        font-size: 0.85rem;
+        color: var(--gray);
+    }
+
+    .user-joined {
+        font-size: 0.8rem;
+        color: var(--gray);
+    }
+
+
+    .user-search-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .users-section .search-box {
+        min-width: 200px;
+        margin-right: 0.5rem;
+    }
+
+    .users-section .view-all {
+        white-space: nowrap;
+    }
+    /* ===== Responsive Styles ===== */
+    media (max-width: 1200px) {
+        .metrics-grid
+
+    {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    }
+
+    media (max-width: 768px) {
+        .admin-dashboard
+
+    {
+        padding: 0 1rem 1.5rem;
+    }
+
+    .header-content {
+        padding: 0 1rem;
+    }
+
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .report-filters {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .search-box {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .users-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Adjust action buttons for smaller screens */
+    .action-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .action-form {
+        flex-direction: column;
+    }
+
+    }
+
+    media (max-width: 576px) {
+        .dashboard-title span
+
+    {
+        display: none;
+    }
+
+    .btn-logout span {
+        display: none;
+    }
+
+    .filter-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Make action buttons full width on very small screens */
+    .btn-action {
+        width: 100%;
+        justify-content: center;
+    }
+
+    }
+</style>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Initialize dashboard counts
+            updateDashboardCounts();
+
+            // Set up periodic refresh (every 30 seconds)
+            setInterval(updateDashboardCounts, 30000);
+
+            // Filter reports by status
+            $('.filter-btn').click(function() {
+                $('.filter-btn').removeClass('active');
+                $(this).addClass('active');
+
+                const status = $(this).data('status');
+                if (status === 'all') {
+                    $('.reports-table tbody tr').show();
+                } else {
+                    $('.reports-table tbody tr').hide();
+                    $(`.reports-table tbody tr[data-status="${status}"]`).show();
+                }
+            });
+
+            // Form submission handling
+            $('form[action*="QuickAction"]').submit(function(e) {
+                const action = $(this).find('button[type="submit"][clicked=true]').val();
+                let message = '';
+
+                switch(action) {
+                    case 'accept':
+                        message = 'Are you sure you want to accept this report?';
+                        break;
+                    case 'reject':
+                        message = 'Are you sure you want to reject this report?';
+                        break;
+                    case 'complete':
+                        message = 'Are you sure you want to mark this report as completed?';
+                        break;
+                }
+
+                if (message && !confirm(message)) {
+                    e.preventDefault();
+                }
+            });
+
+            // Track which button was clicked
+            $('form[action*="QuickAction"] button[type="submit"]').click(function() {
+                $(this).siblings().removeAttr('clicked');
+                $(this).attr('clicked', 'true');
+            });
+
+            // Close notifications
+            $('.notification-close').click(function() {
+                $(this).closest('.notification').fadeOut(200, function() {
+                    $(this).remove();
+                });
+            });
+
+            // Search functionality
+            $('.search-box input').on('input', function() {
+                const searchTerm = $(this).val().toLowerCase();
+                $('.reports-table tbody tr').each(function() {
+                    const rowText = $(this).text().toLowerCase();
+                    $(this).toggle(rowText.indexOf(searchTerm) > -1);
+                });
+            });
+        });
+
+        function updateDashboardCounts() {
+            $.ajax({
+                url: '/Dashboard/GetDashboardCounts',
+                type: 'GET',
+                beforeSend: function() {
+                    $('.metric-card').addClass('counting');
+                },
+                success: function(data) {
+                    if (data && data.totalUsers !== undefined) {
+                        // Update counts with animation
+                        animateCountChange('.total-users-count', data.totalUsers);
+                        animateCountChange('.total-students-count', data.totalStudents);
+                        animateCountChange('.total-professors-count', data.totalProfessors);
+                        animateCountChange('.pending-reports-count', data.pendingReports);
+                    } else {
+                        console.error('Invalid data format:', data);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching dashboard counts:', error);
+                },
+                complete: function() {
+                    $('.metric-card').removeClass('counting');
+                }
+            });
+        }
+
+        function animateCountChange(selector, newValue) {
+            const element = $(selector);
+            const current = parseInt(element.text()) || 0;
+            const diff = newValue - current;
+
+            if (diff !== 0) {
+                element.prop('Counter', current).animate({
+                    Counter: newValue
+                }, {
+                    duration: 500,
+                    easing: 'swing',
+                    step: function(now) {
+                        element.text(Math.ceil(now));
+                    }
+                });
+            }
+        }
+
+                // User search functionality
+        $('#user-search').on('input', function() {
+            const searchTerm = $(this).val().toLowerCase();
+            $('.users-grid .user-card').each(function() {
+                const searchData = $(this).data('search');
+                $(this).toggle(searchData.includes(searchTerm));
+            });
+        });
+    </script>
+}

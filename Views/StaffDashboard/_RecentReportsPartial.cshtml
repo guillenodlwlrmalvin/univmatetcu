@@ -1,0 +1,13 @@
+﻿@model IEnumerable<dynamic>
+
+@foreach (var report in Model)
+{
+    <div class="status-card @(report.Status == "Pending" ? "status-pending" : "status-completed")">
+        <strong>@report.Title</strong>
+        <p>
+            <i class="bi @(report.Status == "Pending" ? "bi-hourglass" : "bi-check-circle")"></i>
+            @report.Status - @report.UserName
+        </p>
+        <small>Submitted: @report.SubmittedAt</small>
+    </div>
+}

@@ -1,0 +1,1370 @@
+﻿@using Microsoft.AspNetCore.Antiforgery
+@inject IAntiforgery Antiforgery
+@{
+    var token = Antiforgery.GetAndStoreTokens(Context).RequestToken;
+}
+@{
+    ViewData["Title"] = "Dashboard";
+    var userName = User.Identity?.Name;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" />
+    <style>
+        :root {
+            --primary-color: #780000;
+            --primary-light: #a30000;
+            --secondary-color: #f4f4f4;
+            --text-color: #333;
+            --text-light: #666;
+            --card-bg: #fff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.15);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        /* Report Details Styles */
+        .report-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .report-details-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 300px;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .report-details-image img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain;
+            }
+
+        .report-details-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .report-details-meta {
+            margin-bottom: 1.5rem;
+        }
+
+        .report-details-item {
+            margin-bottom: 0.75rem;
+            display: flex;
+        }
+
+        .report-details-label {
+            font-weight: 500;
+            min-width: 120px;
+            color: var(--text-light);
+        }
+
+        .report-details-value {
+            flex: 1;
+        }
+
+        .report-details-description {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-top: auto;
+        }
+
+        .report-status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .report-details-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        media (max-width: 768px) {
+            .report-details
+
+        {
+            grid-template-columns: 1fr;
+        }
+
+        .report-details-image {
+            height: 200px;
+        }
+
+        }
+        body {
+            background-color: var(--secondary-color);
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .dashboard-header {
+            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            position: relative;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .user-menu {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            display: flex;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .user-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: white;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+            .user-avatar:hover {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+            }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow-hover);
+            width: 220px;
+            z-index: 100;
+            display: none;
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        @@keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 0.75rem 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+            .dropdown-item i {
+                margin-right: 0.75rem;
+                width: 20px;
+                text-align: center;
+            }
+
+            .dropdown-item:hover {
+                background-color: #f8f9fa;
+                color: var(--primary-color);
+            }
+
+        .dropdown-divider {
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 0.25rem 0;
+        }
+
+        .main-functions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 1.75rem;
+            box-shadow: var(--shadow);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-hover);
+            }
+
+            .card h2 {
+                color: var(--primary-color);
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+                font-weight: 600;
+            }
+
+            .card p {
+                font-size: 1rem;
+                color: var(--text-light);
+                margin-bottom: 1.5rem;
+                flex-grow: 1;
+            }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            color: white;
+            background-color: var(--primary-color);
+            border: none;
+            border-radius: 6px;
+            transition: var(--transition);
+            cursor: pointer;
+            gap: 0.5rem;
+            align-self: flex-start;
+        }
+
+            .btn i {
+                font-size: 1.1rem;
+            }
+
+            .btn:hover {
+                background-color: var(--primary-light);
+                transform: translateY(-2px);
+            }
+
+            .btn:active {
+                transform: translateY(0);
+            }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+
+        .btn-outline-secondary {
+            background-color: transparent;
+            border: 1px solid #6c757d;
+            color: #6c757d;
+        }
+
+            .btn-outline-secondary:hover {
+                background-color: #6c757d;
+                color: white;
+            }
+
+            .btn-outline-secondary.active {
+                background-color: var(--primary-color);
+                border-color: var(--primary-color);
+                color: white;
+            }
+
+        .status-card {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+            .status-card:hover {
+                transform: translateX(5px);
+            }
+
+            .status-card strong {
+                display: block;
+                margin-bottom: 0.25rem;
+                font-weight: 500;
+            }
+
+            .status-card p {
+                display: flex;
+                align-items: center;
+                margin-bottom: 0.25rem;
+                font-size: 0.9rem;
+                color: var(--text-light);
+            }
+
+            .status-card small {
+                font-size: 0.8rem;
+                color: #888;
+            }
+
+            .status-card i {
+                margin-right: 0.5rem;
+            }
+
+        .status-pending {
+            border-left-color: #ffc107;
+        }
+
+            .status-pending i {
+                color: #ffc107;
+            }
+
+        .status-completed {
+            border-left-color: #28a745;
+        }
+
+            .status-completed i {
+                color: #28a745;
+            }
+
+        .status-inprogress {
+            border-left-color: #17a2b8;
+        }
+
+            .status-inprogress i {
+                color: #17a2b8;
+            }
+
+        .status-rejected {
+            border-left-color: #dc3545;
+        }
+
+            .status-rejected i {
+                color: #dc3545;
+            }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 0.9rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 200;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(3px);
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            max-width: 500px;
+            width: 95%;
+            position: relative;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @@keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+            .modal-header h2 {
+                color: var(--primary-color);
+                font-weight: 600;
+                margin-bottom: 0;
+            }
+
+        .modal input, .modal textarea, .modal select {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+            .modal input:focus, .modal textarea:focus, .modal select:focus {
+                outline: none;
+                border-color: var(--primary-color);
+                box-shadow: 0 0 0 3px rgba(120, 0, 0, 0.1);
+            }
+
+        .modal textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #888;
+            transition: var(--transition);
+            background: none;
+            border: none;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+            .close-btn:hover {
+                color: var(--primary-color);
+                background-color: #f0f0f0;
+            }
+
+        .file-upload {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .file-upload-label {
+            display: block;
+            padding: 0.75rem;
+            border: 2px dashed #ddd;
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+            .file-upload-label:hover {
+                border-color: var(--primary-color);
+                background-color: #fff9f9;
+            }
+
+            .file-upload-label i {
+                display: block;
+                font-size: 2rem;
+                margin-bottom: 0.5rem;
+                color: var(--primary-color);
+            }
+
+        .file-upload input[type="file"] {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        .location-select {
+            margin-bottom: 1rem;
+        }
+
+        /* Loading overlay */
+        .upload-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: var(--border-radius);
+            z-index: 10;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @@keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Simplified Report Cards */
+        .status-tab {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 20px;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+            font-size: 0.9rem;
+        }
+
+            .status-tab.active {
+                background-color: var(--primary-color);
+                color: white;
+            }
+
+        .report-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+            .report-card:hover {
+                transform: translateY(-2px);
+                box-shadow: var(--shadow-hover);
+            }
+
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .report-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-right: 1rem;
+        }
+
+        .report-status {
+            padding: 0.25rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .report-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .report-description {
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .report-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+
+        .report-date {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .view-report-btn {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        /* Alert styles */
+        .alert {
+            position: relative;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+            border: 1px solid transparent;
+            border-radius: 0.25rem;
+        }
+
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        /* Responsive adjustments */
+        @@media (max-width: 768px) {
+            .container {
+                width: 100%;
+                padding: 1rem;
+            }
+
+            .dashboard-header {
+                padding: 1.5rem 1rem;
+                text-align: left;
+                padding-left: 4rem;
+            }
+
+            .user-menu {
+                top: 1rem;
+                left: 1rem;
+                right: auto;
+            }
+
+            .dashboard-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .main-functions {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+            }
+        }
+
+        @@media (max-width: 480px) {
+            .dashboard-header {
+                padding-left: 1rem;
+                padding-top: 4rem;
+            }
+
+            .user-menu {
+                top: 1rem;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .card {
+                padding: 1.25rem;
+            }
+
+            .report-meta {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard-header">
+            <div class="user-menu">
+                <div class="user-avatar" id="userMenuButton" aria-label="User menu">
+                    @userName?.Substring(0, 1).ToUpper()
+                </div>
+                <div class="dropdown-menu" id="userDropdown">
+                    <a href="@Url.Action("EditProfile", "Account")" class="dropdown-item">
+                        <i class="bi bi-person"></i> Edit Profile
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <i class="bi bi-gear"></i> Settings
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <form id="logoutForm" method="post" action="@Url.Action("Logout", "Account")">
+                        <input type="hidden" name="__RequestVerificationToken" value="@token" />
+                        <button type="submit" class="dropdown-item" style="background:none; border:none; width:100%; text-align:left;">
+                            <i class="bi bi-box-arrow-right"></i> Logout
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <h1>Welcome, @userName!</h1>
+            <p>Report issues or request assistance. Staff will address your concerns promptly.</p>
+        </div>
+
+        <div class="main-functions">
+            <div class="card">
+                <h2><i class="bi bi-plus-circle"></i> Submit a Report</h2>
+                <p>Report maintenance issues, broken equipment, or request assistance with photo evidence for faster resolution.</p>
+                <button id="openReportModal" class="btn">
+                    <i class="bi bi-plus-lg"></i> Submit Now
+                </button>
+            </div>
+
+          
+
+            <!-- New All Reports Card -->
+            <div class="card">
+                <h2><i class="bi bi-list-ul"></i> My Reports</h2>
+                <p>View all reports you've submitted with their current status and details.</p>
+                <button id="viewMyReportsBtn" class="btn">
+                    <i class="bi bi-eye"></i> View My Reports
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Modal -->
+    <div class="modal" id="reportModal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModal" aria-label="Close modal">&times;</button>
+            <div class="modal-header">
+                <h2><i class="bi bi-clipboard-plus"></i> Submit New Report</h2>
+            </div>
+            <form id="reportForm" method="post" enctype="multipart/form-data" action="@Url.Action("SubmitReport", "Reports")">
+                <input type="hidden" name="__RequestVerificationToken" value="@token" />
+                <div class="form-group">
+                    <label for="description">Issue Description *</label>
+                    <textarea id="description" name="Description" placeholder="Describe the issue in detail..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Location *</label>
+                    <select id="location" name="Location" required>
+                        <option value="">Select location...</option>
+                        <option value="Building A">Building A</option>
+                        <option value="Building B">Building B</option>
+                        <option value="Library">Library</option>
+                        <option value="Cafeteria">Cafeteria</option>
+                        <option value="Classroom">Classroom</option>
+                        <option value="Laboratory">Laboratory</option>
+                        <option value="Office">Office</option>
+                        <option value="Restroom">Restroom</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Upload Photo Evidence *</label>
+                    <div class="file-upload">
+                        <label for="imageFile" class="file-upload-label">
+                            <i class="bi bi-camera"></i>
+                            <span>Click to upload photo</span>
+                            <small>Max file size: 5MB (JPEG, PNG)</small>
+                        </label>
+                        <input type="file" id="imageFile" name="ImageFile" accept="image/jpeg, image/png" required />
+                    </div>
+                    <div id="fileError" style="color: #dc3545; font-size: 0.875rem; display: none;"></div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn" style="background: #6c757d;" id="cancelReport">Cancel</button>
+                    <button type="submit" class="btn" id="submitReportBtn">
+                        <i class="bi bi-send"></i> Submit Report
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- All Reports Modal -->
+    <!-- My Reports Modal (changed from All Reports Modal) -->
+    <div class="modal" id="myReportsModal">
+        <div class="modal-content" style="max-width: 800px; width: 95%;">
+            <button class="close-btn" id="closeMyReportsModal" aria-label="Close modal">&times;</button>
+            <div class="modal-header">
+                <h2><i class="bi bi-list-ul"></i> My Reports</h2>
+            </div>
+            <div class="modal-body" style="max-height: 70vh; overflow-y: auto;">
+                <div id="myReportsLoading" class="text-center py-4">
+                    <div class="spinner"></div>
+                    <p>Loading your reports...</p>
+                </div>
+
+                <!-- Simplified Filter Tabs -->
+                <div class="status-tabs" style="margin-bottom: 1rem; display: flex; gap: 0.5rem; overflow-x: auto;">
+                    <button class="status-tab active" data-status="all">All</button>
+                    <button class="status-tab" data-status="pending">Pending</button>
+                    <button class="status-tab" data-status="inprogress">In Progress</button>
+                    <button class="status-tab" data-status="completed">Completed</button>
+                    <button class="status-tab" data-status="rejected">Rejected</button>
+                </div>
+
+                <!-- Simplified Report Cards List -->
+                <div id="reportsList" style="display: none;">
+                    <!-- Reports will be loaded here -->
+                </div>
+
+                <div id="myReportsError" class="alert alert-danger" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Report Details Modal -->
+    <div class="modal" id="reportDetailsModal">
+        <div class="modal-content" style="max-width: 700px;">
+            <button class="close-btn" id="closeReportDetailsModal" aria-label="Close modal">&times;</button>
+            <div class="modal-header">
+                <h2><i class="bi bi-file-earmark-text"></i> Report Details</h2>
+            </div>
+            <div class="modal-body" id="reportDetailsContent">
+                <div class="report-details-loading text-center py-4">
+                    <div class="spinner"></div>
+                    <p>Loading report details...</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" id="closeDetailsBtn">Close</button>
+            </div>
+        </div>
+    </div>
+                <table class="table" id="allReportsTable" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Submitted By</th>
+                            <th>Date</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="allReportsTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; @DateTime.Now.Year UnivMate | Campus Maintenance Reporting System
+    </footer>
+
+      <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script>
+                       function initReportDetailsModal() {
+            const modal = document.getElementById("reportDetailsModal");
+            const closeModalBtn = document.getElementById("closeReportDetailsModal");
+            const closeDetailsBtn = document.getElementById("closeDetailsBtn");
+
+            function closeModal() {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener("click", closeModal);
+            }
+
+            if (closeDetailsBtn) {
+                closeDetailsBtn.addEventListener("click", closeModal);
+            }
+
+            window.addEventListener("click", (event) => {
+                if (event.target === modal) closeModal();
+            });
+        }
+
+                function showReportDetails(reportId) {
+            const modal = document.getElementById("reportDetailsModal");
+            const content = document.getElementById("reportDetailsContent");
+
+            modal.style.display = "flex";
+            document.body.style.overflow = "hidden";
+
+            content.innerHTML = `
+                <div class="report-details-loading text-center py-4">
+                    <div class="spinner"></div>
+                    <p>Loading report details...</p>
+                </div>
+            `;
+
+            // Use the correct endpoint URL
+            fetch(`/Dashboard/GetReportDetails?id=${reportId}`, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': '@token'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success && data.report) {
+                    renderReportDetails(data.report);
+                } else {
+                    throw new Error(data.message || 'No report data received');
+                }
+            })
+            .catch(error => {
+                console.error('Error loading report details:', error);
+                content.innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="bi bi-exclamation-triangle"></i>
+                        Error loading report details: ${error.message}
+                    </div>
+                `;
+            });
+        }
+
+            function renderReportDetails(report) {
+        const content = document.getElementById("reportDetailsContent");
+
+        const statusClass = {
+            'pending': 'status-pending',
+            'in progress': 'status-inprogress',
+            'completed': 'status-completed',
+            'rejected': 'status-rejected'
+        }[report.status.toLowerCase()] || 'status-pending';
+
+        const formattedDate = new Date(report.submittedAt).toLocaleString();
+
+        // Handle image display with fallback
+        const imageHtml = report.imagePath
+            ? `<img src="${report.imagePath}" alt="Report Image" class="img-fluid" onerror="this.onerror=null;this.src='/images/no-image.png'">`
+            : '<div class="no-image"><i class="bi bi-image"></i> No image available</div>';
+
+        content.innerHTML = `
+            <div class="report-details">
+                <div class="report-details-image">
+                    ${imageHtml}
+                </div>
+                    <div class="report-details-info">
+                        <div class="report-details-meta">
+                            <div class="report-details-item">
+                                <span class="report-details-label">Report ID:</span>
+                                <span class="report-details-value">${report.id}</span>
+                            </div>
+                            <div class="report-details-item">
+                                <span class="report-details-label">Submitted By:</span>
+                                <span class="report-details-value">${report.userName || 'Unknown'}</span>
+                            </div>
+                            <div class="report-details-item">
+                                <span class="report-details-label">Date:</span>
+                                <span class="report-details-value">${formattedDate}</span>
+                            </div>
+                            <div class="report-details-item">
+                                <span class="report-details-label">Location:</span>
+                                <span class="report-details-value">${report.location}</span>
+                            </div>
+                            <div class="report-details-item">
+                                <span class="report-details-label">Status:</span>
+                                <span class="report-details-value">
+                                    <span class="report-status-badge ${statusClass}">
+                                        <i class="bi ${getStatusIcon(report.status)}"></i> ${report.status}
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="report-details-description">
+                            <h4>Description</h4>
+                            <p>${report.description || 'No description provided'}</p>
+                        </div>
+                        ${report.adminComments ? `
+                        <div class="report-details-description" style="margin-top: 1rem;">
+                            <h4>Admin Comments</h4>
+                            <p>${report.adminComments}</p>
+                        </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        function getStatusIcon(status) {
+            const statusIcons = {
+                'pending': 'bi-hourglass',
+                'in progress': 'bi-arrow-repeat',
+                'completed': 'bi-check-circle',
+                'rejected': 'bi-x-circle'
+            };
+            return statusIcons[status.toLowerCase()] || 'bi-question-circle';
+        }
+                      document.addEventListener('DOMContentLoaded', function () {
+            initUserDropdown();
+            initReportModal();
+            initMyReportsModal(); // Changed from initAllReportsModal
+            initReportDetailsModal();
+        });
+
+        function initUserDropdown() {
+            const userMenuButton = document.getElementById('userMenuButton');
+            const userDropdown = document.getElementById('userDropdown');
+
+            userMenuButton.addEventListener('click', function (e) {
+                e.stopPropagation();
+                userDropdown.classList.toggle('show');
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!userMenuButton.contains(e.target) && !userDropdown.contains(e.target)) {
+                    userDropdown.classList.remove('show');
+                }
+            });
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    userDropdown.classList.remove('show');
+                }
+            });
+        }
+
+        function initReportModal() {
+            const modal = document.getElementById("reportModal");
+            const openModalBtn = document.getElementById("openReportModal");
+            const closeModalBtn = document.getElementById("closeModal");
+            const cancelBtn = document.getElementById("cancelReport");
+            const fileInput = document.getElementById('imageFile');
+            const fileUploadLabel = document.querySelector('.file-upload-label span');
+            const fileError = document.getElementById('fileError');
+            const reportForm = document.getElementById('reportForm');
+
+            function openModal() {
+                modal.style.display = "flex";
+                document.body.style.overflow = "hidden";
+            }
+
+            function closeModal() {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto";
+                reportForm.reset();
+                fileUploadLabel.textContent = 'Click to upload photo';
+                fileError.style.display = 'none';
+            }
+
+            openModalBtn.addEventListener("click", openModal);
+            closeModalBtn.addEventListener("click", closeModal);
+            cancelBtn.addEventListener("click", closeModal);
+
+            window.addEventListener("click", (event) => {
+                if (event.target === modal) closeModal();
+            });
+
+            fileInput.addEventListener('change', function () {
+                const file = this.files[0];
+                if (file) {
+                    if (file.size > 5 * 1024 * 1024) {
+                        fileError.textContent = 'File too large (max 5MB)';
+                        fileError.style.display = 'block';
+                        this.value = '';
+                        fileUploadLabel.textContent = 'Click to upload photo';
+                        return;
+                    }
+
+                    if (!file.type.match('image/jpeg') && !file.type.match('image/png')) {
+                        fileError.textContent = 'Only JPEG or PNG images allowed';
+                        fileError.style.display = 'block';
+                        this.value = '';
+                        fileUploadLabel.textContent = 'Click to upload photo';
+                        return;
+                    }
+
+                    fileError.style.display = 'none';
+                    fileUploadLabel.textContent = file.name;
+                }
+            });
+
+            reportForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                const submitBtn = document.getElementById('submitReportBtn');
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="bi bi-arrow-repeat"></i> Submitting...';
+
+                const modalContent = document.querySelector('.modal-content');
+                modalContent.insertAdjacentHTML('beforeend',
+                    '<div class="upload-overlay"><div class="spinner"></div></div>');
+
+                try {
+                    const formData = new FormData(this);
+                    const response = await fetch('@Url.Action("SubmitReport", "Reports")', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'RequestVerificationToken': '@token',
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (!response.ok) {
+                        const error = await response.json();
+                        throw new Error(error.message || 'Error submitting report');
+                    }
+
+                    const result = await response.json();
+                    showNotification(result.message || 'Report submitted successfully!', true);
+                    closeModal();
+                } catch (error) {
+                    console.error('Submission error:', error);
+                    showNotification(error.message || 'An error occurred while submitting', false);
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="bi bi-send"></i> Submit Report';
+                    document.querySelector('.upload-overlay')?.remove();
+                }
+            });
+        }
+
+               function initMyReportsModal() {
+            const modal = document.getElementById("myReportsModal");
+            const openModalBtn = document.getElementById("viewMyReportsBtn"); // Changed from viewAllReportsBtn
+            const closeModalBtn = document.getElementById("closeMyReportsModal"); // Changed from closeAllReportsModal
+
+            if (!modal || !openModalBtn || !closeModalBtn) {
+                console.error("Could not find required elements for My Reports modal");
+                return;
+            }
+
+            openModalBtn.addEventListener("click", function() {
+                modal.style.display = "flex";
+                loadMyReports();
+            });
+
+            closeModalBtn.addEventListener("click", function() {
+                modal.style.display = "none";
+            });
+
+            // Filter tabs functionality
+            document.querySelectorAll('.status-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    document.querySelectorAll('.status-tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    filterReports(this.dataset.status);
+                });
+            });
+        }
+
+              function loadMyReports() {
+          const loadingElement = document.getElementById('myReportsLoading'); // Changed ID
+            const reportsList = document.getElementById('reportsList');
+            const errorElement = document.getElementById('myReportsError'); // Changed ID
+
+            loadingElement.style.display = 'block';
+            reportsList.style.display = 'none';
+            errorElement.style.display = 'none';
+            reportsList.innerHTML = '';
+
+                 fetch('@Url.Action("GetMyReports", "Dashboard")', { // Changed action name
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'RequestVerificationToken': '@token'
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success && data.reports) {
+                    renderReports(data.reports);
+                    loadingElement.style.display = 'none';
+                    reportsList.style.display = 'block';
+                } else {
+                    throw new Error(data.message || 'No reports data received');
+                }
+            })
+            .catch(error => {
+                console.error('Error loading reports:', error);
+                loadingElement.style.display = 'none';
+                errorElement.textContent = `Error loading reports: ${error.message}`;
+                errorElement.style.display = 'block';
+            });
+        }
+
+        function renderReports(reports) {
+            const reportsList = document.getElementById('reportsList');
+
+            reports.forEach(report => {
+                const card = document.createElement('div');
+                card.className = 'report-card';
+                card.dataset.status = report.status.toLowerCase().replace(' ', '');
+
+                card.innerHTML = `
+                    <div class="report-header">
+                        <div class="report-title">${report.title || 'No title'}</div>
+                        <div class="report-status ${getStatusBadgeClass(report.status)}">
+                            ${report.status}
+                        </div>
+                    </div>
+                    <div class="report-meta">
+                        <span><i class="bi bi-person"></i> ${report.userName || 'Unknown'}</span>
+                        <span><i class="bi bi-geo-alt"></i> ${report.location}</span>
+                    </div>
+                    <div class="report-description">
+                        ${report.description}
+                    </div>
+                    <div class="report-footer">
+                        <div class="report-date">
+                            <i class="bi bi-calendar"></i> ${new Date(report.submittedAt).toLocaleDateString()}
+                        </div>
+                        <button class="view-report-btn" data-id="${report.id}">
+                            View Details <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </div>
+                `;
+
+                reportsList.appendChild(card);
+            });
+
+            // Add click event to view buttons
+            document.querySelectorAll('.view-report-btn').forEach(btn => {
+                       btn.addEventListener('click', function() {
+            const reportId = this.dataset.id;
+            showReportDetails(reportId);
+        });
+            });
+        }
+
+        function filterReports(status) {
+            const cards = document.querySelectorAll('.report-card');
+            cards.forEach(card => {
+                if (status === 'all' || card.dataset.status === status) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function getStatusBadgeClass(status) {
+            const statusClass = {
+                'pending': 'status-pending',
+                'inprogress': 'status-inprogress',
+                'completed': 'status-completed',
+                'rejected': 'status-rejected'
+            };
+            return statusClass[status.toLowerCase().replace(' ', '')] || '';
+        }
+
+        function showNotification(message, isSuccess) {
+            const notification = document.createElement('div');
+            notification.className = `notification ${isSuccess ? 'success' : 'error'}`;
+            notification.innerHTML = `
+                <i class="bi ${isSuccess ? 'bi-check-circle' : 'bi-exclamation-triangle'}"></i>
+                ${message}
+            `;
+
+            let notificationArea = document.getElementById('notification-area');
+            if (!notificationArea) {
+                notificationArea = document.createElement('div');
+                notificationArea.id = 'notification-area';
+                notificationArea.style.position = 'fixed';
+                notificationArea.style.top = '20px';
+                notificationArea.style.right = '20px';
+                notificationArea.style.zIndex = '1000';
+                document.body.appendChild(notificationArea);
+            }
+
+            notificationArea.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                setTimeout(() => notification.remove(), 300);
+            }, 5000);
+        }
+
+        // Add notification styles if they don't exist
+        if (!document.getElementById('notification-styles')) {
+            const notificationStyles = document.createElement('style');
+            notificationStyles.id = 'notification-styles';
+            notificationStyles.textContent = `
+                .notification {
+                    padding: 15px 20px;
+                    margin-bottom: 10px;
+                    border-radius: 8px;
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    max-width: 300px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    transition: all 0.3s ease;
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                .notification.success {
+                    background: #28a745;
+                }
+                .notification.error {
+                    background: #dc3545;
+                }
+                .notification i {
+                    font-size: 1.2em;
+                }
+            `;
+            document.head.appendChild(notificationStyles);
+        }
+    </script>
+
+</body>
+</html>

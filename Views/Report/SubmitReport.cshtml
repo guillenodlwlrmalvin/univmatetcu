@@ -1,0 +1,119 @@
+﻿@model UnivMate.Models.ReportViewModel
+@{
+    ViewData["Title"] = "Submit Report";
+    var userName = User.Identity?.Name;
+}
+
+<div class="container">
+    <div class="dashboard-header">
+        <div class="user-menu">
+            <div class="user-avatar" id="userMenuButton" aria-label="User menu">
+                @userName?.Substring(0, 1).ToUpper()
+            </div>
+            <div class="dropdown-menu" id="userDropdown">
+                <a href="@Url.Action("EditProfile", "Account")" class="dropdown-item">
+                    <i class="bi bi-person"></i> Edit Profile
+                </a>
+                <a href="#" class="dropdown-item">
+                    <i class="bi bi-gear"></i> Settings
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="@Url.Action("Index", "Home")" class="dropdown-item">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                </a>
+            </div>
+        </div>
+        <h1>Submit a New Report</h1>
+        <p>Report maintenance issues, broken equipment, or request assistance.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    <i class="bi bi-exclamation-triangle"></i> @TempData["ErrorMessage"]
+                </div>
+            }
+
+            <form asp-action="Create" asp-controller="Report" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="Description" class="form-label">Issue Description</label>
+                    <textarea asp-for="Description" class="form-control" rows="4"
+                              placeholder="Describe the issue in detail..." required></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label asp-for="Location" class="form-label">Location</label>
+                    <select asp-for="Location" class="form-control" required>
+                        <option value="">Select location...</option>
+                        <option value="Building A">Building A</option>
+                        <option value="Building B">Building B</option>
+                        <option value="Library">Library</option>
+                        <option value="Cafeteria">Cafeteria</option>
+                    </select>
+                    <span asp-validation-for="Location" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label>Upload Photo Evidence</label>
+                    <div class="file-upload">
+                        <label for="imageFile" class="file-upload-label">
+                            <i class="bi bi-camera"></i>
+                            <span>Click to upload photo</span>
+                            <small>Max file size: 5MB</small>
+                        </label>
+                        <input type="file" id="imageFile" name="ImageFile"
+                               asp-for="ImageFile" accept="image/*" required />
+                    </div>
+                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="@Url.Action("Index", "Dashboard")" class="btn" style="background: #6c757d;">
+                        <i class="bi bi-arrow-left"></i> Back to Dashboard
+                    </a>
+                    <button type="submit" class="btn">
+                        <i class="bi bi-send"></i> Submit Report
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="mt-4">
+        &copy; 2025 UnivMate | Campus Maintenance Reporting System
+    </footer>
+</div>
+
+@section Scripts {
+    <script>
+        // File upload preview
+        const fileInput = document.getElementById('imageFile');
+        const fileUploadLabel = document.querySelector('.file-upload-label span');
+
+        fileInput.addEventListener('change', function() {
+            if (this.files && this.files[0]) {
+                const fileName = this.files[0].name;
+                fileUploadLabel.textContent = fileName.length > 25 ?
+                    fileName.substring(0, 22) + '...' : fileName;
+            }
+        });
+
+        // User dropdown toggle
+        const userMenuButton = document.getElementById('userMenuButton');
+        const userDropdown = document.getElementById('userDropdown');
+
+        userMenuButton.addEventListener('click', function (e) {
+            e.stopPropagation();
+            userDropdown.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!userMenuButton.contains(e.target) && !userDropdown.contains(e.target)) {
+                userDropdown.classList.remove('show');
+            }
+        });
+    </script>
+}

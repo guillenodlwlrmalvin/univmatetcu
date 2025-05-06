@@ -1,0 +1,385 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\UnivMate.bundle.scp.css",
+      "PackagePath": "staticwebassets\\UnivMate.uu9p5r5xf6.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\js\\dashboard.js",
+      "PackagePath": "staticwebassets\\js\\dashboard.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery\\dist\\jquery.slim.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\1a180429-4811-4827-8aae-3277fcbf182c.jpg",
+      "PackagePath": "staticwebassets\\uploads\\1a180429-4811-4827-8aae-3277fcbf182c.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\1cdd28e8-7110-4d4d-a6c4-997be908ea70.png",
+      "PackagePath": "staticwebassets\\uploads\\1cdd28e8-7110-4d4d-a6c4-997be908ea70.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\1f19c6b1-89f4-4901-899b-b36d5207c18b.jpg",
+      "PackagePath": "staticwebassets\\uploads\\1f19c6b1-89f4-4901-899b-b36d5207c18b.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\2695ea9e-d2e5-4991-850a-608332dedc16.png",
+      "PackagePath": "staticwebassets\\uploads\\2695ea9e-d2e5-4991-850a-608332dedc16.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\2b38c23b-f659-4d8f-b668-46ef772377fb.png",
+      "PackagePath": "staticwebassets\\uploads\\2b38c23b-f659-4d8f-b668-46ef772377fb.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\2fe354d0-dba2-41bc-a00c-1f55f8ec2636.jpg",
+      "PackagePath": "staticwebassets\\uploads\\2fe354d0-dba2-41bc-a00c-1f55f8ec2636.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\34c92bde-792d-44ea-a4d4-7c07e0f9d400.png",
+      "PackagePath": "staticwebassets\\uploads\\34c92bde-792d-44ea-a4d4-7c07e0f9d400.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\3a6ce2b3-8dcc-4beb-a766-3b371e1b265a.jpg",
+      "PackagePath": "staticwebassets\\uploads\\3a6ce2b3-8dcc-4beb-a766-3b371e1b265a.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\4547448f-c3c7-4f53-ad6c-1d12e22bc650.png",
+      "PackagePath": "staticwebassets\\uploads\\4547448f-c3c7-4f53-ad6c-1d12e22bc650.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\483da232-0a9e-4461-9a8e-deed6a587460.jpg",
+      "PackagePath": "staticwebassets\\uploads\\483da232-0a9e-4461-9a8e-deed6a587460.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\4d11be95-cde2-4a07-ac4e-32a743005d9d.png",
+      "PackagePath": "staticwebassets\\uploads\\4d11be95-cde2-4a07-ac4e-32a743005d9d.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\603f1c48-e47c-4c5c-a807-3f15af8e5379.png",
+      "PackagePath": "staticwebassets\\uploads\\603f1c48-e47c-4c5c-a807-3f15af8e5379.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\814165cd-7cd5-49b3-a7af-c21db0a95c1f.png",
+      "PackagePath": "staticwebassets\\uploads\\814165cd-7cd5-49b3-a7af-c21db0a95c1f.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\834e1d66-ac46-4c9d-ae54-da5e5e3af522.png",
+      "PackagePath": "staticwebassets\\uploads\\834e1d66-ac46-4c9d-ae54-da5e5e3af522.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\8a79dd95-ec6d-44ee-9d91-bed81831fdf8.png",
+      "PackagePath": "staticwebassets\\uploads\\8a79dd95-ec6d-44ee-9d91-bed81831fdf8.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\b893e346-fee4-406a-a667-04196fecfe03.jpg",
+      "PackagePath": "staticwebassets\\uploads\\b893e346-fee4-406a-a667-04196fecfe03.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\b8e587f2-1e9b-41b2-9142-3914324da6b3.png",
+      "PackagePath": "staticwebassets\\uploads\\b8e587f2-1e9b-41b2-9142-3914324da6b3.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\bc9eead2-8468-47dc-940a-11e35dc98c20.png",
+      "PackagePath": "staticwebassets\\uploads\\bc9eead2-8468-47dc-940a-11e35dc98c20.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\bd9d5c08-7aa6-4e95-b740-d0e86ee46ac0.png",
+      "PackagePath": "staticwebassets\\uploads\\bd9d5c08-7aa6-4e95-b740-d0e86ee46ac0.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\c7b1deba-54a9-4d51-8005-5766458ef0e6.png",
+      "PackagePath": "staticwebassets\\uploads\\c7b1deba-54a9-4d51-8005-5766458ef0e6.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\cf0ec77a-4a2b-4267-849c-555579ca87c0.png",
+      "PackagePath": "staticwebassets\\uploads\\cf0ec77a-4a2b-4267-849c-555579ca87c0.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\d0e506a1-b0cb-447c-ab54-6c0125a24509.jpg",
+      "PackagePath": "staticwebassets\\uploads\\d0e506a1-b0cb-447c-ab54-6c0125a24509.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\d623f863-5749-43b7-a210-328c21e8ed2d.png",
+      "PackagePath": "staticwebassets\\uploads\\d623f863-5749-43b7-a210-328c21e8ed2d.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\e0b638cc-b62b-422b-b1be-c13309816c75.png",
+      "PackagePath": "staticwebassets\\uploads\\e0b638cc-b62b-422b-b1be-c13309816c75.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\e6c49506-9989-4485-be80-51618eb3ac95.jpg",
+      "PackagePath": "staticwebassets\\uploads\\e6c49506-9989-4485-be80-51618eb3ac95.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Downloads\\UnivMate\\UnivMate\\wwwroot\\uploads\\febf44d1-8a8e-4088-94aa-1c2f68ad84df.png",
+      "PackagePath": "staticwebassets\\uploads\\febf44d1-8a8e-4088-94aa-1c2f68ad84df.png"
+    },
+    {
+      "Id": "obj\\Release\\net9.0\\staticwebassets\\msbuild.UnivMate.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Release\\net9.0\\staticwebassets\\msbuild.UnivMate.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Release\\net9.0\\staticwebassets\\msbuild.build.UnivMate.props",
+      "PackagePath": "build\\UnivMate.props"
+    },
+    {
+      "Id": "obj\\Release\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.UnivMate.props",
+      "PackagePath": "buildMultiTargeting\\UnivMate.props"
+    },
+    {
+      "Id": "obj\\Release\\net9.0\\staticwebassets\\msbuild.buildTransitive.UnivMate.props",
+      "PackagePath": "buildTransitive\\UnivMate.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
