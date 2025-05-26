@@ -17,6 +17,8 @@ namespace UnivMate.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Reports> Reports { get; set; } // Changed from Reports to Report (singular)
         public DbSet<ReportStatusHistory> ReportStatusHistories { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<ReportComment> ReportComments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

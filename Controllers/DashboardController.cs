@@ -140,21 +140,40 @@ namespace UnivMate.Controllers
             {
                 var report = await _context.Reports
                     .Include(r => r.User)
+                    .Include(r => r.AssignedTo)
+                    .Include(r => r.ResolvedBy)
                     .Include(r => r.StatusHistory)
+                    .Include(r => r.Comments)
+                        .ThenInclude(c => c.Author)
                     .Where(r => r.Id == id)
                     .Select(r => new
                     {
                         id = r.Id,
                         title = r.Title,
                         description = r.Description,
-                        userName = r.User.Username,
-                        submittedAt = r.SubmittedAt,
                         location = r.Location,
                         status = r.Status,
-                        imagePath = Url.Content("~" + r.ImagePath), // This ensures proper URL generation
-                    
-
-
+                        imagePath = r.ImagePath,
+                        submittedAt = r.SubmittedAt,
+                        assignedAt = r.AssignedAt,
+                        resolvedAt = r.ResolvedAt,
+                        resolutionNotes = r.ResolutionNotes,
+                        userName = r.User.FirstName + " " + r.User.LastName,
+                        userEmail = r.User.Email,
+                        rating = r.Rating,
+                        canRate = r.Status == "Completed" && r.Rating == null && r.UserId == int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)),
+                        assignedTo = r.AssignedTo != null ? new
+                        {
+                            firstName = r.AssignedTo.FirstName,
+                            lastName = r.AssignedTo.LastName,
+                            email = r.AssignedTo.Email
+                        } : null,
+                        resolvedBy = r.ResolvedBy != null ? new
+                        {
+                            firstName = r.ResolvedBy.FirstName,
+                            lastName = r.ResolvedBy.LastName,
+                            email = r.ResolvedBy.Email
+                        } : null,
                         statusHistory = r.StatusHistory
                             .OrderByDescending(sh => sh.ChangedAt)
                             .Select(sh => new
@@ -164,6 +183,23 @@ namespace UnivMate.Controllers
                                 changedBy = sh.ChangedBy,
                                 changedAt = sh.ChangedAt,
                                 notes = sh.Notes
+                            }),
+                        comments = r.Comments
+                            .OrderByDescending(c => c.CreatedAt)
+                            .Select(c => new
+                            {
+                                id = c.Id,
+                                content = c.Content,
+                                imagePath = c.ImagePath,
+                                createdAt = c.CreatedAt,
+                                author = new
+                                {
+                                    id = c.Author.Id,
+                                    firstName = c.Author.FirstName,
+                                    lastName = c.Author.LastName,
+                                    email = c.Author.Email,
+                                    role = c.Author.Role
+                                }
                             })
                     })
                     .FirstOrDefaultAsync();
@@ -173,7 +209,38 @@ namespace UnivMate.Controllers
                     return Json(new { success = false, message = "Report not found" });
                 }
 
-                return Json(new { success = true, report });
+                // Get the latest admin comment (if any)
+                var adminComment = report.comments
+                    .FirstOrDefault(c => c.author.role == "Admin" || c.author.role == "Staff");
+
+                return Json(new
+                {
+                    success = true,
+                    report = new
+                    {
+                        report.id,
+                        report.title,
+                        report.description,
+                        report.location,
+                        report.status,
+                        report.imagePath,
+                        report.submittedAt,
+                        report.assignedAt,
+                        report.resolvedAt,
+                        report.resolutionNotes,
+                        report.userName,
+                        report.userEmail,
+                        report.rating,
+                        report.canRate,
+                        report.assignedTo,
+                        report.resolvedBy,
+                        report.statusHistory,
+                        adminComment = adminComment?.content,
+                        adminCommentImage = adminComment?.imagePath,
+                        adminCommentDate = adminComment?.createdAt,
+                        comments = report.comments
+                    }
+                });
             }
             catch (Exception ex)
             {
@@ -340,6 +407,122 @@ namespace UnivMate.Controllers
 
             return View(model);
         }
-    }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SubmitRating([FromBody] RatingRequest request)
+        {
+            try
+            {
+                // Validate the request model
+                if (request == null)
+                {
+                    return Json(new { success = false, message = "Invalid request data" });
+                }
 
+                // Validate the rating value
+                if (request.Rating < 1 || request.Rating > 5)
+                {
+                    return Json(new
+                    {
+                        success = false,
+                        message = "Invalid rating value. Please provide a rating between 1 and 5 stars."
+                    });
+                }
+
+                // Get current user
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                if (string.IsNullOrEmpty(userId))
+                {
+                    return Json(new
+                    {
+                        success = false,
+                        message = "User not authenticated. Please log in again."
+                    });
+                }
+
+                // Find the report with validation
+                var report = await _context.Reports
+                    .Include(r => r.User)
+                    .Include(r => r.StatusHistory)
+                    .FirstOrDefaultAsync(r => r.Id == request.ReportId);
+
+                if (report == null)
+                {
+                    return Json(new
+                    {
+                        success = false,
+                        message = "Report not found. It may have been deleted."
+                    });
+                }
+
+                // Verify report ownership
+                if (report.UserId != int.Parse(userId))
+                {
+                    return Json(new
+                    {
+                        success = false,
+                        message = "You can only rate reports that you submitted."
+                    });
+                }
+
+                // Check report status
+                if (report.Status != "Completed")
+                {
+                    return Json(new
+                    {
+                        success = false,
+                        message = "Only completed reports can be rated. Current status: " + report.Status
+                    });
+                }
+
+                // Check if already rated
+                if (report.Rating.HasValue)
+                {
+                    return Json(new
+                    {
+                        success = false,
+                        message = "You've already rated this report."
+                    });
+                }
+
+                // Update the report with rating
+                report.Rating = request.Rating;
+            
+
+                // Add status history entry
+                report.StatusHistory.Add(new ReportStatusHistory
+                {
+                    OldStatus = report.Status,
+                    NewStatus = report.Status, // Status remains "Completed"
+                    ChangedBy = User.Identity?.Name,
+                    ChangedAt = DateTime.UtcNow,
+                    Notes = $"User rated the resolution {request.Rating} star(s)"
+                });
+
+                await _context.SaveChangesAsync();
+
+                return Json(new
+                {
+                    success = true,
+                    message = "Thank you for your rating!",
+                    rating = request.Rating,
+                    canRate = false
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    success = false,
+                    message = "An error occurred while submitting your rating. Please try again."
+                });
+            }
+        }
+
+        public class RatingRequest
+        {
+            public int ReportId { get; set; }
+            public int Rating { get; set; }
+        }
+    }
 }

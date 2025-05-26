@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -138,17 +139,19 @@ namespace UnivMate.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> QuickAction(int reportId, string action)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> QuickAction(int reportId, string action, string comment)
         {
             try
             {
-                var report = await _context.Reports.FindAsync(reportId);
-                if (report == null)
-                {
-                    return NotFound();
-                }
+                var report = await _context.Reports
+                    .Include(r => r.User)
+                    .FirstOrDefaultAsync(r => r.Id == reportId);
+
+                if (report == null) return NotFound();
 
                 var staffId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+                var staffUser = await _context.Users.FindAsync(staffId);
 
                 switch (action.ToLower())
                 {
@@ -156,40 +159,94 @@ namespace UnivMate.Controllers
                         report.Status = "In Progress";
                         report.AssignedToId = staffId;
                         report.AssignedAt = DateTime.UtcNow;
+                        report.AdminComment = comment;
+                        await RecordStatusChange(report, "Pending", "In Progress",
+                            $"Report accepted. Staff comment: {comment}");
+
+                        // Create notification
+                        await CreateNotification(report.UserId,
+                            $"Your report '{report.Title}' has been accepted",
+                            comment);
                         break;
 
                     case "reject":
                         report.Status = "Rejected";
                         report.ResolvedById = staffId;
                         report.ResolvedAt = DateTime.UtcNow;
+                        report.AdminComment = comment;
+                        await RecordStatusChange(report, "Pending", "Rejected",
+                            $"Report rejected. Staff comment: {comment}");
+
+                        // Create notification
+                        await CreateNotification(report.UserId,
+                            $"Your report '{report.Title}' has been rejected",
+                            comment);
                         break;
 
                     case "complete":
-                        report.Status = "Completed";
-                        report.ResolvedById = staffId;
-                        report.ResolvedAt = DateTime.UtcNow;
-                        break;
+                        // Return JSON response to trigger the modal
+                        return Json(new
+                        {
+                            showModal = true,
+                            reportId = reportId
+                        });
 
                     default:
                         return BadRequest("Invalid action specified");
                 }
 
-                _context.Update(report);
                 await _context.SaveChangesAsync();
-
-                TempData["StatusMessage"] = $"Report #{reportId} updated successfully";
-                return RedirectToAction("Index"); // Changed from StaffDashboard to Index
+                TempData["StatusMessage"] = $"Report #{reportId} has been {action.ToLower()}ed successfully";
+                return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Error processing quick action on report {reportId}");
                 TempData["ErrorMessage"] = "Error processing report action";
-                return RedirectToAction("Index"); // Changed from StaffDashboard to Index
+                return RedirectToAction("Index");
             }
-        
-
         }
 
+        private async Task CreateNotification(int userId, string message, string details = null, int? reportId = null)
+        {
+            var notification = new Notification
+            {
+                UserId = userId,
+                ReportId = reportId,
+                Message = message,
+                Details = details,
+                CreatedAt = DateTime.UtcNow,
+                IsRead = false
+            };
+
+            _context.Notifications.Add(notification);
+            await _context.SaveChangesAsync();
+        }
+
+        // Add this to your controller
+        [Authorize]
+        public async Task<IActionResult> Notifications()
+        {
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var notifications = await _context.Notifications
+                .Where(n => n.UserId == userId)
+                .OrderByDescending(n => n.CreatedAt)
+                .ToListAsync();
+
+            return View(notifications);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> MarkAsRead(int id)
+        {
+            var notification = await _context.Notifications.FindAsync(id);
+            if (notification != null)
+            {
+                notification.IsRead = true;
+                await _context.SaveChangesAsync();
+            }
+            return Ok();
+        }
         [HttpGet]
         public async Task<IActionResult> ViewReport(int id)
         {
@@ -200,6 +257,8 @@ namespace UnivMate.Controllers
                     .Include(r => r.AssignedTo)
                     .Include(r => r.ResolvedBy)
                     .Include(r => r.StatusHistory)
+                    .Include(r => r.Comments)
+                        .ThenInclude(c => c.Author) // Include the comment author
                     .FirstOrDefaultAsync(r => r.Id == id);
 
                 if (report == null)
@@ -466,6 +525,228 @@ namespace UnivMate.Controllers
 
             _context.ReportStatusHistories.Add(history);
             await _context.SaveChangesAsync();
+        }
+        [HttpPost]
+        [Authorize(Roles = "Admin,Staff")]
+        [ValidateAntiForgeryToken] // Add this attribute
+        public async Task<IActionResult> AddComment(int reportId, string comment, IFormFile commentImage)
+        {
+            try
+            {
+                var report = await _context.Reports
+                    .Include(r => r.User)
+                    .Include(r => r.Comments)
+                    .FirstOrDefaultAsync(r => r.Id == reportId);
+
+                if (report == null)
+                {
+                    return Json(new { success = false, message = "Report not found" });
+                }
+
+                var staffId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+                var staffUser = await _context.Users.FindAsync(staffId);
+
+                if (string.IsNullOrWhiteSpace(comment) && commentImage == null)
+                {
+                    return Json(new { success = false, message = "Comment or image is required" });
+                }
+
+                // Handle image upload
+                string imagePath = null;
+                if (commentImage != null && commentImage.Length > 0)
+                {
+                    // Validate file size (5MB max)
+                    if (commentImage.Length > 5 * 1024 * 1024)
+                    {
+                        return Json(new { success = false, message = "Image size must be less than 5MB" });
+                    }
+
+                    // Validate file type
+                    var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+                    var fileExtension = Path.GetExtension(commentImage.FileName).ToLower();
+                    if (!allowedExtensions.Contains(fileExtension))
+                    {
+                        return Json(new { success = false, message = "Only image files are allowed (JPG, PNG, GIF)" });
+                    }
+
+                    // Create uploads directory if it doesn't exist
+                    var uploadsDir = Path.Combine("wwwroot", "uploads", "comments");
+                    if (!Directory.Exists(uploadsDir))
+                    {
+                        Directory.CreateDirectory(uploadsDir);
+                    }
+
+                    // Generate unique filename
+                    var uniqueFileName = $"{Guid.NewGuid()}{fileExtension}";
+                    var filePath = Path.Combine(uploadsDir, uniqueFileName);
+
+                    _logger.LogInformation($"Attempting to save image: {uniqueFileName}");
+                    // Save the file
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await commentImage.CopyToAsync(fileStream);
+                    }
+
+                    _logger.LogInformation($"Successfully saved image: {filePath}");
+                    imagePath = $"/uploads/comments/{uniqueFileName}";
+                }
+
+                // Create new comment
+                var newComment = new ReportComment
+                {
+                    Content = comment,
+                    ImagePath = imagePath,
+                    ReportId = reportId,
+                    AuthorId = staffId,
+                    CreatedAt = DateTime.Now
+                };
+
+                _context.ReportComments.Add(newComment);
+
+                // Update report assignment if not already assigned
+                if (report.AssignedToId == null)
+                {
+                    report.AssignedToId = staffId;
+                    report.AssignedAt = DateTime.UtcNow;
+                }
+
+                await _context.SaveChangesAsync();
+
+                return Json(new
+                {
+                    success = true,
+                    commentContent = comment,
+                    imagePath = imagePath,
+                    authorName = $"{staffUser.FirstName} {staffUser.LastName}",
+                    authorEmail = staffUser.Email,
+                    createdAt = DateTime.Now.ToString("f")
+                });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error adding comment to report {reportId}");
+                return Json(new { success = false, message = "Error adding comment" });
+            }
+        }
+        [HttpPost]
+        [Authorize(Roles = "Admin,Staff")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CompleteReportWithDetails(
+    [FromForm] int reportId,
+    [FromForm] string completionNotes,
+    [FromForm] IFormFile completionImage)
+        {
+            try
+            {
+                // Validate required fields
+                if (string.IsNullOrWhiteSpace(completionNotes))
+                {
+                    return Json(new { success = false, message = "Completion notes are required" });
+                }
+
+                var report = await _context.Reports
+                    .Include(r => r.User)
+                    .Include(r => r.AssignedTo)
+                    .FirstOrDefaultAsync(r => r.Id == reportId);
+
+                if (report == null)
+                {
+                    return Json(new { success = false, message = "Report not found" });
+                }
+
+                var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+                var currentUser = await _context.Users.FindAsync(currentUserId);
+
+                // Handle image upload if present
+                string imagePath = null;
+                if (completionImage != null && completionImage.Length > 0)
+                {
+                    // Validate file size (5MB max)
+                    if (completionImage.Length > 5 * 1024 * 1024)
+                    {
+                        return Json(new { success = false, message = "Image size exceeds 5MB limit" });
+                    }
+
+                    // Validate file type
+                    var validExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+                    var extension = Path.GetExtension(completionImage.FileName).ToLowerInvariant();
+                    if (!validExtensions.Contains(extension))
+                    {
+                        return Json(new { success = false, message = "Invalid image file type" });
+                    }
+
+                    // Save the file
+                    var uploadsFolder = Path.Combine("wwwroot", "uploads", "completion");
+                    if (!Directory.Exists(uploadsFolder))
+                    {
+                        Directory.CreateDirectory(uploadsFolder);
+                    }
+
+                    var uniqueFileName = $"{Guid.NewGuid()}{extension}";
+                    var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await completionImage.CopyToAsync(fileStream);
+                    }
+
+                    imagePath = $"/uploads/completion/{uniqueFileName}";
+                }
+
+                // Update the report status
+                var oldStatus = report.Status;
+                report.Status = "Completed";
+                report.ResolutionNotes = completionNotes;
+                report.ResolvedById = currentUserId;
+                report.ResolvedAt = DateTime.UtcNow;
+
+                if (!string.IsNullOrEmpty(imagePath))
+                {
+                    report.ImagePath = imagePath;
+                }
+
+                // Record status change
+                await RecordStatusChange(report, oldStatus, "Completed",
+                    $"Report completed with notes: {completionNotes}");
+
+                // Add an automatic comment about the completion
+                var completionComment = new ReportComment
+                {
+                    ReportId = reportId,
+                    AuthorId = currentUserId,
+                    Content = $"Report marked as completed: {completionNotes}",
+                    CreatedAt = DateTime.UtcNow
+                };
+
+                if (!string.IsNullOrEmpty(imagePath))
+                {
+                    completionComment.ImagePath = imagePath;
+                    completionComment.Content += " (see attached image)";
+                }
+
+                _context.ReportComments.Add(completionComment);
+
+                await _context.SaveChangesAsync();
+
+                // Create notification for the user
+                await CreateNotification(
+                    report.UserId,
+                    $"Your report '{report.Title}' has been completed",
+                    completionNotes,
+                    reportId);
+
+                return Json(new
+                {
+                    success = true,
+                    message = "Report successfully marked as completed",
+                    reportId = reportId
+                });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error completing report {reportId} with details");
+                return Json(new { success = false, message = "An error occurred while completing the report" });
+            }
         }
     }
 }

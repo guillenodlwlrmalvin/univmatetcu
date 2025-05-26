@@ -15,6 +15,8 @@ namespace UnivMate.Models
         public DateTime SubmittedAt { get; set; } = DateTime.Now;
         public DateTime? ResolvedAt { get; set; }
         public string? ResolutionNotes { get; set; }
+        public string? AdminComment { get; set; } // New property for staff comments
+
 
         // Relationship to User who submitted the report
         public int UserId { get; set; }
@@ -27,8 +29,29 @@ namespace UnivMate.Models
         public int? AssignedToId { get; set; }
         public User? AssignedTo { get; set; }
         public DateTime? AssignedAt { get; set; }
-
+        public int? Rating { get; set; } // 1-5 star rating
+        public DateTime? RatedAt { get; set; }
         public ICollection<ReportStatusHistory> StatusHistory { get; set; } = new List<ReportStatusHistory>();
+        public ICollection<ReportComment> Comments { get; set; } = new List<ReportComment>();
+    }
 
+    public class ReportComment
+    {
+        public int Id { get; set; }
+
+        [Required]
+        public string Content { get; set; }
+
+        public string ImagePath { get; set; }
+       
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+
+        // Foreign key to Reports
+        public int ReportId { get; set; }
+        public Reports Report { get; set; }
+
+        // Foreign key to User who made the comment
+        public int AuthorId { get; set; }
+        public User Author { get; set; }
     }
 }

@@ -22,6 +22,78 @@ namespace UnivMate.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("UnivMate.Models.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Details")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int?>("ReportId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReportId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Notifications");
+                });
+
+            modelBuilder.Entity("UnivMate.Models.ReportComment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AuthorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ReportId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.HasIndex("ReportId");
+
+                    b.ToTable("ReportComments");
+                });
+
             modelBuilder.Entity("UnivMate.Models.ReportStatusHistory", b =>
                 {
                     b.Property<int>("Id")
@@ -67,6 +139,9 @@ namespace UnivMate.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("AdminComment")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("AssignedAt")
                         .HasColumnType("datetime2");
 
@@ -84,6 +159,12 @@ namespace UnivMate.Migrations
                     b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("RatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("Rating")
+                        .HasColumnType("int");
 
                     b.Property<string>("ResolutionNotes")
                         .HasColumnType("nvarchar(max)");
@@ -204,6 +285,42 @@ namespace UnivMate.Migrations
                         });
                 });
 
+            modelBuilder.Entity("UnivMate.Models.Notification", b =>
+                {
+                    b.HasOne("UnivMate.Models.Reports", "Report")
+                        .WithMany()
+                        .HasForeignKey("ReportId");
+
+                    b.HasOne("UnivMate.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Report");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("UnivMate.Models.ReportComment", b =>
+                {
+                    b.HasOne("UnivMate.Models.User", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("UnivMate.Models.Reports", "Report")
+                        .WithMany("Comments")
+                        .HasForeignKey("ReportId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Author");
+
+                    b.Navigation("Report");
+                });
+
             modelBuilder.Entity("UnivMate.Models.ReportStatusHistory", b =>
                 {
                     b.HasOne("UnivMate.Models.Reports", "Report")
@@ -241,6 +358,8 @@ namespace UnivMate.Migrations
 
             modelBuilder.Entity("UnivMate.Models.Reports", b =>
                 {
+                    b.Navigation("Comments");
+
                     b.Navigation("StatusHistory");
                 });
 

@@ -4,112 +4,61 @@
 }
 
 <div class="container py-5">
-    <div class="row">
-        <div class="col-lg-4">
-            <div class="card mb-4">
-                <div class="card-body text-center">
-                    @if (!string.IsNullOrEmpty(Model.ExistingProfilePicturePath))
-                    {
-                        <img src="@Model.ExistingProfilePicturePath" alt="Profile Picture"
-                             class="rounded-circle img-fluid" style="width: 150px; height: 150px; object-fit: cover;">
-                    }
-                    else
-                    {
-                        <div class="rounded-circle bg-light d-flex align-items-center justify-content-center"
-                             style="width: 150px; height: 150px; margin: 0 auto;">
-                            <span class="text-muted" style="font-size: 60px;">
-                                @Model.Username?.Substring(0, 1).ToUpper()
-                            </span>
-                        </div>
-                    }
-                    <h5 class="my-3">@Model.FirstName @Model.LastName</h5>
-                    <p class="text-muted mb-1">@Model.Role</p>
-                </div>
-            </div>
-        </div>
+    <div class="row justify-content-center">
         <div class="col-lg-8">
-            <div class="card mb-4">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Edit Profile</h3>
+                </div>
                 <div class="card-body">
                     @if (TempData["SuccessMessage"] != null)
                     {
-                        <div class="alert alert-success">
+                        <div class="alert alert-success alert-dismissible fade show">
                             @TempData["SuccessMessage"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     }
 
-                    <form asp-action="EditProfile" method="post" enctype="multipart/form-data">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <form asp-action="EditProfile" method="post" id="profileForm">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
                         <input type="hidden" asp-for="Id" />
-                        <input type="hidden" asp-for="ExistingProfilePicturePath" />
 
                         <div class="row mb-3">
-                            <div class="col-sm-3">
-                                <label asp-for="Username" class="form-label"></label>
-                            </div>
-                            <div class="col-sm-9">
-                                <input asp-for="Username" class="form-control" />
-                                <span asp-validation-for="Username" class="text-danger"></span>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-sm-3">
-                                <label asp-for="Email" class="form-label"></label>
-                            </div>
-                            <div class="col-sm-9">
-                                <input asp-for="Email" class="form-control" />
-                                <span asp-validation-for="Email" class="text-danger"></span>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-sm-3">
-                                <label asp-for="FirstName" class="form-label"></label>
-                            </div>
-                            <div class="col-sm-9">
+                            <div class="col-md-6">
+                                <label asp-for="FirstName" class="form-label">First Name</label>
                                 <input asp-for="FirstName" class="form-control" />
                                 <span asp-validation-for="FirstName" class="text-danger"></span>
                             </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-sm-3">
-                                <label asp-for="LastName" class="form-label"></label>
-                            </div>
-                            <div class="col-sm-9">
+                            <div class="col-md-6">
+                                <label asp-for="LastName" class="form-label">Last Name</label>
                                 <input asp-for="LastName" class="form-control" />
                                 <span asp-validation-for="LastName" class="text-danger"></span>
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <div class="col-sm-3">
-                                <label asp-for="ProfilePicture" class="form-label"></label>
+                            <div class="col-md-6">
+                                <label asp-for="Username" class="form-label">Username</label>
+                                <input asp-for="Username" class="form-control" />
+                                <span asp-validation-for="Username" class="text-danger"></span>
                             </div>
-                            <div class="col-sm-9">
-                                <input type="file" asp-for="ProfilePicture" class="form-control" accept="image/*" />
-                                <span asp-validation-for="ProfilePicture" class="text-danger"></span>
-                                <small class="text-muted">Leave blank to keep current image</small>
+                            <div class="col-md-6">
+                                <label asp-for="Email" class="form-label">Email</label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
                             </div>
                         </div>
 
                         @if (User.IsInRole("Student"))
                         {
                             <div class="row mb-3">
-                                <div class="col-sm-3">
-                                    <label asp-for="StudentId" class="form-label"></label>
-                                </div>
-                                <div class="col-sm-9">
+                                <div class="col-md-6">
+                                    <label asp-for="StudentId" class="form-label">Student ID</label>
                                     <input asp-for="StudentId" class="form-control" />
                                     <span asp-validation-for="StudentId" class="text-danger"></span>
                                 </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-sm-3">
-                                    <label asp-for="Major" class="form-label"></label>
-                                </div>
-                                <div class="col-sm-9">
+                                <div class="col-md-6">
+                                    <label asp-for="Major" class="form-label">Major</label>
                                     <input asp-for="Major" class="form-control" />
                                     <span asp-validation-for="Major" class="text-danger"></span>
                                 </div>
@@ -119,56 +68,42 @@
                         @if (User.IsInRole("Professor"))
                         {
                             <div class="row mb-3">
-                                <div class="col-sm-3">
-                                    <label asp-for="Department" class="form-label"></label>
-                                </div>
-                                <div class="col-sm-9">
+                                <div class="col-md-6">
+                                    <label asp-for="Department" class="form-label">Department</label>
                                     <input asp-for="Department" class="form-control" />
                                     <span asp-validation-for="Department" class="text-danger"></span>
                                 </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-sm-3">
-                                    <label asp-for="Position" class="form-label"></label>
-                                </div>
-                                <div class="col-sm-9">
+                                <div class="col-md-6">
+                                    <label asp-for="Position" class="form-label">Position</label>
                                     <input asp-for="Position" class="form-control" />
                                     <span asp-validation-for="Position" class="text-danger"></span>
                                 </div>
                             </div>
                         }
 
-                        @if (User.IsInRole("Staff"))
+                        @if (User.IsInRole("Staff") || User.IsInRole("Admin"))
                         {
                             <div class="row mb-3">
-                                <div class="col-sm-3">
-                                    <label asp-for="StaffId" class="form-label"></label>
-                                </div>
-                                <div class="col-sm-9">
+                                <div class="col-md-6">
+                                    <label asp-for="StaffId" class="form-label">Staff ID</label>
                                     <input asp-for="StaffId" class="form-control" />
                                     <span asp-validation-for="StaffId" class="text-danger"></span>
                                 </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-sm-3">
-                                    <label asp-for="OfficeLocation" class="form-label"></label>
-                                </div>
-                                <div class="col-sm-9">
+                                <div class="col-md-6">
+                                    <label asp-for="OfficeLocation" class="form-label">Office Location</label>
                                     <input asp-for="OfficeLocation" class="form-control" />
                                     <span asp-validation-for="OfficeLocation" class="text-danger"></span>
                                 </div>
                             </div>
                         }
 
-                        <!-- In the form footer section, replace the current button div with this: -->
-                        <div class="row">
-                            <div class="col-sm-3"></div>
-                            <div class="col-sm-9">
-                                <button type="submit" class="btn btn-primary">Update Profile</button>
-                                <a href="@Url.Action("Index", "Dashboard")" class="btn btn-outline-secondary ms-2">Cancel</a>
-                            </div>
+                        <div class="d-flex justify-content-between mt-4">
+                            <a href="@Url.Action("Index", "Dashboard")" class="btn btn-secondary">
+                                Cancel
+                            </a>
+                            <button type="submit" class="btn btn-primary" id="submitBtn">
+                                Save Changes
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -176,34 +111,17 @@
         </div>
     </div>
 </div>
-<script>
-        /* Profile page specific styles */
-    .profile-container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
 
-    .card {
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .form-label {
-        font-weight: 500;
-    }
-
-    .btn-primary {
-        background-color: #780000;
-        border-color: #780000;
-    }
-
-    .btn-primary:hover {
-        background-color: #a30000;
-        border-color: #a30000;
-    }
-</script>
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    <script>
+        $(document).ready(function() {
+            $('#profileForm').submit(function() {
+                $('#submitBtn').prop('disabled', true)
+                    .html('<span class="spinner-border spinner-border-sm me-2" role="status"></span> Saving...');
+            });
+        });
+    </script>
 }

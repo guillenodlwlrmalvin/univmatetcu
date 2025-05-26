@@ -1,0 +1,93 @@
+﻿@model List<UnivMate.Models.Notification>
+
+<h2>Your Notifications</h2>
+
+@if (Model.Any())
+{
+    <div class="notification-list">
+        @foreach (var notification in Model)
+        {
+            <div class="notification @(notification.IsRead ? "read" : "unread")">
+                <div class="notification-message">@notification.Message</div>
+                @if (!string.IsNullOrEmpty(notification.Details))
+                {
+                    <div class="notification-details">@notification.Details</div>
+                }
+                <div class="notification-time">
+                    @notification.CreatedAt.ToString("MMM dd, yyyy h:mm tt")
+                </div>
+                @if (!notification.IsRead)
+                {
+                    <button class="mark-as-read" data-id="@notification.Id">Mark as read</button>
+                }
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>You have no notifications.</p>
+}
+<style>
+    .notification-list {
+        margin-top: 20px;
+    }
+
+    .notification {
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        background-color: #f8f9fa;
+        border-left: 4px solid #ddd;
+    }
+
+        .notification.unread {
+            border-left-color: #780000;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+    .notification-message {
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+
+    .notification-details {
+        margin: 5px 0;
+        padding: 10px;
+        background-color: white;
+        border-radius: 3px;
+    }
+
+    .notification-time {
+        font-size: 0.8rem;
+        color: #666;
+    }
+
+    .mark-as-read {
+        margin-top: 5px;
+        padding: 3px 8px;
+        background-color: #780000;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 0.8rem;
+    }
+</style>
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('.mark-as-read').click(function() {
+                var button = $(this);
+                var id = button.data('id');
+
+                $.post('/StaffDashboard/MarkAsRead', { id: id })
+                    .done(function() {
+                        button.closest('.notification').removeClass('unread').addClass('read');
+                        button.remove();
+                    });
+            });
+        });
+    </script>
+}

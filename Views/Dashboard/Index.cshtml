@@ -17,6 +17,50 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" />
     <style>
+        .admin-comment {
+            background-color: #f8f9fa;
+            border-left: 3px solid var(--primary-color);
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+            .admin-comment p {
+                margin-bottom: 1rem;
+                line-height: 1.6;
+            }
+
+        .comment-image-container {
+            position: relative;
+            margin: 1rem 0;
+        }
+
+            .comment-image-container img {
+                transition: transform 0.3s ease;
+            }
+
+                .comment-image-container img:hover {
+                    transform: scale(1.02);
+                }
+
+        .image-modal {
+            backdrop-filter: blur(5px);
+        }
+
+            .image-modal img {
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                border-radius: 8px;
+            }
+
+        /* Responsive adjustments */
+        @@media (max-width: 768px) {
+            .admin-comment {
+                padding: 1rem;
+            }
+        }
+    </style>
+    <style>
         :root {
             --primary-color: #780000;
             --primary-light: #a30000;
@@ -59,6 +103,56 @@
                 object-fit: contain;
             }
 
+        .admin-comment {
+            background-color: #f8f9fa;
+            border-left: 3px solid var(--primary-color);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 0.5rem;
+        }
+
+            .admin-comment p {
+                margin-bottom: 0.5rem;
+            }
+
+            .admin-comment small {
+                font-size: 0.8rem;
+                color: #6c757d;
+            }
+
+        .star-rating {
+            color: #ffc107;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: inline-flex;
+            gap: 0.25rem;
+        }
+
+            .star-rating i {
+                transition: all 0.2s ease;
+            }
+
+                .star-rating i:hover,
+                .star-rating i.hover {
+                    transform: scale(1.2);
+                }
+
+        .rating-display {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+            .rating-display small {
+                margin-left: 0.5rem;
+                color: var(--text-light);
+            }
+
+        .rating-input p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
         .report-details-info {
             display: flex;
             flex-direction: column;
@@ -725,6 +819,32 @@
                 flex-direction: column;
                 gap: 0.25rem;
             }
+
+            .star-rating {
+                color: #ffc107;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+                .star-rating i {
+                    transition: all 0.2s ease;
+                }
+
+            .rating-display {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+                .rating-display small {
+                    margin-left: 0.5rem;
+                }
+
+            .rating-input p {
+                margin-bottom: 0.5rem;
+                font-size: 0.9rem;
+                color: var(--text-light);
+            }
         }
     </style>
 </head>
@@ -738,10 +858,7 @@
                 <div class="dropdown-menu" id="userDropdown">
                     <a href="@Url.Action("EditProfile", "Account")" class="dropdown-item">
                         <i class="bi bi-person"></i> Edit Profile
-                    </a>
-                    <a href="#" class="dropdown-item">
-                        <i class="bi bi-gear"></i> Settings
-                    </a>
+                    </a>                   
                     <div class="dropdown-divider"></div>
                     <form id="logoutForm" method="post" action="@Url.Action("Logout", "Account")">
                         <input type="hidden" name="__RequestVerificationToken" value="@token" />
@@ -791,19 +908,134 @@
                     <textarea id="description" name="Description" placeholder="Describe the issue in detail..." required></textarea>
                 </div>
 
-                <div class="form-group">
+              <div class="form-group">
                     <label for="location">Location *</label>
                     <select id="location" name="Location" required>
-                        <option value="">Select location...</option>
-                        <option value="Building A">Building A</option>
-                        <option value="Building B">Building B</option>
-                        <option value="Library">Library</option>
-                        <option value="Cafeteria">Cafeteria</option>
-                        <option value="Classroom">Classroom</option>
-                        <option value="Laboratory">Laboratory</option>
-                        <option value="Office">Office</option>
-                        <option value="Restroom">Restroom</option>
-                        <option value="Other">Other</option>
+                    
+                            <option value="">Select location...</option>
+                        <optgroup label=" ACADEMIC BUILDING ">
+                            <optgroup label="1st Floor - Right Side">
+                               
+                                    <option value="College of Arts and Science Faculty Room">College of Arts and Science Faculty Room</option>
+                                    <option value="Science Laboratory">Science Laboratory</option>
+                                    <option value="Speech Laboratory">Speech Laboratory</option>
+                                    <option value="College of Business Management Faculty Room">College of Business Management Faculty Room</option>
+                                    <option value="Career Development and Placement Office">Career Development and Placement Office</option>
+                                    <option value="Physics Laboratory">Physics Laboratory</option>
+                                    <option value="University Clinic">University Clinic</option>
+                                </optgroup>
+                                <optgroup label="1st Floor - Left Side">
+                                    <option value="College of Engineering and Technology Faculty Room">College of Engineering and Technology Faculty Room</option>
+                                    <option value="Computer Laboratory 1">Computer Laboratory 1</option>
+                                    <option value="Office of Student Organization Development">Office of Student Organization Development</option>
+                                    <option value="Computer Laboratory 2">Computer Laboratory 2</option>
+                                    <option value="Psychology Laboratory">Psychology Laboratory</option>
+                                    <option value="Computer Laboratory 3">Computer Laboratory 3</option>
+                                    <option value="Front Office">Front Office</option>
+                                    <option value="Hospitality Management Laboratory">Hospitality Management Laboratory</option>
+                                </optgroup>
+                            </optgroup>
+
+                            <optgroup label="2nd Floor - Left Side">
+                         
+                                    <option value="College of Hospitality and Tourism Management Faculty Room">College of Hospitality and Tourism Management Faculty Room</option>
+                                    <option value="College of Education Faculty Room">College of Education Faculty Room</option>
+                                    <option value="Tourism Laboratory">Tourism Laboratory</option>
+                                    <option value="Room 213">Room 213</option>
+                                    <option value="Room 212">Room 212</option>
+                                    <option value="Room 217">Room 217</option>
+                                    <option value="Room 211">Room 211</option>
+                                    <option value="Room 218">Room 218</option>
+                                    <option value="Room 219">Room 219</option>
+                                    <option value="Room 210">Room 210</option>
+                                    <option value="Audio Visual Room">Audio Visual Room</option>
+                                    <option value="Office of Chief Librarian">Office of Chief Librarian</option>
+                                </optgroup>
+                                <optgroup label="2nd Floor - Right Side">
+                                    <option value="Room 207">Room 207</option>
+                                    <option value="Athletics Office">Athletics Office</option>
+                                    <option value="Room 206">Room 206</option>
+                                    <option value="Room 201">Room 201</option>
+                                    <option value="Room 205">Room 205</option>
+                                    <option value="Room 202">Room 202</option>
+                                    <option value="Room 203">Room 203</option>
+                                    <option value="Room 204">Room 204</option>
+                                </optgroup>
+                          
+
+                            <optgroup label="3rd Floor - Right Side">
+                           
+                                    <option value="Room 304">Room 304</option>
+                                    <option value="Room 303">Room 303</option>
+                                    <option value="305 - Graduate School Library">305 - Graduate School Library</option>
+                                    <option value="Room 302">Room 302</option>
+                                    <option value="306 - Special Collection Section">306 - Special Collection Section</option>
+                                    <option value="Room 301">Room 301</option>
+                                    <option value="General Collection Section">General Collection Section</option>
+                                </optgroup>
+                                <optgroup label="3rd Floor - Left Side">
+                                    <option value="Culture and Arts Office">Culture and Arts Office</option>
+                                    <option value="Room 307">Room 307</option>
+                                    <option value="Room 308">Room 308</option>
+                                    <option value="Room 317">Room 317</option>
+                                    <option value="Room 316">Room 316</option>
+                                    <option value="Room 309">Room 309</option>
+                                    <option value="Room 310">Room 310</option>
+                                    <option value="Room 315">Room 315</option>
+                                    <option value="Room 311">Room 311</option>
+                                    <option value="Business Incubation Center">Business Incubation Center</option>
+                                    <option value="Room 312">Room 312</option>
+                                    <option value="Room 313">Room 313</option>
+                                    <option value="Room 314">Room 314</option>
+                                </optgroup>
+                          
+
+                            <optgroup label="4th Floor - Left Side">
+                               
+                                    <option value="Room 417">Room 417</option>
+                                    <option value="Room 416">Room 416</option>
+                                    <option value="Room 415">Room 415</option>
+                                    <option value="Room 414">Room 414</option>
+                                    <option value="Room 418">Room 418</option>
+                                    <option value="Room 413">Room 413</option>
+                                    <option value="Room 412">Room 412</option>
+                                    <option value="Room 419">Room 419</option>
+                                    <option value="Room 420">Room 420</option>
+                                    <option value="Room 411">Room 411</option>
+                                    <option value="Room 410">Room 410</option>
+                                    <option value="Room 421">Room 421</option>
+                                    <option value="Room 409">Room 409</option>
+                                    <option value="Room 408">Room 408</option>
+                                </optgroup>
+                                <optgroup label="4th Floor Right Side">
+                                    <option value="Room 407">Room 407</option>
+                                    <option value="Room 401">Room 401</option>
+                                    <option value="Room 406">Room 406</option>
+                                    <option value="Office of Simulation Laboratory">Office of Simulation Laboratory</option>
+                                    <option value="Room 405">Room 405</option>
+                                    <option value="Stenography Laboratory">Stenography Laboratory</option>
+                                    <option value="Room 403">Room 403</option>
+                                    <option value="Room 404">Room 404</option>
+                                </optgroup>
+                           
+
+                            <optgroup label="Basement">                              
+                                    <option value="National Service Training Program Office">National Service Training Program Office</option>
+                                    <option value="Interrogation Observation Room">Interrogation Observation Room</option>                             
+                                    <option value="College of Criminal Justice Faculty Room">College of Criminal Justice Faculty Room</option>
+                                    <option value="Photography Room">Photography Room</option>
+                                    <option value="Forensic Chemistry & Toxicology Laboratory">Forensic Chemistry & Toxicology Laboratory</option>
+                                    <option value="Room B07">Room B07</option>
+                                    <option value="Dactyloscopy Fingerprints Laboratory">Dactyloscopy Fingerprints Laboratory</option>
+                                    <option value="Room B06">Room B06</option>
+                                    <option value="Room B02">Room B02</option>
+                                    <option value="Crime Scene Room">Crime Scene Room</option>
+                                    <option value="Questioned Documents Laboratory">Questioned Documents Laboratory</option>
+                                    <option value="Room B03">Room B03</option>
+                                    <option value="Moot Court Room">Moot Court Room</option>
+                                    <option value="Ballistic Laboratory">Ballistic Laboratory</option>
+                                </optgroup>
+                                            
                     </select>
                 </div>
 
@@ -974,45 +1206,41 @@
             });
         }
 
-            function renderReportDetails(report) {
-        const content = document.getElementById("reportDetailsContent");
+                         <!-- Inside the renderReportDetails function in Dashboard/Index.cshtml -->
+        function renderReportDetails(report) {
+            const content = document.getElementById("reportDetailsContent");
 
-        const statusClass = {
-            'pending': 'status-pending',
-            'in progress': 'status-inprogress',
-            'completed': 'status-completed',
-            'rejected': 'status-rejected'
-        }[report.status.toLowerCase()] || 'status-pending';
+            const statusClass = {
+                'pending': 'status-pending',
+                'in progress': 'status-inprogress',
+                'completed': 'status-completed',
+                'rejected': 'status-rejected'
+            }[report.status.toLowerCase()] || 'status-pending';
 
-        const formattedDate = new Date(report.submittedAt).toLocaleString();
+            const formattedDate = new Date(report.submittedAt).toLocaleString();
+            const assignedDate = report.assignedAt ? new Date(report.assignedAt).toLocaleString() : 'Not assigned';
+            const resolvedDate = report.resolvedAt ? new Date(report.resolvedAt).toLocaleString() : 'Not resolved';
 
-        // Handle image display with fallback
-        const imageHtml = report.imagePath
-            ? `<img src="${report.imagePath}" alt="Report Image" class="img-fluid" onerror="this.onerror=null;this.src='/images/no-image.png'">`
-            : '<div class="no-image"><i class="bi bi-image"></i> No image available</div>';
+            // Handle image display with fallback
+            const imageHtml = report.imagePath
+                ? `<img src="${report.imagePath}" alt="Report Image" class="img-fluid" onerror="this.onerror=null;this.src='/images/no-image.png'">`
+                : '<div class="no-image"><i class="bi bi-image"></i> No image available</div>';
 
-        content.innerHTML = `
-            <div class="report-details">
-                <div class="report-details-image">
-                    ${imageHtml}
-                </div>
+            // Filter admin comments
+            const adminComments = report.comments?.filter(c =>
+                c.author.role === "Admin" || c.author.role === "Staff"
+            ) || [];
+
+            content.innerHTML = `
+                <div class="report-details">
+                    <div class="report-details-image">
+                        ${imageHtml}
+                    </div>
                     <div class="report-details-info">
                         <div class="report-details-meta">
                             <div class="report-details-item">
                                 <span class="report-details-label">Report ID:</span>
                                 <span class="report-details-value">${report.id}</span>
-                            </div>
-                            <div class="report-details-item">
-                                <span class="report-details-label">Submitted By:</span>
-                                <span class="report-details-value">${report.userName || 'Unknown'}</span>
-                            </div>
-                            <div class="report-details-item">
-                                <span class="report-details-label">Date:</span>
-                                <span class="report-details-value">${formattedDate}</span>
-                            </div>
-                            <div class="report-details-item">
-                                <span class="report-details-label">Location:</span>
-                                <span class="report-details-value">${report.location}</span>
                             </div>
                             <div class="report-details-item">
                                 <span class="report-details-label">Status:</span>
@@ -1022,22 +1250,186 @@
                                     </span>
                                 </span>
                             </div>
+                            <div class="report-details-item">
+                                <span class="report-details-label">Submitted By:</span>
+                                <span class="report-details-value">${report.userName || 'Unknown'}</span>
+                            </div>
+                            <div class="report-details-item">
+                                <span class="report-details-label">Date Submitted:</span>
+                                <span class="report-details-value">${formattedDate}</span>
+                            </div>
+                            <div class="report-details-item">
+                                <span class="report-details-label">Location:</span>
+                                <span class="report-details-value">${report.location}</span>
+                            </div>
+                            ${report.assignedTo ? `
+                            <div class="report-details-item">
+                                <span class="report-details-label">Assigned To:</span>
+                                <span class="report-details-value">${report.assignedTo.firstName} ${report.assignedTo.lastName}</span>
+                            </div>
+                            <div class="report-details-item">
+                                <span class="report-details-label">Date Assigned:</span>
+                                <span class="report-details-value">${assignedDate}</span>
+                            </div>
+                            ` : ''}
+                            ${report.resolvedBy ? `
+                            <div class="report-details-item">
+                                <span class="report-details-label">Resolved By:</span>
+                                <span class="report-details-value">${report.resolvedBy.firstName} ${report.resolvedBy.lastName}</span>
+                            </div>
+                            <div class="report-details-item">
+                                <span class="report-details-label">Date Resolved:</span>
+                                <span class="report-details-value">${resolvedDate}</span>
+                            </div>
+                            ` : ''}
                         </div>
                         <div class="report-details-description">
                             <h4>Description</h4>
                             <p>${report.description || 'No description provided'}</p>
                         </div>
-                        ${report.adminComments ? `
+                        ${report.resolutionNotes ? `
                         <div class="report-details-description" style="margin-top: 1rem;">
-                            <h4>Admin Comments</h4>
-                            <p>${report.adminComments}</p>
+                            <h4>Resolution Notes</h4>
+                            <p>${report.resolutionNotes}</p>
+                        </div>
+                        ` : ''}
+
+                        <!-- Admin Comments Section -->
+                        ${adminComments.length > 0 ? `
+                        <div class="report-details-description" style="margin-top: 1rem;">
+                            <h4>Admin Responses</h4>
+                            ${adminComments.map(comment => `
+                                <div class="admin-comment mt-3 p-3 bg-light rounded">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <strong>${comment.author.firstName} ${comment.author.lastName} (${comment.author.role})</strong>
+                                        <small class="text-muted">${new Date(comment.createdAt).toLocaleString()}</small>
+                                    </div>
+                                    <p>${comment.content}</p>
+                                    ${comment.imagePath ? `
+                                    <div class="comment-image-container mt-2">
+                                        <img src="${comment.imagePath}"
+                                            alt="Admin comment image"
+                                            class="img-fluid rounded-3 shadow-sm border"
+                                            style="max-height: 200px; max-width: 100%; object-fit: contain; cursor: pointer;"
+                                            onclick="openImageModal('${comment.imagePath}')">
+                                        <button class="btn btn-sm btn-primary mt-2"
+                                                onclick="openImageModal('${comment.imagePath}')">
+                                            <i class="bi bi-zoom-in"></i> View Full Image
+                                        </button>
+                                    </div>
+                                    ` : ''}
+                                </div>
+                            `).join('')}
+                        </div>
+                        ` : ''}
+
+                        ${report.status.toLowerCase() === 'completed' ? `
+                        <div class="report-details-description" style="margin-top: 1rem;">
+                            <h4>Your Rating</h4>
+                            ${report.rating ? `
+                            <div class="rating-display">
+                                ${renderStars(report.rating)}
+                                <small>Thank you for your feedback!</small>
+                            </div>
+                            ` : report.canRate ? `
+                            <div class="rating-input">
+                                <p>How would you rate the resolution of this report?</p>
+                                <div class="star-rating" id="ratingStars">
+                                    ${[1, 2, 3, 4, 5].map(i => `
+                                    <i class="bi bi-star${i <= report.rating ? '-fill' : ''}"
+                                       data-rating="${i}"
+                                       onmouseover="highlightStars(${i})"
+                                       onmouseout="resetStars(${report.rating || 0})"
+                                       onclick="submitRating(${report.id}, ${i})"></i>
+                                    `).join('')}
+                                </div>
+                            </div>
+                            ` : '<p>Rating is no longer available for this report</p>'}
                         </div>
                         ` : ''}
                     </div>
                 </div>
             `;
         }
+         // Add this new function for image modal
+        function openImageModal(imageUrl) {
+            const modal = document.createElement('div');
+            modal.className = 'image-modal';
+            modal.style.position = 'fixed';
+            modal.style.top = '0';
+            modal.style.left = '0';
+            modal.style.width = '100%';
+            modal.style.height = '100%';
+            modal.style.backgroundColor = 'rgba(0,0,0,0.8)';
+            modal.style.display = 'flex';
+            modal.style.justifyContent = 'center';
+            modal.style.alignItems = 'center';
+            modal.style.zIndex = '2000';
+            modal.style.cursor = 'zoom-out';
 
+            modal.innerHTML = `
+                <div style="position: relative; max-width: 90%; max-height: 90%;">
+                    <img src="${imageUrl}"
+                         style="max-width: 100%; max-height: 90vh; object-fit: contain;"
+                         alt="Enlarged view">
+                    <button class="btn btn-danger"
+                            style="position: absolute; top: 10px; right: 10px;"
+                            onclick="this.parentElement.parentElement.remove()">
+                        <i class="bi bi-x"></i>
+                    </button>
+                </div>
+            `;
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+
+            document.body.appendChild(modal);
+            document.body.style.overflow = 'hidden';
+        }
+               function submitRating(reportId, rating) {
+            // Show loading state
+            const starsContainer = document.getElementById('ratingStars');
+            if (starsContainer) {
+                starsContainer.innerHTML = '<div class="spinner" style="width: 1.5rem; height: 1.5rem;"></div>';
+            }
+
+            fetch('/Dashboard/SubmitRating', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                },
+                body: JSON.stringify({
+                    reportId: reportId,
+                    rating: rating
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(err => { throw err; });
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    showNotification(data.message, true);
+                    // Refresh the report details to show the updated rating
+                    showReportDetails(reportId);
+                } else {
+                    showNotification(data.message, false);
+                    // Reset stars if rating failed
+                    resetStars(0, 'ratingStars');
+                }
+            })
+            .catch(error => {
+                console.error('Error submitting rating:', error);
+                showNotification(error.message || 'Error submitting rating', false);
+                resetStars(0, 'ratingStars');
+            });
+        }
         function getStatusIcon(status) {
             const statusIcons = {
                 'pending': 'bi-hourglass',
@@ -1363,6 +1755,87 @@
                 }
             `;
             document.head.appendChild(notificationStyles);
+        }
+                    function renderStars(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                stars += `<i class="bi bi-star${i <= rating ? '-fill' : ''}"></i>`;
+            }
+            return stars;
+        }
+
+        function highlightStars(count) {
+            const starsContainer = document.getElementById('ratingStars');
+            if (!starsContainer) return;
+
+            const stars = starsContainer.querySelectorAll('i');
+            stars.forEach((star, index) => {
+                if (index < count) {
+                    star.classList.add('bi-star-fill', 'hover');
+                    star.classList.remove('bi-star');
+                } else {
+                    star.classList.add('bi-star');
+                    star.classList.remove('bi-star-fill', 'hover');
+                }
+            });
+        }
+
+        function resetStars(currentRating) {
+            const starsContainer = document.getElementById('ratingStars');
+            if (!starsContainer) return;
+
+            const stars = starsContainer.querySelectorAll('i');
+            stars.forEach((star, index) => {
+                if (index < currentRating) {
+                    star.classList.add('bi-star-fill');
+                    star.classList.remove('bi-star');
+                } else {
+                    star.classList.add('bi-star');
+                    star.classList.remove('bi-star-fill');
+                }
+                star.classList.remove('hover');
+            });
+        }
+
+        function submitRating(reportId, rating) {
+            const starsContainer = document.getElementById('ratingStars');
+            if (starsContainer) {
+                starsContainer.innerHTML = '<div class="spinner" style="width: 1.5rem; height: 1.5rem;"></div>';
+            }
+
+            fetch('/Dashboard/SubmitRating', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                },
+                body: JSON.stringify({
+                    reportId: reportId,
+                    rating: rating
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(err => { throw err; });
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    showNotification(data.message, true);
+                    // Refresh the report details to show the updated rating
+                    showReportDetails(reportId);
+                } else {
+                    showNotification(data.message, false);
+                    // Reset stars if rating failed
+                    resetStars(0);
+                }
+            })
+            .catch(error => {
+                console.error('Error submitting rating:', error);
+                showNotification(error.message || 'Error submitting rating', false);
+                resetStars(0);
+            });
         }
     </script>
 
