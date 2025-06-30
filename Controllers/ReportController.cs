@@ -9,6 +9,9 @@ using UnivMate.Data;
 using UnivMate.Models;
 using UnivMate.ViewModels;
 using System.Security.Claims;
+using Microsoft.AspNetCore.SignalR;
+using UnivMate.Hubs;
+using System.ComponentModel.DataAnnotations;
 
 namespace UnivMate.Controllers
 {
@@ -17,19 +20,22 @@ namespace UnivMate.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _env;
+        private readonly IHubContext<ReportHub> _hubContext;
 
         public ReportsController(
             ApplicationDbContext context,
-            IWebHostEnvironment env)
+            IWebHostEnvironment env, IHubContext<ReportHub> hubContext)
         {
             _context = context;
             _env = env;
+            _hubContext = hubContext;
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SubmitReport([FromForm] ReportViewModel model)
         {
+           
             if (!ModelState.IsValid)
             {
                 var errors = ModelState.Values
@@ -39,8 +45,7 @@ namespace UnivMate.Controllers
 
                 return Json(new
                 {
-                    success = false,
-                    message = "Validation failed",
+                    success = false,               
                     errors
                 });
             }
@@ -112,6 +117,8 @@ namespace UnivMate.Controllers
                     Title = $"{model.Location} Issue - {DateTime.Now:MMM dd}",
                     Description = model.Description,
                     Location = model.Location,
+                    LocationGroup = model.LocationGroup,  // Add this
+                    LocationSubgroup = model.LocationSubgroup,  // Add this
                     ImagePath = imagePath,
                     Status = "Pending",
                     SubmittedAt = DateTime.Now,
@@ -121,6 +128,16 @@ namespace UnivMate.Controllers
                 _context.Reports.Add(report);
                 await _context.SaveChangesAsync();
 
+                await _hubContext.Clients.Group("Staff").SendAsync("ReceiveReportNotification", new
+                {
+                    type = "NewReport",
+                    id = report.Id,
+                    title = report.Title,
+                    location = report.Location,
+                    submittedAt = report.SubmittedAt,
+                    userId = report.UserId,
+                    userName = user.FirstName // Assuming you have FirstName in your User model
+                });
                 return Json(new
                 {
                     success = true,
@@ -128,14 +145,15 @@ namespace UnivMate.Controllers
                     reportId = report.Id
                 });
             }
+
             catch (Exception ex)
             {
                 return StatusCode(500, new
                 {
-                    success = false,
-                    message = "An error occurred while submitting the report",
+                    success = false,               
                     error = ex.Message
                 });
+
             }
         }
 
@@ -173,44 +191,46 @@ namespace UnivMate.Controllers
             }
         }
 
-      [Authorize(Roles = "Staff,Admin")]
-[HttpGet]
-public async Task<IActionResult> GetAllReports()
-{
-    try
-    {
-        var reports = await _context.Reports
-            .Include(r => r.User)
-            .OrderByDescending(r => r.SubmittedAt)
-            .Select(r => new 
+        [Authorize(Roles = "Staff,Admin")]
+        [HttpGet]
+        public async Task<IActionResult> GetAllReports()
+        {
+            try
             {
-                id = r.Id,
-                title = r.Title,
-                userName = r.User != null ? r.User.FirstName : "Unknown",
-                submittedAt = r.SubmittedAt.ToString("yyyy-MM-ddTHH:mm:ss"),
-                location = r.Location,
-                status = r.Status,
-                imagePath = r.ImagePath
-            })
-            .AsNoTracking() // Improves performance for read-only operations
-            .ToListAsync();
+                var reports = await _context.Reports
+                    .Include(r => r.User)
+                    .OrderByDescending(r => r.SubmittedAt)
+                    .Select(r => new
+                    {
+                        id = r.Id,
+                        title = r.Title,
+                        userName = r.User != null ? r.User.FirstName : "Unknown",
+                        submittedAt = r.SubmittedAt.ToString("yyyy-MM-ddTHH:mm:ss"),
+                        location = r.Location,
+                        status = r.Status,
+                        imagePath = r.ImagePath
+                    })
+                    .AsNoTracking() // Improves performance for read-only operations
+                    .ToListAsync();
 
-        return Json(new { 
-            success = true, 
-            reports,
-            count = reports.Count
-        });
-    }
-    catch (Exception ex)
-    {
-        // Log the error here (implement your logging solution)
-        return StatusCode(500, new {
-            success = false,
-            message = "Failed to load reports",
-            error = ex.Message
-        });
-    }
-}
+                return Json(new
+                {
+                    success = true,
+                    reports,
+                    count = reports.Count
+                });
+            }
+            catch (Exception ex)
+            {
+                // Log the error here (implement your logging solution)
+                return StatusCode(500, new
+                {
+                    success = false,
+                    message = "Failed to load reports",
+                    error = ex.Message
+                });
+            }
+        }
 
         public async Task<IActionResult> ViewReport(int id)
         {

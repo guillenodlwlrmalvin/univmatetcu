@@ -1,0 +1,590 @@
+﻿@model UnivMate.ViewModels.StaffDashboardViewModel
+@{
+    ViewData["Title"] = "Manage Users";
+    Layout = "_Layout";
+}
+
+<div class="admin-dashboard">
+    <!-- Header Bar with Enhanced Border -->
+    <header class="admin-header">
+        <div class="header-content">
+            <div class="header-left">
+                <h1 class="dashboard-title">
+                    <i class="fas fa-users-cog"></i> Manage Users
+                </h1>
+            </div>
+            <div class="header-right">
+                <a href="@Url.Action("Index", "StaffDashboard")" class="btn btn-back">
+                    <i class="fas fa-arrow-left"></i> <span class="btn-text">Back to Dashboard</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container with Border -->
+    <div class="content-container">
+        <!-- Notification System with Border -->
+        <div class="notification-container">
+            @if (TempData["StatusMessage"] != null)
+            {
+                <div class="notification success">
+                    <i class="fas fa-check-circle"></i>
+                    <span>@TempData["StatusMessage"]</span>
+                    <button class="notification-close">&times;</button>
+                </div>
+            }
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="notification error">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>@TempData["ErrorMessage"]</span>
+                    <button class="notification-close">&times;</button>
+                </div>
+            }
+        </div>
+
+        <!-- User Management Section with Border -->
+        <section class="reports-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-user-shield"></i> User Accounts
+                </h2>
+                <div class="report-filters">
+                    <div class="filter-group">
+                        <label>Filter by Role:</label>
+                        <div class="filter-options">
+                            <button class="filter-btn active" data-role="all">All</button>
+                            <button class="filter-btn" data-role="admin">Admin</button>
+                            <button class="filter-btn" data-role="staff">Staff</button>
+                            <button class="filter-btn" data-role="professor">Professor</button>
+                            <button class="filter-btn" data-role="student">Student</button>
+                        </div>
+                    </div>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="user-search" placeholder="Search users...">
+                    </div>
+                </div>
+            </div>
+
+            <div class="reports-table-container">
+                <table class="reports-table">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Contact</th>
+                            <th>Role</th>
+                            <th>Account Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.Users)
+                        {
+                            <tr data-role="@user.CurrentRole.ToLower()" data-search="@($"{user.FirstName} {user.LastName} {user.Email} {user.CurrentRole}".ToLower())">
+                                <td>
+                                    <div class="user-display">
+                                        <div class="user-avatar-sm">
+                                            @user.FirstName?.Substring(0, 1)@user.LastName?.Substring(0, 1)
+                                        </div>
+                                        <div>
+                                            <div class="user-name">@user.FirstName @user.LastName</div>
+                                            <div class="user-meta">
+                                                <span class="user-role @user.CurrentRole.ToLower()">@user.CurrentRole</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="user-contact">
+                                        <div class="user-email">@user.Email</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <form asp-action="UpdateUserRole" method="post" class="role-form">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="userId" value="@user.Id" />
+                                        <select name="newRole" class="form-select role-select" onchange="this.form.submit()">
+                                            @foreach (var role in Model.AvailableRoles)
+                                            {
+                                                <option value="@role.Value" selected="@(role.Value == user.CurrentRole)">@role.Text</option>
+                                            }
+                                        </select>
+                                    </form>
+                                </td>
+                                <td>
+                                    <div class="date-display">
+                                        <div class="date-day">@user.CreatedAt.ToString("MMM dd, yyyy")</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <form asp-action="DeleteUser" method="post" class="action-form"
+                                              onsubmit="return confirm('Are you sure you want to permanently delete this user account and all associated reports? This action cannot be undone.');">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="userId" value="@user.Id" />
+                                            <button type="submit" class="btn-action delete-btn" title="Delete User">
+                                                <i class="fas fa-trash-alt"></i>
+                                                <span class="action-text">Delete</span>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>
+
+<style>
+    /* Enhanced Styles with Border System */
+    :root {
+        --primary: #780000;
+        --primary-light: #a30000;
+        --primary-lightest: #f8e8e8;
+        --success: #28a745;
+        --success-light: #e6f3ea;
+        --warning: #ffc107;
+        --warning-light: #fff8e6;
+        --danger: #dc3545;
+        --danger-light: #fce8ea;
+        --info: #17a2b8;
+        --info-light: #e6f4f7;
+        --dark: #343a40;
+        --gray-dark: #495057;
+        --gray: #6c757d;
+        --gray-light: #e9ecef;
+        --gray-lightest: #f8f9fa;
+        --white: #ffffff;
+        --border-radius: 8px;
+        --border-color: #e0e0e0;
+        --border-color-light: #f0f0f0;
+        --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+        --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Main Content Container */
+    .content-container {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        border: 1px solid var(--border-color);
+        box-shadow: var(--shadow-sm);
+        margin: 20px;
+        overflow: hidden;
+    }
+
+    /* Header Styles */
+    .admin-header {
+        background-color: var(--primary);
+        color: white;
+        padding: 15px 20px;
+        border-bottom: 1px solid var(--primary-light);
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .dashboard-title {
+        margin: 0;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .btn-back {
+        background-color: var(--white);
+        color: var(--primary);
+        padding: 0.5rem 1rem;
+        border-radius: var(--border-radius);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        transition: all 0.2s;
+        border: 1px solid var(--white);
+        font-weight: 500;
+    }
+
+        .btn-back:hover {
+            background-color: transparent;
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+    /* Notification System */
+    .notification-container {
+        padding: 15px 20px 0;
+    }
+
+    .notification {
+        padding: 12px 15px;
+        border-radius: var(--border-radius);
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        position: relative;
+        border-left: 4px solid transparent;
+    }
+
+        .notification.success {
+            background-color: var(--success-light);
+            color: var(--success);
+            border-left-color: var(--success);
+        }
+
+        .notification.error {
+            background-color: var(--danger-light);
+            color: var(--danger);
+            border-left-color: var(--danger);
+        }
+
+    .notification-close {
+        background: none;
+        border: none;
+        margin-left: auto;
+        cursor: pointer;
+        color: inherit;
+        font-size: 1.2rem;
+        opacity: 0.7;
+    }
+
+    /* Section Header */
+    .section-header {
+        padding: 20px;
+        border-bottom: 1px solid var(--border-color-light);
+        background-color: var(--gray-lightest);
+    }
+
+    .section-title {
+        margin: 0 0 15px 0;
+        font-size: 1.25rem;
+        color: var(--dark);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .report-filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .filter-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .filter-options {
+        display: flex;
+        gap: 5px;
+    }
+
+    .filter-btn {
+        padding: 5px 12px;
+        border: 1px solid var(--border-color);
+        background-color: var(--white);
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+        .filter-btn.active {
+            background-color: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+    .search-box {
+        position: relative;
+        margin-left: auto;
+    }
+
+        .search-box i {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+
+    #user-search {
+        padding: 8px 15px 8px 35px;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        width: 250px;
+        transition: all 0.2s;
+    }
+
+        #user-search:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(120, 0, 0, 0.1);
+        }
+
+    /* Table Styles */
+    .reports-table-container {
+        overflow-x: auto;
+        padding: 0 20px 20px;
+    }
+
+    .reports-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+        .reports-table th {
+            background-color: var(--gray-lightest);
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--gray-dark);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .reports-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color-light);
+            vertical-align: middle;
+        }
+
+        .reports-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .reports-table tr:hover td {
+            background-color: var(--gray-lightest);
+        }
+
+    /* User Display */
+    .user-display {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .user-avatar-sm {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--primary);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+    }
+
+    .user-name {
+        font-weight: 500;
+        color: var(--dark);
+    }
+
+    .user-meta {
+        margin-top: 3px;
+    }
+
+    /* Enhanced Role Badges */
+    .user-role {
+        padding: 0.25rem 0.5rem;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: capitalize;
+        display: inline-block;
+    }
+
+        .user-role.admin {
+            background-color: var(--primary-lightest);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .user-role.staff {
+            background-color: var(--info-light);
+            color: var(--info);
+            border: 1px solid var(--info);
+        }
+
+        .user-role.professor {
+            background-color: var(--warning-light);
+            color: var(--warning);
+            border: 1px solid var(--warning);
+        }
+
+        .user-role.student {
+            background-color: var(--success-light);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+
+    /* Form Elements */
+    .role-select {
+        padding: 8px 12px;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        background-color: var(--white);
+        cursor: pointer;
+        transition: all 0.2s;
+        min-width: 120px;
+    }
+
+        .role-select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(120, 0, 0, 0.1);
+        }
+
+    /* Enhanced Action Buttons */
+    .action-buttons {
+        display: flex;
+        gap: 8px;
+    }
+
+    .btn-action {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 8px 12px;
+        border-radius: 4px;
+        font-weight: 500;
+        transition: all 0.2s;
+        border: none;
+        cursor: pointer;
+    }
+
+    .delete-btn {
+        background-color: var(--danger);
+        color: white;
+    }
+
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+
+    /* Responsive Improvements */
+    @@media (max-width: 768px) {
+        .content-container {
+            margin: 10px;
+        }
+
+        .header-content {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .header-right {
+            width: 100%;
+        }
+
+        .btn-back {
+            width: 100%;
+            justify-content: center;
+        }
+
+            .btn-back .btn-text {
+                display: inline;
+            }
+
+        .report-filters {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .search-box {
+            width: 100%;
+        }
+
+        #user-search {
+            width: 100%;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+        }
+
+            .action-buttons .action-text {
+                display: inline;
+            }
+
+        .reports-table th,
+        .reports-table td {
+            padding: 10px 8px;
+        }
+    }
+
+    @@media (max-width: 480px) {
+        .btn-back .btn-text {
+            display: none;
+        }
+
+        .action-buttons .action-text {
+            display: none;
+        }
+
+        .user-display {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+        }
+
+        .user-meta {
+            margin-top: 0.25rem;
+        }
+
+        .role-select {
+            width: 100%;
+        }
+    }
+</style>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Close notifications
+            $('.notification-close').click(function() {
+                $(this).closest('.notification').fadeOut(200, function() {
+                    $(this).remove();
+                });
+            });
+
+            // Filter users by role
+            $('.filter-btn').click(function() {
+                $('.filter-btn').removeClass('active');
+                $(this).addClass('active');
+
+                const role = $(this).data('role');
+                if (role === 'all') {
+                    $('.reports-table tbody tr').show();
+                } else {
+                    $('.reports-table tbody tr').hide();
+                    $(`.reports-table tbody tr[data-role="${role}"]`).show();
+                }
+            });
+
+            // User search functionality
+            $('#user-search').on('input', function() {
+                const searchTerm = $(this).val().toLowerCase();
+                $('.reports-table tbody tr').each(function() {
+                    const rowText = $(this).data('search');
+                    $(this).toggle(rowText.includes(searchTerm));
+                });
+            });
+        });
+    </script>
+}

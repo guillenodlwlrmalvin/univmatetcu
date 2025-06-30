@@ -1,0 +1,1137 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\UnivMate.bundle.scp.css",
+      "PackagePath": "staticwebassets\\UnivMate.uu9p5r5xf6.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\images\\logo.jpg",
+      "PackagePath": "staticwebassets\\images\\logo.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\images\\logo_638864774138135959.jpg",
+      "PackagePath": "staticwebassets\\images\\logo_638864774138135959.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\images\\logo_638864774272990206.png",
+      "PackagePath": "staticwebassets\\images\\logo_638864774272990206.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\images\\logo_638864774288938119.png",
+      "PackagePath": "staticwebassets\\images\\logo_638864774288938119.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\images\\logo_638864774429631106.jpg",
+      "PackagePath": "staticwebassets\\images\\logo_638864774429631106.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\images\\logo_638864774440523563.jpg",
+      "PackagePath": "staticwebassets\\images\\logo_638864774440523563.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\images\\logo_638864774446364332.jpg",
+      "PackagePath": "staticwebassets\\images\\logo_638864774446364332.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\js\\dashboard.js",
+      "PackagePath": "staticwebassets\\js\\dashboard.js"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery\\dist\\jquery.slim.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.js"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.js"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.map"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\02194612-7720-4353-b0a5-2f466ff02d3b.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\02194612-7720-4353-b0a5-2f466ff02d3b.jpeg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\02f8106f-8ac3-4e10-9b46-3cfe6436d433.jpg",
+      "PackagePath": "staticwebassets\\uploads\\02f8106f-8ac3-4e10-9b46-3cfe6436d433.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\0364dabf-fe93-4572-83a0-a99c16c01df8.jpg",
+      "PackagePath": "staticwebassets\\uploads\\0364dabf-fe93-4572-83a0-a99c16c01df8.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\0b8079cb-28a5-4c7b-8ee6-6f2684d5509c.jpg",
+      "PackagePath": "staticwebassets\\uploads\\0b8079cb-28a5-4c7b-8ee6-6f2684d5509c.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\0be9df8f-504a-479f-af59-f9ef577dfbaa.png",
+      "PackagePath": "staticwebassets\\uploads\\0be9df8f-504a-479f-af59-f9ef577dfbaa.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\0cb59923-7a9f-4366-9e73-c9c98c31960c.jpg",
+      "PackagePath": "staticwebassets\\uploads\\0cb59923-7a9f-4366-9e73-c9c98c31960c.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\0d8167ea-069e-402f-b567-60ee3955133c.jpg",
+      "PackagePath": "staticwebassets\\uploads\\0d8167ea-069e-402f-b567-60ee3955133c.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\166856fd-6cf2-4b06-b794-2f4be1986399.jpg",
+      "PackagePath": "staticwebassets\\uploads\\166856fd-6cf2-4b06-b794-2f4be1986399.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\167ed319-eb04-458a-8c51-eae79e2957fa.jpg",
+      "PackagePath": "staticwebassets\\uploads\\167ed319-eb04-458a-8c51-eae79e2957fa.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\18826bac-5def-46bf-9e41-dec3c8574fea.jpg",
+      "PackagePath": "staticwebassets\\uploads\\18826bac-5def-46bf-9e41-dec3c8574fea.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\1a180429-4811-4827-8aae-3277fcbf182c.jpg",
+      "PackagePath": "staticwebassets\\uploads\\1a180429-4811-4827-8aae-3277fcbf182c.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\1c4175c1-0a5a-4f0d-8ea9-7eac9dc49cd8.jpg",
+      "PackagePath": "staticwebassets\\uploads\\1c4175c1-0a5a-4f0d-8ea9-7eac9dc49cd8.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\1cdd28e8-7110-4d4d-a6c4-997be908ea70.png",
+      "PackagePath": "staticwebassets\\uploads\\1cdd28e8-7110-4d4d-a6c4-997be908ea70.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\1db668bc-f401-4fd6-af48-1807ccd4d842.jpg",
+      "PackagePath": "staticwebassets\\uploads\\1db668bc-f401-4fd6-af48-1807ccd4d842.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\1e19bca2-c90c-4c48-80c2-a1bf3432a356_1078379-1920x1080-desktop-full-hd-patrick-star-spongebob-squarepants-wallpaper-photo.jpg",
+      "PackagePath": "staticwebassets\\uploads\\1e19bca2-c90c-4c48-80c2-a1bf3432a356_1078379-1920x1080-desktop-full-hd-patrick-star-spongebob-squarepants-wallpaper-photo.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\1f0f2d63-dda4-48e5-8ce3-364cc42d84ff.jpg",
+      "PackagePath": "staticwebassets\\uploads\\1f0f2d63-dda4-48e5-8ce3-364cc42d84ff.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\1f19c6b1-89f4-4901-899b-b36d5207c18b.jpg",
+      "PackagePath": "staticwebassets\\uploads\\1f19c6b1-89f4-4901-899b-b36d5207c18b.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\2457f054-1f50-4e9a-afc9-6cbcb862f2ba.png",
+      "PackagePath": "staticwebassets\\uploads\\2457f054-1f50-4e9a-afc9-6cbcb862f2ba.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\24db9b88-57cb-4fcf-805b-a10aa64dd291.png",
+      "PackagePath": "staticwebassets\\uploads\\24db9b88-57cb-4fcf-805b-a10aa64dd291.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\2558c1e9-9d4a-4daf-9d31-8cd92a8be5a9.jpg",
+      "PackagePath": "staticwebassets\\uploads\\2558c1e9-9d4a-4daf-9d31-8cd92a8be5a9.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\2684b040-c149-4f22-a3f4-c7e8d0300ec7.jpg",
+      "PackagePath": "staticwebassets\\uploads\\2684b040-c149-4f22-a3f4-c7e8d0300ec7.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\2695ea9e-d2e5-4991-850a-608332dedc16.png",
+      "PackagePath": "staticwebassets\\uploads\\2695ea9e-d2e5-4991-850a-608332dedc16.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\28277c02-cc79-4cce-8e9b-6467c8378431.jpg",
+      "PackagePath": "staticwebassets\\uploads\\28277c02-cc79-4cce-8e9b-6467c8378431.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\2887d941-0ee8-492b-bcaf-f107f9218257.png",
+      "PackagePath": "staticwebassets\\uploads\\2887d941-0ee8-492b-bcaf-f107f9218257.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\28b349d8-5cbd-4a6d-8e82-67341d5329bf.jpg",
+      "PackagePath": "staticwebassets\\uploads\\28b349d8-5cbd-4a6d-8e82-67341d5329bf.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\299b37e9-f76a-4d20-ae62-8d8aaf60bcba.jpg",
+      "PackagePath": "staticwebassets\\uploads\\299b37e9-f76a-4d20-ae62-8d8aaf60bcba.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\2b38c23b-f659-4d8f-b668-46ef772377fb.png",
+      "PackagePath": "staticwebassets\\uploads\\2b38c23b-f659-4d8f-b668-46ef772377fb.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\2eba447f-7dd8-4d0f-aa3a-68b38f2abbcf.jpg",
+      "PackagePath": "staticwebassets\\uploads\\2eba447f-7dd8-4d0f-aa3a-68b38f2abbcf.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\2f0e1f9b-77ca-48d2-968c-2e3c3c047830_3_e5de15-removebg-preview.png",
+      "PackagePath": "staticwebassets\\uploads\\2f0e1f9b-77ca-48d2-968c-2e3c3c047830_3_e5de15-removebg-preview.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\2f84f074-00c2-475e-bf4b-60689c93dea0.jpg",
+      "PackagePath": "staticwebassets\\uploads\\2f84f074-00c2-475e-bf4b-60689c93dea0.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\2fe354d0-dba2-41bc-a00c-1f55f8ec2636.jpg",
+      "PackagePath": "staticwebassets\\uploads\\2fe354d0-dba2-41bc-a00c-1f55f8ec2636.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\317187a6-9f37-4615-a8ec-507066d0bd4b.jpg",
+      "PackagePath": "staticwebassets\\uploads\\317187a6-9f37-4615-a8ec-507066d0bd4b.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\32181838-7c99-4ee8-9928-6777c555ef75.jpg",
+      "PackagePath": "staticwebassets\\uploads\\32181838-7c99-4ee8-9928-6777c555ef75.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\34c92bde-792d-44ea-a4d4-7c07e0f9d400.png",
+      "PackagePath": "staticwebassets\\uploads\\34c92bde-792d-44ea-a4d4-7c07e0f9d400.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\35b0660c-8320-4eea-9194-77ac27dcfaf2.jpg",
+      "PackagePath": "staticwebassets\\uploads\\35b0660c-8320-4eea-9194-77ac27dcfaf2.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\35fb44ee-11d8-4f5d-b42d-e494ef4cc9ae.png",
+      "PackagePath": "staticwebassets\\uploads\\35fb44ee-11d8-4f5d-b42d-e494ef4cc9ae.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\372e5ce3-61bd-47cb-a3ea-f4ad5cf9e552.jpg",
+      "PackagePath": "staticwebassets\\uploads\\372e5ce3-61bd-47cb-a3ea-f4ad5cf9e552.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\39919e0f-8c55-46d4-b3fa-710243fb26e5.jpg",
+      "PackagePath": "staticwebassets\\uploads\\39919e0f-8c55-46d4-b3fa-710243fb26e5.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\3a6ce2b3-8dcc-4beb-a766-3b371e1b265a.jpg",
+      "PackagePath": "staticwebassets\\uploads\\3a6ce2b3-8dcc-4beb-a766-3b371e1b265a.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\3e40061d-6c05-4ed9-bfcd-c40368220ac8.jpg",
+      "PackagePath": "staticwebassets\\uploads\\3e40061d-6c05-4ed9-bfcd-c40368220ac8.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\3ee2ffcf-1307-456c-8329-9c63d5cc5c78.png",
+      "PackagePath": "staticwebassets\\uploads\\3ee2ffcf-1307-456c-8329-9c63d5cc5c78.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\40ed6242-03d7-4809-8ecf-c91f2c7f1bd3.jpg",
+      "PackagePath": "staticwebassets\\uploads\\40ed6242-03d7-4809-8ecf-c91f2c7f1bd3.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\41a1b4cf-2d6b-4921-9eb7-9d08f9e76855.png",
+      "PackagePath": "staticwebassets\\uploads\\41a1b4cf-2d6b-4921-9eb7-9d08f9e76855.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\41a95f9b-1f93-43a5-a18f-de0385620d99.png",
+      "PackagePath": "staticwebassets\\uploads\\41a95f9b-1f93-43a5-a18f-de0385620d99.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\424a98da-f6ae-47ab-ad0d-9372638edc58.jpg",
+      "PackagePath": "staticwebassets\\uploads\\424a98da-f6ae-47ab-ad0d-9372638edc58.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\448d88bd-542b-4144-8551-6c220ff49a9c.png",
+      "PackagePath": "staticwebassets\\uploads\\448d88bd-542b-4144-8551-6c220ff49a9c.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\44f49cae-7943-420b-bfb9-e192e39cee99.png",
+      "PackagePath": "staticwebassets\\uploads\\44f49cae-7943-420b-bfb9-e192e39cee99.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\4524969b-1702-416a-a7f2-d1b85dce60fe_1078379-1920x1080-desktop-full-hd-patrick-star-spongebob-squarepants-wallpaper-photo.jpg",
+      "PackagePath": "staticwebassets\\uploads\\4524969b-1702-416a-a7f2-d1b85dce60fe_1078379-1920x1080-desktop-full-hd-patrick-star-spongebob-squarepants-wallpaper-photo.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\4547448f-c3c7-4f53-ad6c-1d12e22bc650.png",
+      "PackagePath": "staticwebassets\\uploads\\4547448f-c3c7-4f53-ad6c-1d12e22bc650.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\4742fbf7-1069-4d55-bc25-b4bcb9a16d5a.jpg",
+      "PackagePath": "staticwebassets\\uploads\\4742fbf7-1069-4d55-bc25-b4bcb9a16d5a.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\483da232-0a9e-4461-9a8e-deed6a587460.jpg",
+      "PackagePath": "staticwebassets\\uploads\\483da232-0a9e-4461-9a8e-deed6a587460.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\4b07f6e7-24ea-4da9-8be4-6a3413b86c2a.jpg",
+      "PackagePath": "staticwebassets\\uploads\\4b07f6e7-24ea-4da9-8be4-6a3413b86c2a.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\4b7b50b0-e20f-4f3a-86c1-384a8f83b8c1.jpg",
+      "PackagePath": "staticwebassets\\uploads\\4b7b50b0-e20f-4f3a-86c1-384a8f83b8c1.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\4d11be95-cde2-4a07-ac4e-32a743005d9d.png",
+      "PackagePath": "staticwebassets\\uploads\\4d11be95-cde2-4a07-ac4e-32a743005d9d.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\4d4d80b1-19e8-4140-9b3d-b660a6127db9.jpg",
+      "PackagePath": "staticwebassets\\uploads\\4d4d80b1-19e8-4140-9b3d-b660a6127db9.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\4d8f5b07-942d-45d8-975b-e4b05c140dc7.png",
+      "PackagePath": "staticwebassets\\uploads\\4d8f5b07-942d-45d8-975b-e4b05c140dc7.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\4e19938a-ab00-4b50-8dc7-6e1ce6ef995b.jpg",
+      "PackagePath": "staticwebassets\\uploads\\4e19938a-ab00-4b50-8dc7-6e1ce6ef995b.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\5416913f-e5e0-471f-8b7d-315ff6079420.png",
+      "PackagePath": "staticwebassets\\uploads\\5416913f-e5e0-471f-8b7d-315ff6079420.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\54c90909-5f92-436d-9a93-ad1fe9aa1d4c.jpg",
+      "PackagePath": "staticwebassets\\uploads\\54c90909-5f92-436d-9a93-ad1fe9aa1d4c.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\550294d9-6a35-48e9-b191-7838adc5f0c1.jpg",
+      "PackagePath": "staticwebassets\\uploads\\550294d9-6a35-48e9-b191-7838adc5f0c1.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\576b7dc3-2e30-4a19-ab74-e8548648c6cb.jpg",
+      "PackagePath": "staticwebassets\\uploads\\576b7dc3-2e30-4a19-ab74-e8548648c6cb.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\595f92cc-4b94-48b5-9cf4-1af749304cfb.jpg",
+      "PackagePath": "staticwebassets\\uploads\\595f92cc-4b94-48b5-9cf4-1af749304cfb.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\59eae8ba-efbc-46b9-be99-cf4e8a472921.png",
+      "PackagePath": "staticwebassets\\uploads\\59eae8ba-efbc-46b9-be99-cf4e8a472921.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\5b3cc0c0-0506-4e18-9907-01c258473409.png",
+      "PackagePath": "staticwebassets\\uploads\\5b3cc0c0-0506-4e18-9907-01c258473409.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\5dbeb874-2ef4-4a1c-94e9-dae7e0c4966a.jpg",
+      "PackagePath": "staticwebassets\\uploads\\5dbeb874-2ef4-4a1c-94e9-dae7e0c4966a.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\5ec50b50-6414-4b84-b0f4-35a74d55ac91.jpg",
+      "PackagePath": "staticwebassets\\uploads\\5ec50b50-6414-4b84-b0f4-35a74d55ac91.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\5f00f816-608d-4c50-a33e-0ed4b4fa8833.jpg",
+      "PackagePath": "staticwebassets\\uploads\\5f00f816-608d-4c50-a33e-0ed4b4fa8833.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\603f1c48-e47c-4c5c-a807-3f15af8e5379.png",
+      "PackagePath": "staticwebassets\\uploads\\603f1c48-e47c-4c5c-a807-3f15af8e5379.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\61b665a6-f644-4e68-a302-70a5f5ff0926.jpg",
+      "PackagePath": "staticwebassets\\uploads\\61b665a6-f644-4e68-a302-70a5f5ff0926.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\6a6ba3f8-3df5-4803-9451-4e1aa39fad5a.jpg",
+      "PackagePath": "staticwebassets\\uploads\\6a6ba3f8-3df5-4803-9451-4e1aa39fad5a.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\6c580946-93ab-45d1-9995-ccf362ef73ca.jpg",
+      "PackagePath": "staticwebassets\\uploads\\6c580946-93ab-45d1-9995-ccf362ef73ca.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\6dc0b5c8-683b-4efe-9a20-b3bece09e789.png",
+      "PackagePath": "staticwebassets\\uploads\\6dc0b5c8-683b-4efe-9a20-b3bece09e789.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\6f6383cd-9d1f-4e1d-9afd-80d42a2c5f5a.jpg",
+      "PackagePath": "staticwebassets\\uploads\\6f6383cd-9d1f-4e1d-9afd-80d42a2c5f5a.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\6fc5e996-acd7-464b-9b3b-e585de93e385_1078379-1920x1080-desktop-full-hd-patrick-star-spongebob-squarepants-wallpaper-photo.jpg",
+      "PackagePath": "staticwebassets\\uploads\\6fc5e996-acd7-464b-9b3b-e585de93e385_1078379-1920x1080-desktop-full-hd-patrick-star-spongebob-squarepants-wallpaper-photo.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\730bd579-115b-41c8-8a55-7acc8a2d608c.jpg",
+      "PackagePath": "staticwebassets\\uploads\\730bd579-115b-41c8-8a55-7acc8a2d608c.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\745e6445-5dfb-4b0a-b37a-782fc4c57e4f.jpg",
+      "PackagePath": "staticwebassets\\uploads\\745e6445-5dfb-4b0a-b37a-782fc4c57e4f.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\74c230cb-3e4f-49fb-b453-7de81cdc0f06.jpg",
+      "PackagePath": "staticwebassets\\uploads\\74c230cb-3e4f-49fb-b453-7de81cdc0f06.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\751b37c8-4e82-4a85-a31f-d34a5b199977.jpg",
+      "PackagePath": "staticwebassets\\uploads\\751b37c8-4e82-4a85-a31f-d34a5b199977.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\756cbf46-c4d0-450f-9d95-332d1989256c.jpg",
+      "PackagePath": "staticwebassets\\uploads\\756cbf46-c4d0-450f-9d95-332d1989256c.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\756f7876-3789-4f45-adf5-df264b8ec4db.jpg",
+      "PackagePath": "staticwebassets\\uploads\\756f7876-3789-4f45-adf5-df264b8ec4db.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\769c5a7a-12f3-41b7-8b46-3885a38c0604.jpg",
+      "PackagePath": "staticwebassets\\uploads\\769c5a7a-12f3-41b7-8b46-3885a38c0604.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\7de00afb-bccf-4bef-b040-174561170e4a.png",
+      "PackagePath": "staticwebassets\\uploads\\7de00afb-bccf-4bef-b040-174561170e4a.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\7f028174-d60d-4ec1-854b-e06455c4cd3f.jpg",
+      "PackagePath": "staticwebassets\\uploads\\7f028174-d60d-4ec1-854b-e06455c4cd3f.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\814165cd-7cd5-49b3-a7af-c21db0a95c1f.png",
+      "PackagePath": "staticwebassets\\uploads\\814165cd-7cd5-49b3-a7af-c21db0a95c1f.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\823a0552-333e-4878-b8cb-2a88b5df7196.png",
+      "PackagePath": "staticwebassets\\uploads\\823a0552-333e-4878-b8cb-2a88b5df7196.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\82968f90-695c-4261-b006-85a3f80e795d.jpg",
+      "PackagePath": "staticwebassets\\uploads\\82968f90-695c-4261-b006-85a3f80e795d.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\834e1d66-ac46-4c9d-ae54-da5e5e3af522.png",
+      "PackagePath": "staticwebassets\\uploads\\834e1d66-ac46-4c9d-ae54-da5e5e3af522.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\8a79dd95-ec6d-44ee-9d91-bed81831fdf8.png",
+      "PackagePath": "staticwebassets\\uploads\\8a79dd95-ec6d-44ee-9d91-bed81831fdf8.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\8d082c3d-901f-4dbf-8d41-f6770aed1546.jpg",
+      "PackagePath": "staticwebassets\\uploads\\8d082c3d-901f-4dbf-8d41-f6770aed1546.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\96aafceb-c004-4933-8c51-c9cc633f7bee.jpg",
+      "PackagePath": "staticwebassets\\uploads\\96aafceb-c004-4933-8c51-c9cc633f7bee.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\994a4595-e66f-45ce-8d63-47065902251a.jpg",
+      "PackagePath": "staticwebassets\\uploads\\994a4595-e66f-45ce-8d63-47065902251a.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\9ab0ee32-95a9-4f97-b985-7ec7310db63c.jpg",
+      "PackagePath": "staticwebassets\\uploads\\9ab0ee32-95a9-4f97-b985-7ec7310db63c.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\9c7276d2-696b-4141-8c38-ba7011be7b37.png",
+      "PackagePath": "staticwebassets\\uploads\\9c7276d2-696b-4141-8c38-ba7011be7b37.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\a5459a0a-c5de-4b32-9df7-0f1562f2406f.jpg",
+      "PackagePath": "staticwebassets\\uploads\\a5459a0a-c5de-4b32-9df7-0f1562f2406f.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\a82e312a-35d9-4b21-9d43-87b6b7b2fb26.jpg",
+      "PackagePath": "staticwebassets\\uploads\\a82e312a-35d9-4b21-9d43-87b6b7b2fb26.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\a9e0e924-9e6c-4bcc-b531-50f67411187a.png",
+      "PackagePath": "staticwebassets\\uploads\\a9e0e924-9e6c-4bcc-b531-50f67411187a.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\aafe07f1-1bb5-4d99-af7f-f0f324812fac.jpg",
+      "PackagePath": "staticwebassets\\uploads\\aafe07f1-1bb5-4d99-af7f-f0f324812fac.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\b4260ed4-c1a8-4e0b-9219-4dbd6c3608ea.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\b4260ed4-c1a8-4e0b-9219-4dbd6c3608ea.jpeg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\b778b015-451e-4aeb-a56e-23c2a06df5c4.jpg",
+      "PackagePath": "staticwebassets\\uploads\\b778b015-451e-4aeb-a56e-23c2a06df5c4.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\b893e346-fee4-406a-a667-04196fecfe03.jpg",
+      "PackagePath": "staticwebassets\\uploads\\b893e346-fee4-406a-a667-04196fecfe03.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\b8b67f95-8326-48e7-9c01-43771489cf7d.jpg",
+      "PackagePath": "staticwebassets\\uploads\\b8b67f95-8326-48e7-9c01-43771489cf7d.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\b8d3c75f-7c50-4799-82c1-be458b29276a.jpg",
+      "PackagePath": "staticwebassets\\uploads\\b8d3c75f-7c50-4799-82c1-be458b29276a.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\b8e587f2-1e9b-41b2-9142-3914324da6b3.png",
+      "PackagePath": "staticwebassets\\uploads\\b8e587f2-1e9b-41b2-9142-3914324da6b3.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\ba1f6e80-80e3-4a31-9b96-4de779f11f39.jpg",
+      "PackagePath": "staticwebassets\\uploads\\ba1f6e80-80e3-4a31-9b96-4de779f11f39.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\bc9eead2-8468-47dc-940a-11e35dc98c20.png",
+      "PackagePath": "staticwebassets\\uploads\\bc9eead2-8468-47dc-940a-11e35dc98c20.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\bd9d5c08-7aa6-4e95-b740-d0e86ee46ac0.png",
+      "PackagePath": "staticwebassets\\uploads\\bd9d5c08-7aa6-4e95-b740-d0e86ee46ac0.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\c1ff8ad9-b84c-44a0-9352-219e3c097cc9.jpg",
+      "PackagePath": "staticwebassets\\uploads\\c1ff8ad9-b84c-44a0-9352-219e3c097cc9.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\c419fad1-213b-462e-8ebf-2f557008e03c.jpg",
+      "PackagePath": "staticwebassets\\uploads\\c419fad1-213b-462e-8ebf-2f557008e03c.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\c7b1deba-54a9-4d51-8005-5766458ef0e6.png",
+      "PackagePath": "staticwebassets\\uploads\\c7b1deba-54a9-4d51-8005-5766458ef0e6.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\c7df41ea-e5eb-491b-905d-54cd549a85de.jpg",
+      "PackagePath": "staticwebassets\\uploads\\c7df41ea-e5eb-491b-905d-54cd549a85de.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\c92340ec-dcc3-4eae-a331-23f6cf07b490.png",
+      "PackagePath": "staticwebassets\\uploads\\c92340ec-dcc3-4eae-a331-23f6cf07b490.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\caceeaa6-ef07-4959-8de0-12fc07d7ef90.jpg",
+      "PackagePath": "staticwebassets\\uploads\\caceeaa6-ef07-4959-8de0-12fc07d7ef90.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\cd85b434-dcbb-48c0-8f27-ea77f5a5a485.jpg",
+      "PackagePath": "staticwebassets\\uploads\\cd85b434-dcbb-48c0-8f27-ea77f5a5a485.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\ce158c70-f63e-4e0c-b572-b8cbb2080502_360_F_194351905_FlzhKrXQkZdLBaq1wZmssTSILprWRghW.jpg",
+      "PackagePath": "staticwebassets\\uploads\\ce158c70-f63e-4e0c-b572-b8cbb2080502_360_F_194351905_FlzhKrXQkZdLBaq1wZmssTSILprWRghW.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\cec862cc-cdf9-4bae-923e-d824ace38ea8.png",
+      "PackagePath": "staticwebassets\\uploads\\cec862cc-cdf9-4bae-923e-d824ace38ea8.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\cf0ec77a-4a2b-4267-849c-555579ca87c0.png",
+      "PackagePath": "staticwebassets\\uploads\\cf0ec77a-4a2b-4267-849c-555579ca87c0.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\comments\\0b0ad9ea-95c3-43c7-a247-2e398d157e52.png",
+      "PackagePath": "staticwebassets\\uploads\\comments\\0b0ad9ea-95c3-43c7-a247-2e398d157e52.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\comments\\132323da-5478-454c-9b2e-f25e135d66e9.jpg",
+      "PackagePath": "staticwebassets\\uploads\\comments\\132323da-5478-454c-9b2e-f25e135d66e9.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\comments\\2721130f-3b9f-40be-9420-32bede059cbb.png",
+      "PackagePath": "staticwebassets\\uploads\\comments\\2721130f-3b9f-40be-9420-32bede059cbb.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\comments\\28966af7-d173-429a-9bd2-7f4ac9a0a7c7.jpg",
+      "PackagePath": "staticwebassets\\uploads\\comments\\28966af7-d173-429a-9bd2-7f4ac9a0a7c7.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\comments\\306f7be8-5054-41c0-97fa-e9944bd58c0a.jpg",
+      "PackagePath": "staticwebassets\\uploads\\comments\\306f7be8-5054-41c0-97fa-e9944bd58c0a.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\comments\\3197b473-276c-4dca-853c-2d1f54385a76.png",
+      "PackagePath": "staticwebassets\\uploads\\comments\\3197b473-276c-4dca-853c-2d1f54385a76.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\comments\\5110876a-69c5-4344-b86f-70c34ad0a204.jpg",
+      "PackagePath": "staticwebassets\\uploads\\comments\\5110876a-69c5-4344-b86f-70c34ad0a204.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\comments\\61396c6e-fa27-4eab-9429-2b16854908d5.jpg",
+      "PackagePath": "staticwebassets\\uploads\\comments\\61396c6e-fa27-4eab-9429-2b16854908d5.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\comments\\85a79777-9c13-4c92-b0d4-35581f6b0ec9.png",
+      "PackagePath": "staticwebassets\\uploads\\comments\\85a79777-9c13-4c92-b0d4-35581f6b0ec9.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\comments\\8d5bb9cd-0a44-48af-b42c-0ebf149fb997.jpg",
+      "PackagePath": "staticwebassets\\uploads\\comments\\8d5bb9cd-0a44-48af-b42c-0ebf149fb997.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\comments\\955c0501-e85e-4641-ae49-d1eb556a7622.jpg",
+      "PackagePath": "staticwebassets\\uploads\\comments\\955c0501-e85e-4641-ae49-d1eb556a7622.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\comments\\9682a9d7-17e3-47f0-890b-3a3ca9a6b7a0.jpg",
+      "PackagePath": "staticwebassets\\uploads\\comments\\9682a9d7-17e3-47f0-890b-3a3ca9a6b7a0.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\comments\\a3f6f1be-7b84-440c-8ae4-50146de2ad7b.png",
+      "PackagePath": "staticwebassets\\uploads\\comments\\a3f6f1be-7b84-440c-8ae4-50146de2ad7b.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\comments\\a502ad4d-6a11-4d9d-bf07-4ee8400f3adf.png",
+      "PackagePath": "staticwebassets\\uploads\\comments\\a502ad4d-6a11-4d9d-bf07-4ee8400f3adf.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\comments\\c0c10b2c-6015-41e9-9ff9-dc5d7b6b37d6.png",
+      "PackagePath": "staticwebassets\\uploads\\comments\\c0c10b2c-6015-41e9-9ff9-dc5d7b6b37d6.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\comments\\c107d732-6d0c-4f5e-9219-5d7447eea27c.jpg",
+      "PackagePath": "staticwebassets\\uploads\\comments\\c107d732-6d0c-4f5e-9219-5d7447eea27c.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\comments\\cf14fb26-dceb-4fd3-a7b6-886f4300bd5c.jpg",
+      "PackagePath": "staticwebassets\\uploads\\comments\\cf14fb26-dceb-4fd3-a7b6-886f4300bd5c.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\comments\\d3b82655-b053-47e4-bb54-b3ad472e41a2.jpg",
+      "PackagePath": "staticwebassets\\uploads\\comments\\d3b82655-b053-47e4-bb54-b3ad472e41a2.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\comments\\e05d4181-73fc-4bb4-913e-d9cc3f45546b.png",
+      "PackagePath": "staticwebassets\\uploads\\comments\\e05d4181-73fc-4bb4-913e-d9cc3f45546b.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\comments\\e4db9424-aacb-4763-8db1-26eacb311b31.jpg",
+      "PackagePath": "staticwebassets\\uploads\\comments\\e4db9424-aacb-4763-8db1-26eacb311b31.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\comments\\f71c4927-bc7b-4f26-b4bf-91bb6c76b42f.png",
+      "PackagePath": "staticwebassets\\uploads\\comments\\f71c4927-bc7b-4f26-b4bf-91bb6c76b42f.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\comments\\f9abb35c-5f16-4572-8d9d-f5fe21d62081.jpg",
+      "PackagePath": "staticwebassets\\uploads\\comments\\f9abb35c-5f16-4572-8d9d-f5fe21d62081.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\00620a83-bf0f-4570-b7f6-8aa4f9a1f8f0.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\00620a83-bf0f-4570-b7f6-8aa4f9a1f8f0.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\072bfffe-89df-470f-bf0d-5956bcac401c.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\072bfffe-89df-470f-bf0d-5956bcac401c.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\0c7fe15b-2ffb-4fdb-8471-4987c0022beb.png",
+      "PackagePath": "staticwebassets\\uploads\\completion\\0c7fe15b-2ffb-4fdb-8471-4987c0022beb.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\0e1cee8c-1b08-4442-b661-481c51510f31.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\0e1cee8c-1b08-4442-b661-481c51510f31.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\1de8773a-fec3-41a5-9a9e-74e6fb743226.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\1de8773a-fec3-41a5-9a9e-74e6fb743226.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\1f0f36f8-2be1-4da4-9b1d-9fc86eeedc5c.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\1f0f36f8-2be1-4da4-9b1d-9fc86eeedc5c.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\2acbee4e-dd95-4937-99b4-9a99cf72bd8a.png",
+      "PackagePath": "staticwebassets\\uploads\\completion\\2acbee4e-dd95-4937-99b4-9a99cf72bd8a.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\2cb5f147-96de-4070-a364-e5d3d846c267.png",
+      "PackagePath": "staticwebassets\\uploads\\completion\\2cb5f147-96de-4070-a364-e5d3d846c267.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\36eecf71-9312-42b1-b53c-5f96661c8b89.png",
+      "PackagePath": "staticwebassets\\uploads\\completion\\36eecf71-9312-42b1-b53c-5f96661c8b89.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\386f095a-f05a-485f-b632-c0aec9b2de8c.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\386f095a-f05a-485f-b632-c0aec9b2de8c.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\3879d66b-660b-4a28-8eb6-d7d15d57f254.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\3879d66b-660b-4a28-8eb6-d7d15d57f254.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\39574510-2995-4adb-b2f8-44f3bc57980e.png",
+      "PackagePath": "staticwebassets\\uploads\\completion\\39574510-2995-4adb-b2f8-44f3bc57980e.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\39f4aa6a-4453-470e-b5f4-86e7fc097b14.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\39f4aa6a-4453-470e-b5f4-86e7fc097b14.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\3dc61059-574c-4ad4-b7f5-3dc0dadd4505.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\3dc61059-574c-4ad4-b7f5-3dc0dadd4505.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\4465be64-9d7d-47a2-a1bf-c3898349edf2.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\4465be64-9d7d-47a2-a1bf-c3898349edf2.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\5362dbbb-3aaa-4641-8ac9-bf6c050160a0.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\5362dbbb-3aaa-4641-8ac9-bf6c050160a0.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\572707f8-5b52-4a4f-a7e9-5df2566ca5cd.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\572707f8-5b52-4a4f-a7e9-5df2566ca5cd.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\5bc5a42c-07bd-4fa0-8a44-89d14f2e794e.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\5bc5a42c-07bd-4fa0-8a44-89d14f2e794e.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\62050982-4a17-48d7-a90f-84a00cdcece5.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\62050982-4a17-48d7-a90f-84a00cdcece5.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\624c9dcb-6ecb-4680-859b-c8d85283b0fa.png",
+      "PackagePath": "staticwebassets\\uploads\\completion\\624c9dcb-6ecb-4680-859b-c8d85283b0fa.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\6bdbe95c-c220-4f38-9b0e-762e535d2885.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\6bdbe95c-c220-4f38-9b0e-762e535d2885.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\71888b6d-2c65-4a4a-af0e-d6dd71667953.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\71888b6d-2c65-4a4a-af0e-d6dd71667953.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\756a4f70-7d73-4bcc-b980-e0a298d95082.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\756a4f70-7d73-4bcc-b980-e0a298d95082.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\7b60fb70-8c2f-427d-a02c-bf711d47e776.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\7b60fb70-8c2f-427d-a02c-bf711d47e776.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\822f0944-b045-4ecd-9951-ab1b8179580a.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\822f0944-b045-4ecd-9951-ab1b8179580a.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\8638c2e4-a6d7-4978-809e-63a86e1fbe7f.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\8638c2e4-a6d7-4978-809e-63a86e1fbe7f.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\96890df3-7700-43e8-b6c8-f513505d19e2.png",
+      "PackagePath": "staticwebassets\\uploads\\completion\\96890df3-7700-43e8-b6c8-f513505d19e2.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\9b34e22c-a1b6-4538-9a27-13a09d0fe2b7.png",
+      "PackagePath": "staticwebassets\\uploads\\completion\\9b34e22c-a1b6-4538-9a27-13a09d0fe2b7.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\9cd1e462-cd29-49ce-991c-514d59183a74.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\9cd1e462-cd29-49ce-991c-514d59183a74.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\a8a699a9-74ba-4ea2-844c-fbc408cdffa8.png",
+      "PackagePath": "staticwebassets\\uploads\\completion\\a8a699a9-74ba-4ea2-844c-fbc408cdffa8.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\b40bb402-a3ca-4e39-97b2-ce709237d19b.png",
+      "PackagePath": "staticwebassets\\uploads\\completion\\b40bb402-a3ca-4e39-97b2-ce709237d19b.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\c07e229c-aadd-4579-a702-397aca7b191b.png",
+      "PackagePath": "staticwebassets\\uploads\\completion\\c07e229c-aadd-4579-a702-397aca7b191b.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\cb9585a5-6cd7-4423-bc8a-6662b10690ef.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\cb9585a5-6cd7-4423-bc8a-6662b10690ef.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\dedbf051-0a52-4825-a307-9df26e1bf245.png",
+      "PackagePath": "staticwebassets\\uploads\\completion\\dedbf051-0a52-4825-a307-9df26e1bf245.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\e08926f3-a3db-473d-b713-49e176f2a631.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\e08926f3-a3db-473d-b713-49e176f2a631.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\e119c33a-1c15-4c06-a152-89503a24a53d.png",
+      "PackagePath": "staticwebassets\\uploads\\completion\\e119c33a-1c15-4c06-a152-89503a24a53d.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\ea8861b0-3849-41f2-b556-6ee4437aef7a.png",
+      "PackagePath": "staticwebassets\\uploads\\completion\\ea8861b0-3849-41f2-b556-6ee4437aef7a.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\eb39275e-e37d-443a-990c-6e159ee82025.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\eb39275e-e37d-443a-990c-6e159ee82025.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\completion\\f2ccd59c-ce31-44d5-8cce-b0f1fe4f3a07.jpg",
+      "PackagePath": "staticwebassets\\uploads\\completion\\f2ccd59c-ce31-44d5-8cce-b0f1fe4f3a07.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\d0e506a1-b0cb-447c-ab54-6c0125a24509.jpg",
+      "PackagePath": "staticwebassets\\uploads\\d0e506a1-b0cb-447c-ab54-6c0125a24509.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\d2343e7e-da3d-489c-b8f5-1523741267ff.jpg",
+      "PackagePath": "staticwebassets\\uploads\\d2343e7e-da3d-489c-b8f5-1523741267ff.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\d281936f-34c0-4631-87ad-dab3c045b15d.jpg",
+      "PackagePath": "staticwebassets\\uploads\\d281936f-34c0-4631-87ad-dab3c045b15d.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\d3fa09b8-beda-405c-91fb-e23160ac36c2.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\d3fa09b8-beda-405c-91fb-e23160ac36c2.jpeg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\d523c6d7-a5f3-43bd-b902-1a9de5ed69cb.jpg",
+      "PackagePath": "staticwebassets\\uploads\\d523c6d7-a5f3-43bd-b902-1a9de5ed69cb.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\d57aa927-525c-4e45-be79-ea9504e3f381.png",
+      "PackagePath": "staticwebassets\\uploads\\d57aa927-525c-4e45-be79-ea9504e3f381.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\d623f863-5749-43b7-a210-328c21e8ed2d.png",
+      "PackagePath": "staticwebassets\\uploads\\d623f863-5749-43b7-a210-328c21e8ed2d.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\d97c74e0-cb43-49d9-ba90-6049d1fe16fd.png",
+      "PackagePath": "staticwebassets\\uploads\\d97c74e0-cb43-49d9-ba90-6049d1fe16fd.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\da7cb17d-4de4-42ca-979f-7ba66ac50839.jpg",
+      "PackagePath": "staticwebassets\\uploads\\da7cb17d-4de4-42ca-979f-7ba66ac50839.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\dc9b30df-b2d0-45bd-b812-a81207151379.png",
+      "PackagePath": "staticwebassets\\uploads\\dc9b30df-b2d0-45bd-b812-a81207151379.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\e0b638cc-b62b-422b-b1be-c13309816c75.png",
+      "PackagePath": "staticwebassets\\uploads\\e0b638cc-b62b-422b-b1be-c13309816c75.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\e105661f-43e8-405f-9926-1c0fc15a4fb3.jpg",
+      "PackagePath": "staticwebassets\\uploads\\e105661f-43e8-405f-9926-1c0fc15a4fb3.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\e1056f96-1003-4c03-bb8f-110dfa545854.jpg",
+      "PackagePath": "staticwebassets\\uploads\\e1056f96-1003-4c03-bb8f-110dfa545854.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\e1100b01-e008-45bf-9892-2516d7123841.jpg",
+      "PackagePath": "staticwebassets\\uploads\\e1100b01-e008-45bf-9892-2516d7123841.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\e48202cf-757c-4bb5-a892-c4cf5485ce58.jpg",
+      "PackagePath": "staticwebassets\\uploads\\e48202cf-757c-4bb5-a892-c4cf5485ce58.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\e4e5f0da-1976-4743-b28d-55a036598f3f.jpg",
+      "PackagePath": "staticwebassets\\uploads\\e4e5f0da-1976-4743-b28d-55a036598f3f.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\e68f79db-cc75-41d9-a40c-a7ab0ca20ede.jpg",
+      "PackagePath": "staticwebassets\\uploads\\e68f79db-cc75-41d9-a40c-a7ab0ca20ede.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\e6c49506-9989-4485-be80-51618eb3ac95.jpg",
+      "PackagePath": "staticwebassets\\uploads\\e6c49506-9989-4485-be80-51618eb3ac95.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\e818abc0-11f1-4dcd-833d-c42f7720df6d.jpg",
+      "PackagePath": "staticwebassets\\uploads\\e818abc0-11f1-4dcd-833d-c42f7720df6d.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\e84d412a-5604-4bf5-ae06-364efa3057ea.jpg",
+      "PackagePath": "staticwebassets\\uploads\\e84d412a-5604-4bf5-ae06-364efa3057ea.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\e9027167-063a-432c-a670-9cf86e9b96fe.jpg",
+      "PackagePath": "staticwebassets\\uploads\\e9027167-063a-432c-a670-9cf86e9b96fe.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\ed2b77dc-8146-4724-ab81-c7408b2966a0.jpg",
+      "PackagePath": "staticwebassets\\uploads\\ed2b77dc-8146-4724-ab81-c7408b2966a0.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\ed9ab55d-a2f1-4099-bbb2-d18739e02acc.png",
+      "PackagePath": "staticwebassets\\uploads\\ed9ab55d-a2f1-4099-bbb2-d18739e02acc.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\ef268154-eeee-4605-8252-2180061446bb.jpg",
+      "PackagePath": "staticwebassets\\uploads\\ef268154-eeee-4605-8252-2180061446bb.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\ef668a2d-c9d1-488c-90be-a05a65eb3454.jpg",
+      "PackagePath": "staticwebassets\\uploads\\ef668a2d-c9d1-488c-90be-a05a65eb3454.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\f42b42bf-7dab-4ece-8bad-fec9b80f3787.jpg",
+      "PackagePath": "staticwebassets\\uploads\\f42b42bf-7dab-4ece-8bad-fec9b80f3787.jpg"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\fa3d329e-1d4d-40cc-8f7a-5632cfea4080.png",
+      "PackagePath": "staticwebassets\\uploads\\fa3d329e-1d4d-40cc-8f7a-5632cfea4080.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\febf44d1-8a8e-4088-94aa-1c2f68ad84df.png",
+      "PackagePath": "staticwebassets\\uploads\\febf44d1-8a8e-4088-94aa-1c2f68ad84df.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\ffe19078-45f9-428a-bdcc-af10351554d6.png",
+      "PackagePath": "staticwebassets\\uploads\\ffe19078-45f9-428a-bdcc-af10351554d6.png"
+    },
+    {
+      "Id": "D:\\Downloads\\PINAKALATEST UNIVMATE\\UnivMate\\UnivMate\\wwwroot\\uploads\\reports\\b4eb25da-51a7-4825-bfb8-71ff9325690e_placeholder.jpg",
+      "PackagePath": "staticwebassets\\uploads\\reports\\b4eb25da-51a7-4825-bfb8-71ff9325690e_placeholder.jpg"
+    },
+    {
+      "Id": "obj\\Release\\net9.0\\staticwebassets\\msbuild.UnivMate.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Release\\net9.0\\staticwebassets\\msbuild.UnivMate.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Release\\net9.0\\staticwebassets\\msbuild.build.UnivMate.props",
+      "PackagePath": "build\\UnivMate.props"
+    },
+    {
+      "Id": "obj\\Release\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.UnivMate.props",
+      "PackagePath": "buildMultiTargeting\\UnivMate.props"
+    },
+    {
+      "Id": "obj\\Release\\net9.0\\staticwebassets\\msbuild.buildTransitive.UnivMate.props",
+      "PackagePath": "buildTransitive\\UnivMate.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

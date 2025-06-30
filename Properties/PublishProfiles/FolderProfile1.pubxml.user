@@ -2,19 +2,8 @@
 <!-- https://go.microsoft.com/fwlink/?LinkID=208121. -->
 <Project>
   <PropertyGroup>
-    <_PublishTargetUrl>C:\Users\User\Downloads\UnivMate\UnivMate\bin\Release\net9.0\publish\</_PublishTargetUrl>
-    <History>True|2025-05-07T16:22:35.0209367Z||;True|2025-05-06T08:11:31.7821082+08:00||;True|2025-05-06T07:09:13.2109974+08:00||;True|2025-05-06T06:34:47.6341251+08:00||;</History>
+    <_PublishTargetUrl>D:\Downloads\PINAKALATEST UNIVMATE\UnivMate\UnivMate\bin\Release\net9.0\publish\univmatetcu</_PublishTargetUrl>
+    <History>False|2025-06-30T02:08:09.4504472Z||;True|2025-06-30T09:59:10.6520277+08:00||;</History>
     <LastFailureDetails />
-    <TimeStampOfAssociatedLegacyPublishXmlFile />
   </PropertyGroup>
-  <ItemGroup>
-    <DestinationConnectionStrings Include="DefaultConnection">
-      <Value>workstation id=3CCS_G8.mssql.somee.com%3bpacket size=4096%3buser id=blair_SQLLogin_1%3bpwd=9m564grzjz%3bdata source=3CCS_G8.mssql.somee.com%3bpersist security info=False%3binitial catalog=3CCS_G8%3bTrustServerCertificate=True</Value>
-    </DestinationConnectionStrings>
-  </ItemGroup>
-  <ItemGroup>
-    <EFMigrations Include="UnivMate.Data.ApplicationDbContext">
-      <Value>workstation id=3CCS_G8.mssql.somee.com%3bpacket size=4096%3buser id=blair_SQLLogin_1%3bpwd=9m564grzjz%3bdata source=3CCS_G8.mssql.somee.com%3bpersist security info=False%3binitial catalog=3CCS_G8%3bTrustServerCertificate=True</Value>
-    </EFMigrations>
-  </ItemGroup>
 </Project>

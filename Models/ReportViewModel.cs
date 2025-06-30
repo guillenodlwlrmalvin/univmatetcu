@@ -11,6 +11,9 @@ namespace UnivMate.Models
 
         [Required(ErrorMessage = "Location is required")]
         public string Location { get; set; }
+        public string LocationGroup { get; set; }
+        public string LocationSubgroup { get; set; }
+
 
         [Required(ErrorMessage = "Photo evidence is required")]
         [DataType(DataType.Upload)]

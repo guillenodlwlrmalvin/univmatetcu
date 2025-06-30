@@ -519,6 +519,126 @@ namespace UnivMate.Controllers
             }
         }
 
+
+        [Authorize(Roles = "Admin,Staff")]
+        public IActionResult UserDashboard()
+        {
+            // Get current user
+            var userName = User.Identity?.Name;
+
+            // You might want to pass some additional data if needed
+            return View("~/Views/Dashboard/Index.cshtml", new
+            {
+                // Any data you want to pass to the user dashboard
+            });
+        }
+
+        
+        [HttpGet]
+        public async Task<IActionResult> GetLocations()
+        {
+            // Replace this with your actual data access logic
+            var locations = await _context.Locations
+                .OrderBy(l => l.Group)
+                .ThenBy(l => l.Subgroup)
+                .ThenBy(l => l.Name)
+                .ToListAsync();
+
+            return Json(new
+            {
+                success = true,
+                locations = locations.Select(l => new {
+                    id = l.Id,
+                    name = l.Name,
+                    group = l.Group,
+                    subgroup = l.Subgroup
+                })
+            });
+        }
+
+        [Authorize(Roles = "Admin,Staff")]
+        [HttpPost]
+        public async Task<IActionResult> AddLocation([FromBody] LocationModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Json(new { success = false, message = "Invalid data" });
+            }
+
+            try
+            {
+                var location = new Location
+                {
+                    Name = model.Name,
+                    Group = model.Group,
+                    Subgroup = string.IsNullOrEmpty(model.Subgroup) ? null : model.Subgroup
+                };
+
+                _context.Locations.Add(location);
+                await _context.SaveChangesAsync();
+
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
+       [HttpPost]
+[Authorize(Roles = "Admin,Staff")]
+public async Task<IActionResult> DeleteLocation([FromBody] DeleteLocationModel model)
+{
+    if (model == null || model.Id <= 0)
+    {
+        return Json(new { success = false, message = "Invalid location ID" });
+    }
+
+    try
+    {
+        var location = await _context.Locations.FindAsync(model.Id);
+        if (location == null)
+        {
+            return Json(new { success = false, message = "Location not found" });
+        }
+
+        // Find all reports that reference this location
+        var reportsWithLocation = await _context.Reports
+            .Where(r => r.Location == location.Name)
+            .ToListAsync();
+
+        // Update those reports to use a placeholder location
+        foreach (var report in reportsWithLocation)
+        {
+            report.Location = "[Deleted Location]";
+        }
+
+        // Remove the location
+        _context.Locations.Remove(location);
+        await _context.SaveChangesAsync();
+
+        return Json(new { success = true, message = "Location deleted successfully" });
+    }
+    catch (Exception ex)
+    {
+        return Json(new { success = false, message = $"Error deleting location: {ex.Message}" });
+    }
+}
+
+
+
+        public class LocationModel
+        {
+            public string Name { get; set; }
+            public string Group { get; set; }
+            public string Subgroup { get; set; }
+        }
+
+        public class DeleteLocationModel
+        {
+            public int Id { get; set; }
+        }
+
         public class RatingRequest
         {
             public int ReportId { get; set; }

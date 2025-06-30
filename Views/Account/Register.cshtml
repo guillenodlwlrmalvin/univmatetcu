@@ -1,4 +1,5 @@
-﻿@model UnivMate.Models.RegisterViewModel
+﻿@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment env
+@model UnivMate.Models.RegisterViewModel
 @{
     ViewData["Title"] = "Join UnivMate";
     Layout = null;
@@ -195,17 +196,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- In both login.cshtml and register.cshtml -->
+    
     <div class="auth-container">
         <div class="auth-illustration">
             <div class="illustration-text">
+
+                <div class="auth-logo">
+                    @{
+                        string[] extensions = { ".png", ".jpg", ".svg" };
+                        string logoPath = "images/logo";
+                        string logoUrl = null;
+
+                        foreach (string extension in extensions)
+                        {
+                            if (System.IO.File.Exists(env.WebRootPath + "/" + logoPath + extension))
+                            {
+                                logoUrl = "/" + logoPath + extension;
+                                break;
+                            }
+                        }
+
+                        if (logoUrl != null)
+                        {
+                            <img src="@logoUrl" alt="TCU Jobs Logo" style="max-height: 120px;">
+                        }
+                        else
+                        {
+                            <p>No logo found.</p>
+                        }
+                    }
+                </div>
                 <h3 class="illustration-title">Join Our Community</h3>
                 <p class="illustration-subtitle">Become part of your campus network and unlock academic resources and connections.</p>
-                <img src="https://illustrations.popsy.co/amber/graduation.svg" alt="Graduation illustration" class="illustration-img" style="max-height: 250px;">
+                
             </div>
         </div>
         <div class="auth-content">
             <div class="auth-header">
-                <div class="auth-logo">UnivMate</div>
+                <div class="auth-logo">TCU Jobs</div>
                 <h2 class="auth-title">Create Your Account</h2>
                 <p class="auth-subtitle">Fill in your details to get started</p>
             </div>
@@ -238,7 +267,10 @@
 
                 <div class="mb-3">
                     <label asp-for="Email" class="form-label">Email Address</label>
-                    <input asp-for="Email" class="form-control" placeholder="Enter your email">
+                    <input asp-for="Email" type="email" class="form-control" 
+                                placeholder="Enter your email"
+                                pattern="[a-zA-Z0-9._%+-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                                title="Please enter a valid email address (e.g., user@example.com)">                
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
 
@@ -268,13 +300,64 @@
                 <div id="studentFields" class="role-fields">
                     <div class="mb-3">
                         <label asp-for="StudentId" class="form-label">Student ID</label>
-                        <input asp-for="StudentId" class="form-control" placeholder="Enter your student ID">
+                        <input asp-for="StudentId" class="form-control"
+                               placeholder="e.g. 12-34567"
+                               pattern="\d{2}-\d{5}"
+                               title="Please enter a valid Student ID in the format 00-00000">
+                        <small class="form-text text-muted">Format: 00-00000 (two digits, hyphen, five digits)</small>
                         <span asp-validation-for="StudentId" class="text-danger"></span>
                     </div>
-                    <div class="mb-3">
-                        <label asp-for="Major" class="form-label">Major</label>
-                        <input asp-for="Major" class="form-control" placeholder="Enter your major">
-                        <span asp-validation-for="Major" class="text-danger"></span>
+                    <div class="form-group">
+                        <label asp-for="Major" class="form-label fw-bold"></label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-book"></i></span>
+                            <select asp-for="Major" class="form-select">
+                                <option value="">Select your major</option>
+                                <optgroup label="College of Arts and Science">
+                                    <option value="Bachelor of Science in Psychology">Bachelor of Science in Psychology</option>
+                                    <option value="Bachelor of Science in Public Administration">Bachelor of Science in Public Administration</option>
+                                    <option value="Bachelor of Science in Social Work">Bachelor of Science in Social Work</option>
+                                </optgroup>
+                                <optgroup label="College of Business Management">
+                                    <option value="Bachelor of Science in Business Administration">Bachelor of Science in Business Administration</option>
+                                    <option value="Major in Human Resource Management">Major in Human Resource Management</option>
+                                    <option value="Major in Marketing Management">Major in Marketing Management</option>
+                                    <option value="Bachelor of Science in Entrepreneurship">Bachelor of Science in Entrepreneurship</option>
+                                    <option value="Bachelor of Science in Office Administration">Bachelor of Science in Office Administration</option>
+                                </optgroup>
+                                <optgroup label="College of Criminal Justice">
+                                    <option value="Bachelor of Science in Criminology">Bachelor of Science in Criminology</option>
+                                </optgroup>
+                                <optgroup label="College of Education">
+                                    <option value="Bachelor in Elementary Education">Bachelor in Elementary Education</option>
+                                    <option value="Bachelor of Secondary Education">Bachelor of Secondary Education</option>
+                                    <option value="Major in English">Major in English</option>
+                                    <option value="Major in Mathematics">Major in Mathematics</option>
+                                    <option value="Major in Science">Major in Science</option>
+                                </optgroup>
+                                <optgroup label="College of Engineering and Technology">
+                                    <option value="Bachelor of Science in Civil Engineering">Bachelor of Science in Civil Engineering</option>
+                                    <option value="Bachelor of Science in Industrial Engineering">Bachelor of Science in Industrial Engineering</option>
+                                    <option value="Bachelor of Science in Mechanical Engineering">Bachelor of Science in Mechanical Engineering</option>
+                                    <option value="Bachelor of Science in Industrial Technology">Bachelor of Science in Industrial Technology</option>
+                                </optgroup>
+                                <optgroup label="College of Hospitality & Tourism Management">
+                                    <option value="Bachelor of Science in Hospitality Management">Bachelor of Science in Hospitality Management</option>
+                                    <option value="Bachelor of Science in Tourism Management">Bachelor of Science in Tourism Management</option>
+                                </optgroup>
+                                <optgroup label="College of Information and Communication Technology">
+                                    <option value="Bachelor of Science in Computer Science">Bachelor of Science in Computer Science</option>
+                                    <option value="Bachelor of Science in Information Systems">Bachelor of Science in Information Systems</option>
+                                </optgroup>
+                                <optgroup label="Graduate School">
+                                    <option value="Master of Arts in Education major in Educational Management">Master of Arts in Education major in Educational Management</option>
+                                    <option value="Master in Business Administration">Master in Business Administration</option>
+                                    <option value="Master in Public Administration">Master in Public Administration</option>
+                                    <option value="Master of Science in Criminal Justice">Master of Science in Criminal Justice</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <span asp-validation-for="Major" class="text-danger small"></span>
                     </div>
                 </div>
 

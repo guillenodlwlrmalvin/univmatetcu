@@ -19,6 +19,7 @@ namespace UnivMate.Data
         public DbSet<ReportStatusHistory> ReportStatusHistories { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<ReportComment> ReportComments { get; set; }
+        public DbSet<Location> Locations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -270,155 +270,179 @@
             }
 
         // ==================== EDIT PROFILE ====================
-        // ==================== EDIT PROFILE ====================
         [Authorize]
         public async Task<IActionResult> EditProfile()
         {
-            try
+            var userId = GetCurrentUserId();
+            if (userId == null)
             {
-                var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                var user = await _context.Users.AsNoTracking()
-                    .FirstOrDefaultAsync(u => u.Id == userId);
-
-                if (user == null)
-                {
-                    await HttpContext.SignOutAsync();
-                    return RedirectToAction("Login");
-                }
-
-                var model = new EditProfileViewModel
-                {
-                    Id = user.Id,
-                    Username = user.Username,
-                    Email = user.Email,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    ExistingProfilePicturePath = user.ProfilePicturePath,
-                    Role = user.Role,
-                    StudentId = user.StudentId,
-                    Major = user.Major,
-                    Department = user.Department,
-                    Position = user.Position,
-                    StaffId = user.StaffId,
-                    OfficeLocation = user.OfficeLocation
-                };
-
-                return View(model);
+                return RedirectToLoginWithMessage("Your session has expired. Please log in again.");
             }
-            catch (Exception ex)
+
+            var user = await _context.Users.FindAsync(userId.Value);
+            if (user == null)
             {
-                _logger.LogError(ex, "Error loading edit profile page");
-                TempData["ErrorMessage"] = "An error occurred while loading your profile.";
-                return RedirectToAction("Index", "Dashboard");
+                return RedirectToLoginWithMessage("User not found. Please log in again.");
             }
+
+            var model = MapUserToEditProfileViewModel(user);
+            return View(model);
         }
 
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditProfile(EditProfileViewModel model)
+        public async Task<IActionResult> EditProfile(EditProfileViewModel model, IFormFile profilePicture)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var userId = GetCurrentUserId();
+            if (userId == null || model.Id != userId)
+            {
+                return RedirectToLoginWithMessage("Invalid user operation detected.");
+            }
+
+            var user = await _context.Users.FindAsync(userId.Value);
+            if (user == null)
+            {
+                return RedirectToLoginWithMessage("User not found. Please log in again.");
+            }
+
+            // Check for email/username conflicts
+            if (await _context.Users.AnyAsync(u => u.Email == model.Email && u.Id != userId.Value))
+            {
+                ModelState.AddModelError("Email", "This email is already in use.");
+                return View(model);
+            }
+
+            if (await _context.Users.AnyAsync(u => u.Username == model.Username && u.Id != userId.Value))
+            {
+                ModelState.AddModelError("Username", "This username is already taken.");
+                return View(model);
+            }
+
+            // Handle profile picture upload
+            if (profilePicture != null && profilePicture.Length > 0)
+            {
+                // Validate image file
+                if (!profilePicture.ContentType.StartsWith("image/"))
+                {
+                    ModelState.AddModelError("profilePicture", "Only image files are allowed.");
+                    return View(model);
+                }
+
+                // Delete old profile picture if exists
+                if (!string.IsNullOrEmpty(user.ProfilePicturePath))
+                {
+                    var oldFilePath = Path.Combine(_env.WebRootPath, user.ProfilePicturePath.TrimStart('~', '/'));
+                    if (System.IO.File.Exists(oldFilePath))
+                    {
+                        System.IO.File.Delete(oldFilePath);
+                    }
+                }
+
+                // Save new profile picture
+                var uploadsFolder = Path.Combine(_env.WebRootPath, "uploads", "profile-pictures");
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                var uniqueFileName = $"{Guid.NewGuid()}_{profilePicture.FileName}";
+                var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await profilePicture.CopyToAsync(fileStream);
+                }
+
+                user.ProfilePicturePath = $"/uploads/profile-pictures/{uniqueFileName}";
+                model.ExistingProfilePicturePath = user.ProfilePicturePath;
+            }
+
+            // Update user properties
+            user.Username = model.Username;
+            user.Email = model.Email;
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+
+            // Update role-specific properties
+            switch (user.Role)
+            {
+                case "Student":
+                    user.StudentId = model.StudentId;
+                    user.Major = model.Major;
+                    break;
+                case "Professor":
+                    user.Department = model.Department;
+                    user.Position = model.Position;
+                    break;
+                case "Staff":
+                case "Admin":
+                    user.StaffId = model.StaffId;
+                    user.OfficeLocation = model.OfficeLocation;
+                    break;
+            }
+
             try
             {
-                var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-
-                // Ensure the user is editing their own profile
-                if (model.Id != userId)
-                {
-                    _logger.LogWarning("User {UserId} attempted to edit profile {ProfileId}", userId, model.Id);
-                    await HttpContext.SignOutAsync();
-                    return RedirectToAction("Login");
-                }
-
-                var user = await _context.Users.FindAsync(userId);
-                if (user == null)
-                {
-                    await HttpContext.SignOutAsync();
-                    return RedirectToAction("Login");
-                }
-
-                if (!ModelState.IsValid)
-                {
-                    // Repopulate the existing profile picture path if validation fails
-                    model.ExistingProfilePicturePath = user.ProfilePicturePath;
-                    return View(model);
-                }
-
-                // Check for duplicate email (case-insensitive)
-                var existingEmailUser = await _context.Users
-                    .FirstOrDefaultAsync(u => u.Email.ToLower() == model.Email.ToLower() && u.Id != userId);
-
-                if (existingEmailUser != null)
-                {
-                    ModelState.AddModelError("Email", "This email is already in use.");
-                    model.ExistingProfilePicturePath = user.ProfilePicturePath;
-                    return View(model);
-                }
-
-                // Check for duplicate username (case-insensitive)
-                var existingUsernameUser = await _context.Users
-                    .FirstOrDefaultAsync(u => u.Username.ToLower() == model.Username.ToLower() && u.Id != userId);
-
-                if (existingUsernameUser != null)
-                {
-                    ModelState.AddModelError("Username", "This username is already taken.");
-                    model.ExistingProfilePicturePath = user.ProfilePicturePath;
-                    return View(model);
-                }
-
-                // Update basic info
-                user.Username = model.Username.Trim();
-                user.Email = model.Email.Trim().ToLower();
-                user.FirstName = model.FirstName.Trim();
-                user.LastName = model.LastName.Trim();
-               
-
-                // Update role-specific properties
-                switch (user.Role)
-                {
-                    case "Student":
-                        user.StudentId = model.StudentId?.Trim();
-                        user.Major = model.Major?.Trim();
-                        break;
-                    case "Professor":
-                        user.Department = model.Department?.Trim();
-                        user.Position = model.Position?.Trim();
-                        break;
-                    case "Staff":
-                    case "Admin":
-                        user.StaffId = model.StaffId?.Trim();
-                        user.OfficeLocation = model.OfficeLocation?.Trim();
-                        break;
-                }
-
-                _context.Users.Update(user);
                 await _context.SaveChangesAsync();
-
-                // Refresh the authentication cookie to update claims
-                await HttpContext.SignOutAsync();
-                await SignInUserAsync(user);
-
-                TempData["SuccessMessage"] = "Your profile has been updated successfully!";
-                return RedirectToAction("EditProfile");
-            }
-            catch (DbUpdateConcurrencyException ex)
-            {
-                _logger.LogError(ex, "Concurrency error updating profile for user {UserId}", model.Id);
-                ModelState.AddModelError("", "The record you attempted to edit was modified by another user. Please refresh and try again.");
-                return View(model);
-            }
-            catch (DbUpdateException ex)
-            {
-                _logger.LogError(ex, "Database error updating profile for user {UserId}", model.Id);
-                ModelState.AddModelError("", "An error occurred while saving your profile. Please try again.");
-                return View(model);
+                await RefreshAuthenticationCookie(user);
+                TempData["SuccessMessage"] = "Profile updated successfully!";
+                return RedirectToAction("Index", "Dashboard");
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Unexpected error updating profile for user {UserId}", model.Id);
-                TempData["ErrorMessage"] = "An unexpected error occurred. Please try again.";
-                return RedirectToAction("EditProfile");
+                _logger.LogError(ex, "Error updating profile");
+                ModelState.AddModelError("", "An error occurred while saving. Please try again.");
+                return View(model);
             }
+        }
+
+        // ==================== HELPER METHODS ====================
+        private int? GetCurrentUserId()
+        {
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (int.TryParse(userIdClaim, out var userId))
+            {
+                return userId;
+            }
+            return null;
+        }
+
+        private async Task RefreshAuthenticationCookie(User user)
+        {
+            await HttpContext.SignOutAsync();
+            await SignInUserAsync(user);
+        }
+
+        private IActionResult RedirectToLoginWithMessage(string message)
+        {
+            TempData["ErrorMessage"] = message;
+            return RedirectToAction("Login");
+        }
+
+        private EditProfileViewModel MapUserToEditProfileViewModel(User user)
+        {
+            return new EditProfileViewModel
+            {
+                Id = user.Id,
+                Username = user.Username,
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                ExistingProfilePicturePath = user.ProfilePicturePath,
+                Role = user.Role,
+                StudentId = user.StudentId,
+                Major = user.Major,
+                Department = user.Department,
+                Position = user.Position,
+                StaffId = user.StaffId,
+                OfficeLocation = user.OfficeLocation
+            };
         }
         // ==================== DEBUG ENDPOINTS ====================
         [HttpGet]
@@ -458,4 +482,5 @@
             }
 
         }
+
     }

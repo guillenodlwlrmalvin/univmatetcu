@@ -8,19 +8,19 @@
     <!-- Notification Alerts -->
     @if (TempData["StatusMessage"] != null)
     {
-        <div class="alert alert-info alert-dismissible fade show mt-3 shadow-sm" role="alert">
-            <i class="fas fa-info-circle me-2"></i>
+            <div class="alert alert-info alert-dismissible fade show mt-3 shadow-sm" role="alert">
+                <i class="fas fa-info-circle me-2"></i>
             @TempData["StatusMessage"]
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
     }
     @if (TempData["ErrorMessage"] != null)
     {
-        <div class="alert alert-danger alert-dismissible fade show mt-3 shadow-sm" role="alert">
-            <i class="fas fa-exclamation-circle me-2"></i>
+            <div class="alert alert-danger alert-dismissible fade show mt-3 shadow-sm" role="alert">
+                <i class="fas fa-exclamation-circle me-2"></i>
             @TempData["ErrorMessage"]
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
     }
 
     <!-- Page Header -->
@@ -44,8 +44,8 @@
         <!-- Card Header -->
         <div class="card-header bg-gradient-primary py-3 d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-2">
             <div>
-                <h6 class="m-0 font-weight-bold text-white">Report #@Model.Id</h6>
-                <small class="text-white-50">Submitted @Model.SubmittedAt.ToString("f")</small>
+                <h6 class="m-0 font-weight-bold text-black">Report #@Model.Id</h6>
+                <small class="text-black-50">Submitted @Model.SubmittedAt.ToString("f")</small>
             </div>
             <span class="badge @GetStatusBadgeClass(Model.Status) fs-6 py-2 px-3 shadow-sm">
                 <i class="@GetStatusIcon(Model.Status) me-1"></i>@Model.Status
@@ -78,21 +78,38 @@
 
                     <!-- Metadata Cards -->
                     <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <div class="card h-100 border-left-3 border-left-info shadow-sm">
-                                <div class="card-body py-2">
-                                    <h5 class="h6 font-weight-bold mb-2 d-flex align-items-center">
-                                        <i class="fas fa-map-marker-alt text-info me-2"></i>Location
-                                    </h5>
-                                    <p class="mb-0">@Model.Location</p>
-                                </div>
-                            </div>
-                        </div>
+
+
+                        <!-- In your report details view (ReportDetails.cshtml) -->
+                        <!-- Replace the existing Location card with this: -->
                         <div class="col-md-6 mb-3">
                             <div class="card h-100 border-left-3 border-left-warning shadow-sm">
                                 <div class="card-body py-2">
                                     <h5 class="h6 font-weight-bold mb-2 d-flex align-items-center">
-                                        <i class="fas fa-calendar-alt text-warning me-2"></i>Submitted
+                                        <i class="fas fa-door-open text-warning me-2"></i>Location Details
+                                    </h5>
+                                    <div class="mb-1">
+                                        <strong>Group:</strong> @Model.LocationGroup
+                                    </div>
+                                    @if (!string.IsNullOrEmpty(Model.LocationSubgroup))
+                                    {
+                                        <div class="mb-1">
+                                            <strong>Subgroup:</strong> @Model.LocationSubgroup
+                                        </div>
+                                    }
+                                    <div class="mb-0">
+                                        <strong>Specific Location:</strong> @Model.Location
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submission Date Card -->
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100 border-left-3 border-left-success shadow-sm">
+                                <div class="card-body py-2">
+                                    <h5 class="h6 font-weight-bold mb-2 d-flex align-items-center">
+                                        <i class="fas fa-calendar-alt text-success me-2"></i>Submitted
                                     </h5>
                                     <p class="mb-0">@Model.SubmittedAt.ToString("f")</p>
                                 </div>
@@ -106,93 +123,107 @@
                     <!-- Image Attachment -->
                     @if (!string.IsNullOrEmpty(Model.ImagePath))
                     {
-                        <div class="mb-4">
-                            <h5 class="h6 font-weight-bold mb-3 d-flex align-items-center">
-                                <i class="fas fa-image text-purple me-2"></i>Attached Image
-                            </h5>
-                            <div class="position-relative">
-                                <img src="@Url.Content(Model.ImagePath)" alt="Report Image"
-                                     class="img-fluid rounded-3 shadow-sm border"
-                                     style="max-height: 300px; width: 100%; object-fit: contain;" />
-                                <a href="@Url.Content(Model.ImagePath)" target="_blank"
-                                   class="btn btn-sm btn-primary position-absolute bottom-0 end-0 m-2 shadow-sm"
-                                   data-bs-toggle="tooltip" title="View Full Image">
-                                    <i class="fas fa-expand"></i>
-                                </a>
+                            <div class="mb-4">
+                                <h5 class="h6 font-weight-bold mb-3 d-flex align-items-center">
+                                    <i class="fas fa-image text-purple me-2"></i>Attached Image
+                                </h5>
+                                <div class="position-relative">
+                                    <img src="@Url.Content(Model.ImagePath)" alt="Report Image"
+                                         class="img-fluid rounded-3 shadow-sm border"
+                                         style="max-height: 300px; width: 100%; object-fit: contain;" />
+                                    <a href="@Url.Content(Model.ImagePath)" target="_blank"
+                                       class="btn btn-sm btn-primary position-absolute bottom-0 end-0 m-2 shadow-sm"
+                                       data-bs-toggle="tooltip" title="View Full Image">
+                                        <i class="fas fa-expand"></i>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
                     }
 
                     <!-- Assigned To -->
                     @if (Model.AssignedTo != null)
                     {
-                        <div class="card mb-4 border-left-3 border-left-success shadow-sm">
-                            <div class="card-body py-2">
-                                <h5 class="h6 font-weight-bold mb-2 d-flex align-items-center">
-                                    <i class="fas fa-user-check text-success me-2"></i>Assigned To
-                                </h5>
-                                <p class="mb-1">@Model.AssignedTo.FirstName @Model.AssignedTo.LastName</p>
-                                <small class="text-muted">
-                                    <i class="fas fa-clock me-1"></i>Assigned: @(Model.AssignedAt?.ToString("f") ?? "-")
-                                </small>
+                            <div class="card mb-4 border-left-3 border-left-success shadow-sm">
+                                <div class="card-body py-2">
+                                    <h5 class="h6 font-weight-bold mb-2 d-flex align-items-center">
+                                        <i class="fas fa-user-check text-success me-2"></i>Assigned To
+                                    </h5>
+                                    <p class="mb-1">@Model.AssignedTo.FirstName @Model.AssignedTo.LastName</p>
+                                    <small class="text-muted">
+                                        <i class="fas fa-clock me-1"></i>Assigned: @(Model.AssignedAt?.ToString("f") ?? "-")
+                                    </small>
+                                </div>
                             </div>
-                        </div>
                     }
 
                     <!-- Resolution Details -->
                     @if (Model.ResolvedBy != null)
                     {
-                        <div class="card border-left-3 border-left-danger shadow-sm">
-                            <div class="card-body py-2">
-                                <h5 class="h6 font-weight-bold mb-2 d-flex align-items-center">
-                                    <i class="fas fa-check-circle text-danger me-2"></i>Resolution Details
-                                </h5>
-                                <div class="mb-2">
-                                    <p class="mb-1">Resolved by: @Model.ResolvedBy.FirstName @Model.ResolvedBy.LastName</p>
-                                    <small class="text-muted">
-                                        <i class="fas fa-clock me-1"></i>Resolved: @(Model.ResolvedAt?.ToString("f") ?? "-")
-                                    </small>
-                                </div>
-                                <div class="alert alert-light p-3 mt-2 shadow-sm">
-                                    <h6 class="font-weight-bold mb-2">Resolution Notes:</h6>
-                                    <p class="mb-0">@Model.ResolutionNotes</p>
+                            <div class="card border-left-3 border-left-danger shadow-sm">
+                                <div class="card-body py-2">
+                                    <h5 class="h6 font-weight-bold mb-2 d-flex align-items-center">
+                                        <i class="fas fa-check-circle text-danger me-2"></i>Resolution Details
+                                    </h5>
+                                    <div class="mb-2">
+                                        <p class="mb-1">Resolved by: @Model.ResolvedBy.FirstName @Model.ResolvedBy.LastName</p>
+                                        <small class="text-muted">
+                                            <i class="fas fa-clock me-1"></i>Resolved: @(Model.ResolvedAt?.ToString("f") ?? "-")
+                                        </small>
+                                    </div>
+                                    <div class="alert alert-light p-3 mt-2 shadow-sm">
+                                        <h6 class="font-weight-bold mb-2">Resolution Notes:</h6>
+                                        <p class="mb-0">@Model.ResolutionNotes</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     }
 
                     <!-- User Rating -->
                     @if (Model.Status == "Completed")
                     {
-                        <div class="card border-left-3 border-left-warning mt-4 shadow-sm">
-                            <div class="card-body py-2">
-                                <h5 class="h6 font-weight-bold mb-2 d-flex align-items-center">
-                                    <i class="fas fa-star text-warning me-2"></i>User Rating
-                                </h5>
+                            <div class="card border-left-3 border-left-warning mt-4 shadow-sm">
+                                <div class="card-body py-2">
+                                    <h5 class="h6 font-weight-bold mb-2 d-flex align-items-center">
+                                        <i class="fas fa-star text-warning me-2"></i>User Rating
+                                    </h5>
                                 @if (Model.Rating.HasValue)
                                 {
-                                    <div class="d-flex align-items-center">
-                                        <div class="star-rating me-2">
+                                            <div class="d-flex align-items-center">
+                                                <div class="star-rating me-2">
                                             @for (int i = 1; i <= 5; i++)
                                             {
-                                                <i class="fas fa-star@(i <= Model.Rating.Value ? " text-warning" : " text-light")"></i>
+                                                            <i class="fas fa-star@(i <= Model.Rating.Value ? " text-warning" : " text-light")"></i>
                                             }
-                                        </div>
-                                        <span class="badge bg-warning text-dark shadow-sm">@Model.Rating.Value/5</span>
+                                                </div>
+                                                <span class="badge bg-warning text-dark shadow-sm">@Model.Rating.Value/5</span>
                                         @if (Model.RatedAt.HasValue)
                                         {
-                                            <small class="text-muted ms-2">
-                                                <i class="fas fa-clock me-1"></i>@Model.RatedAt.Value.ToString("f")
-                                            </small>
+                                                        <small class="text-muted ms-2">
+                                                            <i class="fas fa-clock me-1"></i>@Model.RatedAt.Value.ToString("f")
+                                                        </small>
                                         }
-                                    </div>
+                                            </div>
                                 }
                                 else
                                 {
-                                    <p class="text-muted mb-0">No rating provided by user</p>
+                                            <p class="text-muted mb-0">No rating provided by user</p>
                                 }
+                                </div>
+                                <div class="card border-left-3 border-left-primary mt-4 shadow-sm">
+                                    <div class="card-body py-2">
+                                        <h5 class="h6 font-weight-bold mb-2 d-flex align-items-center">
+                                            <i class="fas fa-download text-primary me-2"></i>Download Report
+                                        </h5>
+                                        <div class="d-flex gap-2">
+                                            <a asp-action="DownloadReport" asp-route-id="@Model.Id" asp-route-format="pdf"
+                                               class="btn btn-danger shadow-sm">
+                                                <i class="fas fa-file-pdf me-2"></i>Download as PDF
+                                            </a>
+                                         
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
                     }
                 </div>
             </div>
@@ -212,59 +243,64 @@
                 {
                     foreach (var comment in Model.Comments.OrderByDescending(c => c.CreatedAt))
                     {
-                        <div class="comment-bubble shadow-sm mb-3">
-                            <div class="comment-header d-flex justify-content-between align-items-center">
-                                <div>
-                                    <strong>@comment.Author?.FirstName @comment.Author?.LastName</strong>
-                                    <small class="text-muted ms-2">@comment.Author?.Email</small>
-                                </div>
-                                <small class="text-muted">@comment.CreatedAt.ToString("f")</small>
-                            </div>
-                            <div class="comment-content mt-2">
+                                <div class="comment-bubble shadow-sm mb-3">
+                                    <div class="comment-header d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <strong>@comment.Author?.FirstName @comment.Author?.LastName</strong>
+                                            <small class="text-muted ms-2">@comment.Author?.Email</small>
+                                        </div>
+                                        <small class="text-muted">@comment.CreatedAt.ToString("f")</small>
+                                    </div>
+                                    <div class="comment-content mt-2">
                                 @if (!string.IsNullOrEmpty(comment.Content))
                                 {
-                                    <p>@comment.Content</p>
+                                                <p>@comment.Content</p>
                                 }
                                 @if (!string.IsNullOrEmpty(comment.ImagePath))
                                 {
-                                    <div class="mt-2">
-                                        <img src="@Url.Content(comment.ImagePath)" alt="Comment Image"
-                                             class="img-fluid rounded-3 shadow-sm border"
-                                             style="max-height: 200px; max-width: 100%; object-fit: contain;" />
-                                        <a href="@Url.Content(comment.ImagePath)" target="_blank"
-                                           class="btn btn-sm btn-primary mt-2 shadow-sm">
-                                            <i class="fas fa-expand me-1"></i>View Full Image
-                                        </a>
-                                    </div>
+                                                <div class="mt-2">
+                                                    <img src="@Url.Content(comment.ImagePath)" alt="Comment Image"
+                                                         class="img-fluid rounded-3 shadow-sm border"
+                                                         style="max-height: 200px; max-width: 100%; object-fit: contain;" />
+                                                    <a href="@Url.Content(comment.ImagePath)" target="_blank"
+                                                       class="btn btn-sm btn-primary mt-2 shadow-sm">
+                                                        <i class="fas fa-expand me-1"></i>View Full Image
+                                                    </a>
+                                                </div>
                                 }
-                            </div>
-                        </div>
+                                    </div>
+                                </div>
                     }
                 }
                 else
                 {
-                    <p class="text-muted">No comments yet.</p>
+                        <p class="text-muted">No comments yet.</p>
                 }
             </div>
 
             @if (User.IsInRole("Admin") || User.IsInRole("Staff"))
             {
-                <form id="comment-form" asp-action="AddComment" method="post" enctype="multipart/form-data" class="mt-4">
-                    <input type="hidden" name="reportId" value="@Model.Id" />
-                    <div class="form-group">
-                        <label for="comment" class="form-label">Add a comment:</label>
-                        <textarea class="form-control mt-2 shadow-sm" id="comment" name="comment" rows="3"
-                                  placeholder="Explain any updates or decisions..." style="min-height: 100px;"></textarea>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label for="commentImage" class="form-label">Attach an image (optional):</label>
-                        <input type="file" class="form-control shadow-sm" id="commentImage" name="commentImage" accept="image/*">
-                        <small class="text-muted">Maximum file size: 5MB</small>
-                    </div>
-                    <button type="submit" class="btn btn-primary mt-3 shadow-sm">
-                        <i class="fas fa-paper-plane me-2"></i>Submit Comment
-                    </button>
-                </form>
+                    <form id="comment-form" asp-action="AddComment" method="post" enctype="multipart/form-data" class="mt-4">
+                        <input type="hidden" name="reportId" value="@Model.Id" />
+                        <!-- Add a hidden field for status update -->
+                    @if (Model.Status == "Pending")
+                    {
+                                <input type="hidden" name="updateStatus" value="In Progress" />
+                    }
+                        <div class="form-group">
+                            <label for="comment" class="form-label">Add a comment:</label>
+                            <textarea class="form-control mt-2 shadow-sm" id="comment" name="comment" rows="3"
+                                      placeholder="Explain any updates or decisions..." style="min-height: 100px;" required></textarea>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="commentImage" class="form-label">Attach an image <span class="text-danger">*</span>:</label>
+                            <input type="file" class="form-control shadow-sm" id="commentImage" name="commentImage" accept="image/*" required>
+                            <small class="text-muted">Maximum file size: 5MB</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3 shadow-sm">
+                            <i class="fas fa-paper-plane me-2"></i>Submit Comment
+                        </button>
+                    </form>
             }
         </div>
     </div>
@@ -368,95 +404,187 @@
 </style>
 
 @section Scripts {
-    <script>
-        $(document).ready(function() {
-            // Initialize tooltips
-            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-                return new bootstrap.Tooltip(tooltipTriggerEl);
-            });
-
-            // AJAX form submission for comments
-            $('#comment-form').submit(function(e) {
-                e.preventDefault();
-                var form = $(this);
-                var textarea = form.find('textarea');
-                var fileInput = form.find('input[type="file"]')[0];
-
-                // Check if both fields are empty
-                if ($.trim(textarea.val()) === '' && (fileInput.files.length === 0 || !fileInput.files[0])) {
-                    alert('Please enter a comment or attach an image before submitting.');
-                    return false;
-                }
-
-                // Show loading state
-                var submitBtn = form.find('button[type="submit"]');
-                var originalText = submitBtn.html();
-                submitBtn.prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Submitting...');
-
-                var formData = new FormData(form[0]);
-
-                $.ajax({
-                    url: form.attr('action'),
-                    type: form.attr('method'),
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function(response) {
-                        if (response.success) {
-                            // Add the new comment to the top of the comments container
-                            var commentHtml = `
-                                <div class="comment-bubble shadow-sm mb-3">
-                                    <div class="comment-header d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <strong>${response.authorName}</strong>
-                                            <small class="text-muted ms-2">${response.authorEmail}</small>
-                                        </div>
-                                        <small class="text-muted">${response.createdAt}</small>
-                                    </div>
-                                    <div class="comment-content mt-2">`;
-
-                            // Only add content if it exists
-                            if (response.commentContent && response.commentContent.trim() !== '') {
-                                commentHtml += `<p>${response.commentContent}</p>`;
-                            }
-
-                            if (response.imagePath) {
-                                commentHtml += `
-                                        <div class="mt-2">
-                                            <img src="${response.imagePath}" alt="Comment Image"
-                                                 class="img-fluid rounded-3 shadow-sm border"
-                                                 style="max-height: 200px; max-width: 100%; object-fit: contain;" />
-                                            <a href="${response.imagePath}" target="_blank"
-                                               class="btn btn-sm btn-primary mt-2 shadow-sm">
-                                                <i class="fas fa-expand me-1"></i>View Full Image
-                                            </a>
-                                        </div>`;
-                            }
-
-                            commentHtml += `</div></div>`;
-
-                            $('#comments-container').prepend(commentHtml);
-
-                            // Reset the form
-                            form[0].reset();
-
-                            // Scroll to the new comment
-                            $('html, body').animate({
-                                scrollTop: $('#comments-container').offset().top - 20
-                            }, 500);
-                        } else {
-                            alert('Error: ' + response.message);
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        alert('An error occurred while submitting the comment: ' + error);
-                    },
-                    complete: function() {
-                        submitBtn.prop('disabled', false).html(originalText);
-                    }
+        <script>
+            $(document).ready(function() {
+                // Initialize tooltips
+                var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+                var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                    return new bootstrap.Tooltip(tooltipTriggerEl);
                 });
+
+                // AJAX form submission for comments
+                $('#comment-form').submit(function(e) {
+                    e.preventDefault();
+                    var form = $(this);
+                    var textarea = form.find('textarea');
+                    var fileInput = form.find('input[type="file"]');
+                    var isValid = true;
+
+                    // Clear any previous validation
+                    textarea.removeClass('is-invalid');
+                    fileInput.removeClass('is-invalid');
+                    $('.invalid-feedback').remove();
+
+                    // Validate comment text
+                    if ($.trim(textarea.val()) === '') {
+                        textarea.addClass('is-invalid');
+                        textarea.after('<div class="invalid-feedback">Please enter a comment before submitting.</div>');
+                        isValid = false;
+                    }
+
+                    // Validate image
+                    if (fileInput[0].files.length === 0) {
+                        fileInput.addClass('is-invalid');
+                        fileInput.parent().append('<div class="invalid-feedback">Please select an image to upload.</div>');
+                        isValid = false;
+                    }
+
+                    if (!isValid) {
+                        return false;
+                    }
+
+                    // Show loading state
+                    var submitBtn = form.find('button[type="submit"]');
+                    var originalText = submitBtn.html();
+                    submitBtn.prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Submitting...');
+
+                    var formData = new FormData(form[0]);
+
+                    $.ajax({
+                        url: form.attr('action'),
+                        type: form.attr('method'),
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(response) {
+                            if (response.success) {
+                                // Build comment HTML
+                                var commentHtml = `
+                                    <div class="comment-bubble shadow-sm mb-3">
+                                        <div class="comment-header d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>${response.authorName}</strong>
+                                                <small class="text-muted ms-2">${response.authorEmail}</small>
+                                            </div>
+                                            <small class="text-muted">${response.createdAt}</small>
+                                        </div>
+                                        <div class="comment-content mt-2">
+                                            <p>${response.commentContent}</p>
+                                            <div class="mt-2">
+                                                <img src="${response.imagePath}" alt="Comment Image"
+                                                     class="img-fluid rounded-3 shadow-sm border"
+                                                     style="max-height: 200px; max-width: 100%; object-fit: contain;" />
+                                                <a href="${response.imagePath}" target="_blank"
+                                                   class="btn btn-sm btn-primary mt-2 shadow-sm">
+                                                    <i class="fas fa-expand me-1"></i>View Full Image
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>`;
+
+                                // Add to comments container
+                                $('#comments-container').prepend(commentHtml);
+
+                                // Update status badge if status was changed
+                                if (response.newStatus) {
+                                    $('.badge.fs-6').removeClass('bg-warning bg-info bg-success bg-danger')
+                                                     .addClass(response.newStatusClass)
+                                                     .html(`<i class="${response.newStatusIcon} me-1"></i>${response.newStatus}`);
+                                }
+
+                                // Send notification to user
+                                if (response.notifyUser) {
+                                    sendNotificationToUser(response.reportId, response.commentId);
+                                }
+
+                                // Reset form
+                                form[0].reset();
+
+                                // Scroll to new comment
+                                $('html, body').animate({
+                                    scrollTop: $('#comments-container').offset().top - 20
+                                }, 500);
+
+                                // Show success message
+                                var alertHtml = `
+                                    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                                        <i class="fas fa-check-circle me-2"></i>
+                                        Comment added successfully${response.newStatus ? ' and report status updated' : ''}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>`;
+                                $(alertHtml).insertBefore(form);
+                            } else {
+                                // Show error message from server
+                                var alertHtml = `
+                                    <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                                        <i class="fas fa-exclamation-circle me-2"></i>
+                                        ${response.message}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>`;
+                                $(alertHtml).insertBefore(form);
+                            }
+                        },
+                        error: function(xhr) {
+                            var errorMsg = xhr.responseJSON?.message || 'An error occurred while submitting the comment';
+                            var alertHtml = `
+                                <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                                    <i class="fas fa-exclamation-circle me-2"></i>
+                                    ${errorMsg}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>`;
+                            $(alertHtml).insertBefore(form);
+                        },
+                        complete: function() {
+                            submitBtn.prop('disabled', false).html(originalText);
+                        }
+                    });
+                });
+
+                function sendNotificationToUser(reportId, commentId) {
+                    // Use SignalR to send real-time notification
+                    if (typeof connection !== 'undefined') {
+                        connection.invoke("SendNotification", reportId, commentId).catch(err => {
+                            console.error('Error sending notification:', err);
+                        });
+                    } else {
+                        // Fallback to polling if SignalR isn't available
+                        console.log('SignalR not available, using fallback');
+                    }
+                }
             });
-        });
-    </script>
+
+
+            // Initialize SignalR connection
+            const connection = new signalR.HubConnectionBuilder()
+                .withUrl("/notificationHub")
+                .configureLogging(signalR.LogLevel.Information)
+                .build();
+
+            connection.on("ReceiveNotification", (reportId, commentId) => {
+                showNotification(`Your report #${reportId} has a new admin comment`, true);
+
+                // Refresh the reports list if the modal is open
+                if ($('#myReportsModal').is(':visible')) {
+                    loadMyReports();
+                }
+            });
+
+            async function startConnection() {
+                try {
+                    await connection.start();
+                    console.log("SignalR Connected.");
+                } catch (err) {
+                    console.log(err);
+                    setTimeout(startConnection, 5000);
+                }
+            }
+
+            // Start the connection
+            startConnection();
+
+            // Reconnect if connection is lost
+            connection.onclose(async () => {
+                await startConnection();
+            });
+        </script>
 }

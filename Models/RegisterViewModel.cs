@@ -20,7 +20,9 @@ namespace UnivMate.Models
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Email is required")]
-        [EmailAddress(ErrorMessage = "Invalid email address")]
+        [EmailAddress(ErrorMessage = "Invalid email format")]
+        [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
+    ErrorMessage = "Please enter a valid email address")]
         [Display(Name = "Email Address")]
         public string Email { get; set; }
 
@@ -41,6 +43,8 @@ namespace UnivMate.Models
         public string Role { get; set; }
 
         // STUDENT FIELDS
+        [Required(ErrorMessage = "Student ID is required")]
+        [RegularExpression(@"^\d{2}-\d{5}$", ErrorMessage = "Student ID must be in format 00-00000")]
         [Display(Name = "Student ID")]
         public string StudentId { get; set; }
 

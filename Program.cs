@@ -4,12 +4,46 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using UnivMate.Data;
+using UnivMate.Hubs;
 using UnivMate.Models;
+using DinkToPdf;
+using DinkToPdf.Contracts;
+using System.IO;
+using UnivMate.Services;
+using UnivMate.Extensions;
+using System.Reflection;
+using System.Runtime.Loader;
+using System.Runtime.InteropServices;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add SignalR
+builder.Services.AddSignalR();
+
+// Add PDF converter
+var context = new CustomAssemblyLoadContext();
+var architecture = RuntimeInformation.ProcessArchitecture;
+var dllPath = Path.Combine(Directory.GetCurrentDirectory(), "Libs", "wkhtmltopdf", "libwkhtmltox.dll");
+
+if (!File.Exists(dllPath))
+{
+    throw new FileNotFoundException("libwkhtmltox.dll not found at: " + dllPath);
+}
+
+context.LoadUnmanagedLibrary(dllPath);
+builder.Services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
+context.LoadUnmanagedLibrary(Path.Combine(Directory.GetCurrentDirectory(), "libwkhtmltox.dll"));
+builder.Services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
+
+// Add services
+builder.Services.AddScoped<PdfConverterService>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddHttpContextAccessor();
+builder.WebHost.CaptureStartupErrors(true);  // Add this line
+builder.WebHost.UseSetting("detailedErrors", "true");  // And this
+
+
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -76,7 +110,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-
+app.MapHub<ReportHub>("/reportHub");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -88,7 +122,6 @@ app.UseRouting();
 app.UseSession();
 
 // Authentication & Authorization
-
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -105,16 +138,6 @@ app.MapControllerRoute(
     pattern: "StaffDashboard/{action=Index}/{id?}",
     defaults: new { controller = "StaffDashboard" });
 
-// Replace your current routes with this:
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-// Only add additional routes AFTER the default route
-app.MapControllerRoute(
-    name: "staff",
-    pattern: "StaffDashboard/{action=Index}/{id?}",
-    defaults: new { controller = "StaffDashboard" });
 app.Run();
 
 // Implementation of ITicketStore for session store
@@ -154,5 +177,24 @@ public class MemoryCacheTicketStore : Microsoft.AspNetCore.Authentication.Cookie
         var key = KeyPrefix + Guid.NewGuid().ToString();
         RenewAsync(key, ticket);
         return Task.FromResult(key);
+    }
+}
+
+// Custom Assembly Load Context for PDF conversion
+public class CustomAssemblyLoadContext : AssemblyLoadContext
+{
+    public IntPtr LoadUnmanagedLibrary(string absolutePath)
+    {
+        return LoadUnmanagedDll(absolutePath);
+    }
+
+    protected override IntPtr LoadUnmanagedDll(string unmanagedDllName)
+    {
+        return LoadUnmanagedDllFromPath(unmanagedDllName);
+    }
+
+    protected override Assembly Load(AssemblyName assemblyName)
+    {
+        throw new NotImplementedException();
     }
 }
